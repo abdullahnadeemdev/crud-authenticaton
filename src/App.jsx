@@ -1,5 +1,6 @@
 import Layout from "./components/layout/Layout";
 import AddStudent from "./Pages/addStudent/AddStudent";
+import Login from "./Pages/login/Login";
 import StudentList from "./Pages/studentListing";
 
 function App() {
@@ -7,7 +8,8 @@ function App() {
     <>
       <Layout>
         {/* <StudentList /> */}
-        <AddStudent />
+        {/* <AddStudent /> */}
+        <Login />
       </Layout>
     </>
   );

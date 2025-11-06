@@ -36,20 +36,3 @@ const Index = () => {
 };
 
 export default Index;
-
-{
-  /* <div>
-    <ul className="flex items-center justify-center mt-10">
-      <li className="px-2 font-bold bg-green-300 text-3xl">Roll no.</li>
-      <li className="px-2 font-bold bg-green-300 text-3xl">Student Name</li>
-      <li className="px-2 font-bold bg-green-300 text-3xl">Age</li>
-      <li className="px-2 font-bold bg-green-300 text-3xl">Class</li>
-      <li className="px-2 font-bold bg-green-300 text-3xl">Phone</li>
-      <li className="px-2 font-bold bg-green-300 text-3xl">
-        <button>edit</button>
-        <button>delete</button>
-      </li>
-    </ul>
-  </div>
-  <div></div> */
-}

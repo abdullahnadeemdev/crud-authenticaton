@@ -4,7 +4,7 @@ const AddStudent = () => {
   return (
     <div className="mx-auto p-2 sm:p-6 md:p-10 mt-10 border-2 border-chineseViolet rounded-lg w-fit max-w-[600px]">
       <div className="flex flex-col justify-center items-center">
-        <h1 className="mb-4 md:mb-8 text-chineseViolet font-semibold text-base md:text-xl xl:text-2xl">
+        <h1 className="mb-8 xl:mb-10 text-chineseViolet font-semibold text-xl sm:text-2xl xl:text-4xl">
           Add New Student
         </h1>
         <div className="mx-auto sm:w-[500px] mb-2 md:mb-5">
