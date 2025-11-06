@@ -6,11 +6,11 @@ export const Logo = ({ className, ...props }) => {
       xmlnsXlink="http://www.w3.org/1999/xlink"
       viewBox="0 0 512.00 512.00"
       xmlSpace="preserve"
-      fill="#20d5d2"
-      stroke="#20d5d2"
+      fill="#6D597A"
+      stroke="#6D597A"
       transform="matrix(1, 0, 0, 1, 0, 0)"
       strokeWidth={0.00512}
-      className={`h-15 w-15 ${className}`}
+      className={`h-12 w-12 ${className}`}
       {...props}
     >
       <g id="SVGRepo_bgCarrier" strokeWidth={0} />
@@ -22,7 +22,7 @@ export const Logo = ({ className, ...props }) => {
         strokeWidth={21.503999999999998}
       />
       <g id="SVGRepo_iconCarrier">
-        <style type="text/css">{" .st0{fill:#20d5d2;} "}</style>
+        <style type="text/css">{" .st0{fill:#6D597A;} "}</style>
         <g>
           <path
             className="st0"

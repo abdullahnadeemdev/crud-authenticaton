@@ -5,13 +5,13 @@ const Index = () => {
   const dataArr = ["1", "Abdullah", "22", "6-A", " 090078601"];
   return (
     <div className="mx-auto flex justify-center max-w-[1320px]">
-      <table className="bg-blue-200 mt-20 p-4 table-auto">
+      <table className="mt-20 p-4 table-auto">
         <thead>
-          <tr className="bg-green-200 border uppercase">
+          <tr className="uppercase">
             {headArr.map((item, index) => (
               <th
                 key={index}
-                className="px-5 text-center bg-red-200 xxs:text-xs sm:text-base md:text-xl xl:text-2xl border-r max-w-fit "
+                className="px-5 py-2 text-center bg-yinBlue text-pearl xxs:text-xs sm:text-base md:text-xl xl:text-2xl  max-w-fit "
               >
                 {item}
               </th>
@@ -19,11 +19,11 @@ const Index = () => {
           </tr>
         </thead>
         <tbody>
-          <tr className="border">
+          <tr className=" bg-chineseViolet text-pearl">
             {dataArr.map((item, index) => (
               <td
                 key={index}
-                className="px-5 text-center bg-yellow-200 xxs:text-xs sm:text-sm md:text-lg xl:text-xl border-r max-w-fit"
+                className="px-5 text-center xxs:text-xs sm:text-sm md:text-lg xl:text-xl border-r max-w-fit"
               >
                 {item}
               </td>
