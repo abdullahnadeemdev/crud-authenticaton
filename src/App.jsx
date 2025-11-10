@@ -1,16 +1,17 @@
 import Layout from "./components/layout/Layout";
 import AddStudent from "./Pages/addStudent/AddStudent";
-import Login from "./Pages/login/Login";
-import StudentList from "./Pages/studentListing";
+import StudentList from "./components/studentList/Listing";
+import { BrowserRouter } from "react-router";
 
 function App() {
   return (
     <>
+      {/* <BrowserRouter> */}
       <Layout>
-        {/* <StudentList /> */}
+        <StudentList />
         {/* <AddStudent /> */}
-        <Login />
       </Layout>
+      {/* </BrowserRouter> */}
     </>
   );
 }

@@ -1,34 +1,67 @@
+import { useState } from "react";
 import Button from "../../components/shared/button/Button";
 
 const AddStudent = () => {
+  const [studentInfo, setStudentInfo] = useState([
+    {
+      name: "",
+      email: "",
+      age: "",
+      studentClass: "",
+      phone: "",
+    },
+  ]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setStudentInfo({
+      ...studentInfo,
+      [name]: value,
+    });
+  };
   return (
     <div className="mx-auto p-2 sm:p-6 md:p-10 mt-10 border-2 border-chineseViolet rounded-lg w-fit max-w-[600px]">
       <div className="flex flex-col justify-center items-center">
         <h1 className="mb-8 xl:mb-10 text-chineseViolet font-semibold text-xl sm:text-2xl xl:text-4xl">
           Add New Student
         </h1>
-        <div className="mx-auto sm:w-[500px] mb-2 md:mb-5">
+        <form className="mx-auto sm:w-[500px] mb-2 md:mb-5">
           <input
             type="text"
+            onChange={handleChange}
+            value={name}
             className="border block mx-auto rounded-lg border-chineseViolet p-1 m-2"
             placeholder="Name"
           />
           <input
             type="email"
+            onChange={handleChange}
             className="border block mx-auto rounded-lg border-chineseViolet p-1 m-2"
             placeholder="Email"
+            value={email}
           />
           <input
             type="number"
+            onChange={handleChange}
             className="border block mx-auto rounded-lg border-chineseViolet p-1 m-2"
             placeholder="Phone"
+            value={phone}
+          />
+          <input
+            type="number"
+            onChange={handleChange}
+            className="border block mx-auto rounded-lg border-chineseViolet p-1 m-2"
+            placeholder="Age"
+            value={age}
           />
           <input
             type="text"
+            onChange={handleChange}
             className="border block mx-auto rounded-lg border-chineseViolet p-1 m-2"
-            placeholder="Address"
+            placeholder="Class"
+            value={studentClass}
           />
-        </div>
+        </form>
 
         <div className="">
           <h3 className="text-chineseViolet py-0.5 md:py-2 font-semibold xxs:text-xs sm:text-sm md:text-lg xl:text-xl">
@@ -74,5 +107,5 @@ const AddStudent = () => {
     </div>
   );
 };
-
+export { studentInfo };
 export default AddStudent;
