@@ -1,3 +1,4 @@
+import { NavLink } from "react-router";
 import { Logo } from "../../../assets/icons/index";
 import Button from "../button/Button";
 const Navbar = () => {
@@ -11,7 +12,9 @@ const Navbar = () => {
           </p>
         </div>
         <div>
-          <Button>Add Student</Button>
+          <NavLink to="/add">
+            <Button>Add Student</Button>
+          </NavLink>
         </div>
       </div>
     </div>

@@ -1,3 +1,4 @@
+import { NavLink } from "react-router";
 import Button from "../../components/shared/button/Button";
 
 const Login = () => {
@@ -18,8 +19,13 @@ const Login = () => {
             className="border block mb-8 pl-1 mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg"
             placeholder="Email"
           />
-          <Button className="w-full mb-2">Sign In</Button>
-          <Button className="w-full mb-2">Create New Account</Button>
+          <NavLink to="/student-list">
+            <Button className="w-full mb-2">Sign In</Button>
+          </NavLink>
+
+          <NavLink to="/sign-up">
+            <Button className="w-full mb-2">Create New Account</Button>
+          </NavLink>
         </div>
       </div>
     </div>

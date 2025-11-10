@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Button from "../../components/shared/button/Button";
+import { NavLink } from "react-router";
 
 const AddStudent = () => {
   const [studentInfo, setStudentInfo] = useState({
@@ -180,12 +181,13 @@ const AddStudent = () => {
             Bachelor
           </label>
         </div>
-        <Button form="myForm" type="submit">
-          Add
-        </Button>
+        <NavLink to="/student-list">
+          <Button form="myForm" type="submit">
+            Add
+          </Button>
+        </NavLink>
       </div>
     </div>
   );
 };
-// export { studentInfo };
 export default AddStudent;

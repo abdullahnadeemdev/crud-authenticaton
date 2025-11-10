@@ -2,16 +2,14 @@ import Layout from "./components/layout/Layout";
 import AddStudent from "./Pages/addStudent/AddStudent";
 import StudentList from "./components/studentList/Listing";
 import { BrowserRouter } from "react-router";
+import Router from "./routes";
 
 function App() {
   return (
     <>
-      {/* <BrowserRouter> */}
       <Layout>
-        <StudentList />
-        {/* <AddStudent /> */}
+        <Router />
       </Layout>
-      {/* </BrowserRouter> */}
     </>
   );
 }
