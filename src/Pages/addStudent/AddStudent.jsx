@@ -87,8 +87,6 @@ const AddStudent = () => {
       ...studentInfo,
       [name]: value,
     });
-    // console.log(".info", studentInfo);
-    // console.log(e.target.name, " & ", e.target.value);
   };
   return (
     <div className="mx-auto p-2 sm:p-6 md:p-10 mt-10 border-2 border-chineseViolet rounded-lg w-fit max-w-[600px]">
