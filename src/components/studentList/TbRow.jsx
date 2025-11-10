@@ -11,10 +11,10 @@ const TbRow = ({ item }) => {
           {i}
         </td>
       ))}
-      <span>
+      <td>
         <Button>edit</Button>
         <Button>delete</Button>
-      </span>
+      </td>
     </tr>
   );
 };

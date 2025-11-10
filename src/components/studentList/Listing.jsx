@@ -32,8 +32,8 @@ const Listing = () => {
           </tr>
         </thead>
         <tbody>
-          {dataArr.map((item) => (
-            <TbRow item={item} />
+          {dataArr.map((item, index) => (
+            <TbRow item={item} key={index} />
           ))}
         </tbody>
       </table>
