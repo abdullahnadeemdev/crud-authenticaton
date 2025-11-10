@@ -2,61 +2,69 @@ import { useState } from "react";
 import Button from "../../components/shared/button/Button";
 
 const AddStudent = () => {
-  const [studentInfo, setStudentInfo] = useState([
-    {
-      name: "",
-      email: "",
-      age: "",
-      studentClass: "",
-      phone: "",
-    },
-  ]);
+  const [studentInfo, setStudentInfo] = useState({
+    studentName: "",
+    emailS: "",
+    ageS: "",
+    studentClass: "",
+    phoneS: "",
+  });
 
   const [error, setError] = useState([
     {
-      name: false,
-      email: false,
-      age: false,
+      studentName: false,
+      emailS: false,
+      ageS: false,
       studentClass: false,
-      phone: false,
+      phoneS: false,
     },
   ]);
 
   const validation = () => {
-    if (!error.name) {
+    if (!studentInfo.studentName) {
       setError({
         ...error,
-        name: false,
+        studentName: true,
       });
     }
 
-    if (!error.email) {
+    if (!studentInfo.emailS) {
       setError({
         ...error,
-        email: false,
+        emailS: true,
       });
     }
-    if (!error.phone) {
+    if (!studentInfo.phoneS) {
       setError({
         ...error,
-        phone: false,
+        phoneS: true,
       });
     }
-    if (!error.age) {
+    if (!studentInfo.ageS) {
       setError({
         ...error,
-        age: false,
-      });
-    }
-
-    if (!error.studentClass) {
-      setError({
-        ...error,
-        studentClass: false,
+        ageS: true,
       });
     }
 
-    return false;
+    if (!studentInfo.studentClass) {
+      setError({
+        ...error,
+        studentClass: true,
+      });
+    }
+
+    if (
+      !studentInfo.studentName ||
+      !studentInfo.emailS ||
+      !studentInfo.phoneS ||
+      !studentInfo.ageS ||
+      !studentInfo.studentClass
+    ) {
+      return true;
+    } else {
+      return false;
+    }
   };
 
   const handleSubmit = (e) => {
@@ -64,8 +72,12 @@ const AddStudent = () => {
 
     if (!validation()) {
       console.log("form submitted");
+      console.log(studentInfo);
+      console.log(error);
     } else {
-      cosole.log("error submitting form");
+      console.log("error submitting form");
+      console.log(studentInfo);
+      console.log(error);
     }
   };
 
@@ -75,6 +87,8 @@ const AddStudent = () => {
       ...studentInfo,
       [name]: value,
     });
+    // console.log(".info", studentInfo);
+    // console.log(e.target.name, " & ", e.target.value);
   };
   return (
     <div className="mx-auto p-2 sm:p-6 md:p-10 mt-10 border-2 border-chineseViolet rounded-lg w-fit max-w-[600px]">
@@ -90,30 +104,34 @@ const AddStudent = () => {
           <input
             type="text"
             onChange={handleChange}
-            value={studentInfo.name}
+            value={studentInfo.studentName}
             className="border block mx-auto rounded-lg border-chineseViolet p-1 m-2"
             placeholder="Name"
+            name="studentName"
           />
           <input
             type="email"
             onChange={handleChange}
             className="border block mx-auto rounded-lg border-chineseViolet p-1 m-2"
             placeholder="Email"
-            value={studentInfo.email}
+            value={studentInfo.emailS}
+            name="emailS"
           />
           <input
             type="number"
             onChange={handleChange}
             className="border block mx-auto rounded-lg border-chineseViolet p-1 m-2"
             placeholder="Phone"
-            value={studentInfo.phone}
+            value={studentInfo.phoneS}
+            name="phoneS"
           />
           <input
             type="number"
             onChange={handleChange}
             className="border block mx-auto rounded-lg border-chineseViolet p-1 m-2"
             placeholder="Age"
-            value={studentInfo.age}
+            value={studentInfo.ageS}
+            name="ageS"
           />
           <input
             type="text"
@@ -121,6 +139,7 @@ const AddStudent = () => {
             className="border block mx-auto rounded-lg border-chineseViolet p-1 m-2"
             placeholder="Class"
             value={studentInfo.studentClass}
+            name="studentClass"
           />
         </form>
 
