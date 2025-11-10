@@ -1,20 +1,29 @@
 import TbRow from "./TbRow";
+import { headArr } from "../../utils/mockUpData";
 
 const Listing = () => {
-  const headArr = [
-    "Roll No.",
-    "Student Name",
-    "Age",
-    "Class",
-    "Phone Number",
-    "Action",
-  ];
   const dataArr = [
-    ["1", "Abdullah", "22", "6-A", " 090078601"],
-    ["12", "Abdullah", "22", "6-A", " 090078601"],
-    ["13", "Abdullah", "22", "6-A", " 090078601"],
-    ["41", "Abdullah", "22", "6-A", " 090078601"],
-    ["51", "Abdullah", "22", "6-A", " 090078601"],
+    {
+      studentName: "Abdullah",
+      emailS: "abdullah@123.com",
+      ageS: "22",
+      studentClass: "6-A",
+      phoneS: "090078601",
+    },
+    {
+      studentName: "Abdullah",
+      emailS: "abdullah@123.com",
+      ageS: "22",
+      studentClass: "6-A",
+      phoneS: "090078601",
+    },
+    {
+      studentName: "Abdullah",
+      emailS: "abdullah@123.com",
+      ageS: "22",
+      studentClass: "6-A",
+      phoneS: "090078601",
+    },
   ];
   return (
     <div className="mx-auto flex justify-center max-w-[1320px]">
