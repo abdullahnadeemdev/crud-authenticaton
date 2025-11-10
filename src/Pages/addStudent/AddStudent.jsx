@@ -2,7 +2,10 @@ import { useState } from "react";
 import Button from "../../components/shared/button/Button";
 import { NavLink } from "react-router";
 
-const AddStudent = () => {
+const AddStudent = (props) => {
+  const dataArr = props?.listing;
+  // console.log("new student", props);
+  // console.log("data Arr", dataArr);
   const [studentInfo, setStudentInfo] = useState({
     studentName: "",
     emailS: "",
@@ -11,6 +14,7 @@ const AddStudent = () => {
     phoneS: "",
   });
 
+  // console.log("dataa", studentInfo);
   const [error, setError] = useState([
     {
       studentName: false,
@@ -68,17 +72,25 @@ const AddStudent = () => {
     }
   };
 
+  // const setData = () => {
+  //   dataArr = (prev) => ({
+  //     ...prev,
+  //     studentInfo,
+  //   });
+  // };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!validation()) {
       console.log("form submitted");
-      console.log(studentInfo);
-      console.log(error);
+      props.setListing([...dataArr, studentInfo]);
+      console.log("props", props);
+      // console.log(error);
     } else {
       console.log("error submitting form");
-      console.log(studentInfo);
-      console.log(error);
+      // console.log(studentInfo);
+      // console.log(error);
     }
   };
 
@@ -181,11 +193,11 @@ const AddStudent = () => {
             Bachelor
           </label>
         </div>
-        <NavLink to="/student-list">
-          <Button form="myForm" type="submit">
-            Add
-          </Button>
-        </NavLink>
+        {/* <NavLink to="/student-list"> */}
+        <Button form="myForm" type="submit">
+          Add
+        </Button>
+        {/* </NavLink> */}
       </div>
     </div>
   );

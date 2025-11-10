@@ -1,30 +1,10 @@
 import TbRow from "./TbRow";
 import { headArr } from "../../utils/mockUpData";
+// import { dataArr } from "../../utils/mockUpData";
 
-const Listing = () => {
-  const dataArr = [
-    {
-      studentName: "Abdullah",
-      emailS: "abdullah@123.com",
-      ageS: "22",
-      studentClass: "6-A",
-      phoneS: "090078601",
-    },
-    {
-      studentName: "Abdullah",
-      emailS: "abdullah@123.com",
-      ageS: "22",
-      studentClass: "6-A",
-      phoneS: "090078601",
-    },
-    {
-      studentName: "Abdullah",
-      emailS: "abdullah@123.com",
-      ageS: "22",
-      studentClass: "6-A",
-      phoneS: "090078601",
-    },
-  ];
+const Listing = (props) => {
+  const dataArr = props?.dataArr?.listing;
+  console.log("hello", props.dataArr.listing);
   return (
     <div className="mx-auto flex justify-center max-w-[1320px]">
       <table className="mt-20 p-4 table-auto">

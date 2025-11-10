@@ -1,10 +1,11 @@
 import React from "react";
 import Listing from "../../components/studentList/Listing";
 
-const Index = () => {
+const Index = (props) => {
+  console.log(props);
   return (
     <div>
-      <Listing />
+      <Listing dataArr={props} />
     </div>
   );
 };

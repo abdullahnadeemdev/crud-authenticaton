@@ -4,8 +4,35 @@ import { Route, Routes } from "react-router";
 import Login from "./Pages/login/Login";
 import SignUp from "./Pages/signUp/SignUp";
 import Layout from "./components/layout/Layout";
+import { useState } from "react";
 
 const Router = () => {
+  //  const dataArr = ;
+
+  const [listing, setListing] = useState([
+    {
+      studentName: "Abdullah",
+      emailS: "abdullah@123.com",
+      ageS: "22",
+      studentClass: "6-A",
+      phoneS: "090078601",
+    },
+    {
+      studentName: "Abdullah",
+      emailS: "abdullah@123.com",
+      ageS: "22",
+      studentClass: "6-A",
+      phoneS: "090078601",
+    },
+    {
+      studentName: "Abdullah",
+      emailS: "abdullah@123.com",
+      ageS: "22",
+      studentClass: "6-A",
+      phoneS: "090078601",
+    },
+  ]);
+
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
@@ -14,7 +41,7 @@ const Router = () => {
         path="/student-list"
         element={
           <Layout>
-            <Student />
+            <Student listing={listing} />
           </Layout>
         }
       />
@@ -22,7 +49,7 @@ const Router = () => {
         path="/add"
         element={
           <Layout>
-            <AddStudent />
+            <AddStudent listing={listing} setListing={setListing} />
           </Layout>
         }
       />

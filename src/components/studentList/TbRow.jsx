@@ -3,7 +3,7 @@ import Button from "../shared/button/Button";
 const TbRow = ({ item }) => {
   return (
     <tr className=" bg-chineseViolet text-white">
-      {console.log(item)}
+      {/* {console.log(item)} */}
       <td className="px-5 text-center xxs:text-xs sm:text-sm md:text-lg xl:text-xl border-r max-w-fit">
         {item.studentName}
       </td>
