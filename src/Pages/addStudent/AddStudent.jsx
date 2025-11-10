@@ -12,6 +12,63 @@ const AddStudent = () => {
     },
   ]);
 
+  const [error, setError] = useState([
+    {
+      name: false,
+      email: false,
+      age: false,
+      studentClass: false,
+      phone: false,
+    },
+  ]);
+
+  const validation = () => {
+    if (!error.name) {
+      setError({
+        ...error,
+        name: false,
+      });
+    }
+
+    if (!error.email) {
+      setError({
+        ...error,
+        email: false,
+      });
+    }
+    if (!error.phone) {
+      setError({
+        ...error,
+        phone: false,
+      });
+    }
+    if (!error.age) {
+      setError({
+        ...error,
+        age: false,
+      });
+    }
+
+    if (!error.studentClass) {
+      setError({
+        ...error,
+        studentClass: false,
+      });
+    }
+
+    return false;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!validation()) {
+      console.log("form submitted");
+    } else {
+      cosole.log("error submitting form");
+    }
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setStudentInfo({
@@ -25,11 +82,15 @@ const AddStudent = () => {
         <h1 className="mb-8 xl:mb-10 text-chineseViolet font-semibold text-xl sm:text-2xl xl:text-4xl">
           Add New Student
         </h1>
-        <form className="mx-auto sm:w-[500px] mb-2 md:mb-5">
+        <form
+          className="mx-auto sm:w-[500px] mb-2 md:mb-5"
+          onSubmit={handleSubmit}
+          id="myForm"
+        >
           <input
             type="text"
             onChange={handleChange}
-            value={name}
+            value={studentInfo.name}
             className="border block mx-auto rounded-lg border-chineseViolet p-1 m-2"
             placeholder="Name"
           />
@@ -38,28 +99,28 @@ const AddStudent = () => {
             onChange={handleChange}
             className="border block mx-auto rounded-lg border-chineseViolet p-1 m-2"
             placeholder="Email"
-            value={email}
+            value={studentInfo.email}
           />
           <input
             type="number"
             onChange={handleChange}
             className="border block mx-auto rounded-lg border-chineseViolet p-1 m-2"
             placeholder="Phone"
-            value={phone}
+            value={studentInfo.phone}
           />
           <input
             type="number"
             onChange={handleChange}
             className="border block mx-auto rounded-lg border-chineseViolet p-1 m-2"
             placeholder="Age"
-            value={age}
+            value={studentInfo.age}
           />
           <input
             type="text"
             onChange={handleChange}
             className="border block mx-auto rounded-lg border-chineseViolet p-1 m-2"
             placeholder="Class"
-            value={studentClass}
+            value={studentInfo.studentClass}
           />
         </form>
 
@@ -102,10 +163,12 @@ const AddStudent = () => {
             Bachelor
           </label>
         </div>
-        <Button>Add</Button>
+        <Button form="myForm" type="submit">
+          Add
+        </Button>
       </div>
     </div>
   );
 };
-export { studentInfo };
+// export { studentInfo };
 export default AddStudent;

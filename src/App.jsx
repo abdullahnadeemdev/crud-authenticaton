@@ -8,8 +8,8 @@ function App() {
     <>
       {/* <BrowserRouter> */}
       <Layout>
-        <StudentList />
-        {/* <AddStudent /> */}
+        {/* <StudentList /> */}
+        <AddStudent />
       </Layout>
       {/* </BrowserRouter> */}
     </>
