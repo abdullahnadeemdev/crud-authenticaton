@@ -1,9 +1,19 @@
+import { NavLink } from "react-router";
 import Button from "../shared/button/Button";
 
-const TbRow = ({ item }) => {
+const TbRow = ({ item, list }) => {
+  const handleClick = (event) => {
+    // const ele = event.target.parentElement.parentElement;
+    // console.log("element keysss", ele);
+    const ele2 = list.data.listing.filter((list) => list.roll !== item.roll);
+    // console.log("element", ele2);
+    list.data.setListing({ ...ele2 });
+  };
   return (
-    <tr className=" bg-chineseViolet text-white">
-      {/* {console.log(item)} */}
+    <tr key={item.roll} className=" bg-chineseViolet text-white">
+      <td className="px-5 text-center xxs:text-xs sm:text-sm md:text-lg xl:text-xl border-r max-w-fit">
+        {item.roll}
+      </td>
       <td className="px-5 text-center xxs:text-xs sm:text-sm md:text-lg xl:text-xl border-r max-w-fit">
         {item.studentName}
       </td>
@@ -20,8 +30,10 @@ const TbRow = ({ item }) => {
         {item.phoneS}
       </td>
       <td>
-        <Button>edit</Button>
-        <Button>delete</Button>
+        <NavLink to="/add">
+          <Button>edit</Button>
+        </NavLink>
+        <Button onClick={handleClick}>delete</Button>
       </td>
     </tr>
   );

@@ -4,8 +4,8 @@ import { NavLink } from "react-router";
 
 const AddStudent = (props) => {
   const dataArr = props?.listing;
-  // console.log("new student", props);
-  // console.log("data Arr", dataArr);
+  console.log("new student", props);
+  console.log("data Arr", props?.listing);
   const [studentInfo, setStudentInfo] = useState({
     studentName: "",
     emailS: "",
@@ -14,7 +14,6 @@ const AddStudent = (props) => {
     phoneS: "",
   });
 
-  // console.log("dataa", studentInfo);
   const [error, setError] = useState([
     {
       studentName: false,
@@ -72,25 +71,15 @@ const AddStudent = (props) => {
     }
   };
 
-  // const setData = () => {
-  //   dataArr = (prev) => ({
-  //     ...prev,
-  //     studentInfo,
-  //   });
-  // };
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!validation()) {
       console.log("form submitted");
       props.setListing([...dataArr, studentInfo]);
-      console.log("props", props);
-      // console.log(error);
+      // console.log("props", props);
     } else {
       console.log("error submitting form");
-      // console.log(studentInfo);
-      // console.log(error);
     }
   };
 
@@ -105,7 +94,7 @@ const AddStudent = (props) => {
     <div className="mx-auto p-2 sm:p-6 md:p-10 mt-10 border-2 border-chineseViolet rounded-lg w-fit max-w-[600px]">
       <div className="flex flex-col justify-center items-center">
         <h1 className="mb-8 xl:mb-10 text-chineseViolet font-semibold text-xl sm:text-2xl xl:text-4xl">
-          Add New Student
+          Add Student
         </h1>
         <form
           className="mx-auto sm:w-[500px] mb-2 md:mb-5"

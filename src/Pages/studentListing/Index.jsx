@@ -2,10 +2,10 @@ import React from "react";
 import Listing from "../../components/studentList/Listing";
 
 const Index = (props) => {
-  console.log(props);
+  // console.log("direct prop", props);
   return (
     <div>
-      <Listing dataArr={props} />
+      <Listing data={props} />
     </div>
   );
 };

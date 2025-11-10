@@ -3,8 +3,10 @@ import { headArr } from "../../utils/mockUpData";
 // import { dataArr } from "../../utils/mockUpData";
 
 const Listing = (props) => {
-  const dataArr = props?.dataArr?.listing;
-  console.log("hello", props.dataArr.listing);
+  const dataArr = props?.data?.listing;
+  // console.log("hello1", props);
+  // console.log("hello2", props.data);
+  // console.log("hello3", props.data.listing);
   return (
     <div className="mx-auto flex justify-center max-w-[1320px]">
       <table className="mt-20 p-4 table-auto">
@@ -22,7 +24,7 @@ const Listing = (props) => {
         </thead>
         <tbody>
           {dataArr.map((item, index) => (
-            <TbRow item={item} key={index} />
+            <TbRow list={props} item={item} key={index} />
           ))}
         </tbody>
       </table>

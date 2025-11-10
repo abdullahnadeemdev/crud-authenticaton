@@ -11,6 +11,7 @@ const Router = () => {
 
   const [listing, setListing] = useState([
     {
+      roll: 1,
       studentName: "Abdullah",
       emailS: "abdullah@123.com",
       ageS: "22",
@@ -18,6 +19,7 @@ const Router = () => {
       phoneS: "090078601",
     },
     {
+      roll: 2,
       studentName: "Abdullah",
       emailS: "abdullah@123.com",
       ageS: "22",
@@ -25,6 +27,7 @@ const Router = () => {
       phoneS: "090078601",
     },
     {
+      roll: 3,
       studentName: "Abdullah",
       emailS: "abdullah@123.com",
       ageS: "22",
@@ -41,7 +44,7 @@ const Router = () => {
         path="/student-list"
         element={
           <Layout>
-            <Student listing={listing} />
+            <Student listing={listing} setListing={setListing} />
           </Layout>
         }
       />
