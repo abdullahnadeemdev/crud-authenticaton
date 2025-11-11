@@ -9,9 +9,9 @@ const TbRow = ({ item, list }) => {
   };
   return (
     <tr key={item.roll} className=" bg-chineseViolet text-white">
-      <td className="px-5 text-center xxs:text-xs sm:text-sm md:text-lg xl:text-xl border-r max-w-fit">
+      {/* <td className="px-5 text-center xxs:text-xs sm:text-sm md:text-lg xl:text-xl border-r max-w-fit">
         {item.roll}
-      </td>
+      </td> */}
       <td className="px-5 text-center xxs:text-xs sm:text-sm md:text-lg xl:text-xl border-r max-w-fit">
         {item.studentName}
       </td>
@@ -28,7 +28,7 @@ const TbRow = ({ item, list }) => {
         {item.phoneS}
       </td>
       <td>
-        <NavLink to="/add">
+        <NavLink to="/update">
           <Button>edit</Button>
         </NavLink>
         <Button onClick={handleClick}>delete</Button>

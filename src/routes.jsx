@@ -5,6 +5,7 @@ import Login from "./Pages/login/Login";
 import SignUp from "./Pages/signUp/SignUp";
 import Layout from "./components/layout/Layout";
 import { useState } from "react";
+import Update from "./Pages/update/Update";
 
 const Router = () => {
   //  const dataArr = ;
@@ -53,6 +54,14 @@ const Router = () => {
         element={
           <Layout>
             <AddStudent listing={listing} setListing={setListing} />
+          </Layout>
+        }
+      />
+      <Route
+        path="/update"
+        element={
+          <Layout>
+            <Update listing={listing} setListing={setListing} />
           </Layout>
         }
       />
