@@ -1,12 +1,12 @@
 import { useState } from "react";
 import Button from "../../components/shared/button/Button";
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 
 const AddStudent = (props) => {
   const dataArr = props?.listing;
   // console.log("new student", props);
   // console.log("data Arr", dataArr.length);
-
+  const navigate = useNavigate();
   const [studentInfo, setStudentInfo] = useState({
     roll: "",
     studentName: "",
@@ -79,6 +79,7 @@ const AddStudent = (props) => {
     if (!validation()) {
       console.log("form submitted");
       props.setListing([...dataArr, studentInfo]);
+      navigate("/student-list");
       // console.log("props", props);
     } else {
       console.log("error submitting form");

@@ -24,10 +24,10 @@ const SignUp = () => {
             className="border block mb-8 pl-1 mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg"
             placeholder="password"
           />
-          <NavLink to="/login">
+          <NavLink to="/">
             <Button className="w-full px-15 mb-2">Register</Button>
           </NavLink>
-          <NavLink to="/login">
+          <NavLink to="/">
             <Button className="w-full mb-2">Login</Button>
           </NavLink>
         </div>

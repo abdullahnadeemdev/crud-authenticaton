@@ -1,10 +1,11 @@
 import { useState } from "react";
 import Button from "../../components/shared/button/Button";
-import { NavLink, useLocation } from "react-router";
+import { NavLink, useLocation, useNavigate } from "react-router";
 
 const Update = (props) => {
   const dataArr = props?.listing;
   const { state } = useLocation();
+  const navigate = useNavigate();
   //   const change = dataArr.map((item) => item.sName === state.sName);
 
   //   console.log("Array", change);
@@ -84,11 +85,9 @@ const Update = (props) => {
       props.setListing((prev) => {
         return prev.map((item) => {
           if (item.id === state.id) {
-            // console.log("item before", item),
             item = { ...studentInfo };
+            navigate("/student-list");
             return item;
-            // console.log("item after", item);
-            // console.log("item student", { ...studentInfo });
           } else {
             return item;
           }
