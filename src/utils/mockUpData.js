@@ -1,5 +1,4 @@
 export const headArr = [
-  "Roll",
   "Name",
   "Email Address",
   "Age",

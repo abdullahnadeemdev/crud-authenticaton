@@ -2,12 +2,10 @@ import { NavLink } from "react-router";
 import Button from "../shared/button/Button";
 
 const TbRow = ({ item, list }) => {
-  const handleClick = (event) => {
-    // const ele = event.target.parentElement.parentElement;
-    // console.log("element keysss", ele);
+  const handleClick = () => {
     const ele2 = list.data.listing.filter((list) => list.roll !== item.roll);
-    // console.log("element", ele2);
-    list.data.setListing({ ...ele2 });
+    console.log("ele2", ele2);
+    list.data.setListing([...ele2]);
   };
   return (
     <tr key={item.roll} className=" bg-chineseViolet text-white">

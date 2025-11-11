@@ -4,9 +4,10 @@ import { NavLink } from "react-router";
 
 const AddStudent = (props) => {
   const dataArr = props?.listing;
-  console.log("new student", props);
-  console.log("data Arr", props?.listing);
+  // console.log("new student", props);
+  console.log("data Arr", dataArr);
   const [studentInfo, setStudentInfo] = useState({
+    roll: "",
     studentName: "",
     emailS: "",
     ageS: "",
@@ -85,9 +86,11 @@ const AddStudent = (props) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    let num = Math.floor(Math.random() * 100);
     setStudentInfo({
       ...studentInfo,
       [name]: value,
+      roll: num,
     });
   };
   return (
