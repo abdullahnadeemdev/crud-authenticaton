@@ -1,18 +1,21 @@
 import { useState } from "react";
 import Button from "../../components/shared/button/Button";
-import { NavLink } from "react-router";
+import { NavLink, useLocation } from "react-router";
 
 const Update = (props) => {
   const dataArr = props?.listing;
-  // console.log("new student", props);
-  console.log("data Arr", dataArr);
+  const { state } = useLocation();
+  //   const change = dataArr.map((item) => item.sName === state.sName);
+
+  //   console.log("Array", change);
+  console.log("data Arr in update", dataArr);
   const [studentInfo, setStudentInfo] = useState({
-    roll: "",
-    studentName: "",
-    emailS: "",
-    ageS: "",
-    studentClass: "",
-    phoneS: "",
+    id: state.id,
+    studentName: state.studentName,
+    emailS: state.emailS,
+    ageS: state.ageS,
+    studentClass: state.studentClass,
+    phoneS: state.phoneS,
   });
 
   const [error, setError] = useState([
@@ -76,9 +79,21 @@ const Update = (props) => {
     e.preventDefault();
 
     if (!validation()) {
-      console.log("form submitted");
-      props.setListing([...dataArr, studentInfo]);
-      // console.log("props", props);
+      console.log("changes updated", studentInfo);
+
+      props.setListing((prev) => {
+        return prev.map((item) => {
+          if (item.id === state.id) {
+            // console.log("item before", item),
+            item = { ...studentInfo };
+            return item;
+            // console.log("item after", item);
+            // console.log("item student", { ...studentInfo });
+          } else {
+            return item;
+          }
+        });
+      });
     } else {
       console.log("error submitting form");
     }
@@ -86,11 +101,9 @@ const Update = (props) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    let num = Math.floor(Math.random() * 100);
     setStudentInfo({
       ...studentInfo,
       [name]: value,
-      roll: num,
     });
   };
   return (

@@ -12,6 +12,7 @@ const Listing = (props) => {
       <table className="mt-20 p-4 table-auto">
         <thead>
           <tr className="uppercase">
+            {console.log("data in listing", dataArr)}
             {headArr.map((item, index) => (
               <th
                 key={index}

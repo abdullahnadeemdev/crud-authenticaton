@@ -12,7 +12,7 @@ const Router = () => {
 
   const [listing, setListing] = useState([
     {
-      roll: 1,
+      id: 1,
       studentName: "Abdullah",
       emailS: "abdullah@123.com",
       ageS: "22",
@@ -20,17 +20,17 @@ const Router = () => {
       phoneS: "090078601",
     },
     {
-      roll: 2,
-      studentName: "Abdullah",
-      emailS: "abdullah@123.com",
+      id: 2,
+      studentName: "Taha",
+      emailS: "Taha@123.com",
       ageS: "22",
       studentClass: "6-A",
       phoneS: "090078601",
     },
     {
-      roll: 3,
-      studentName: "Abdullah",
-      emailS: "abdullah@123.com",
+      id: 3,
+      studentName: "Umar",
+      emailS: "Umar@123.com",
       ageS: "22",
       studentClass: "6-A",
       phoneS: "090078601",
