@@ -8,35 +8,6 @@ import { useState } from "react";
 import Update from "./Pages/update/Update";
 
 const Router = () => {
-  //  const dataArr = ;
-
-  const [listing, setListing] = useState([
-    {
-      id: 1,
-      studentName: "Abdullah",
-      emailS: "abdullah@123.com",
-      ageS: "22",
-      studentClass: "6-A",
-      phoneS: "090078601",
-    },
-    {
-      id: 2,
-      studentName: "Taha",
-      emailS: "Taha@123.com",
-      ageS: "22",
-      studentClass: "6-A",
-      phoneS: "090078601",
-    },
-    {
-      id: 3,
-      studentName: "Umar",
-      emailS: "Umar@123.com",
-      ageS: "22",
-      studentClass: "6-A",
-      phoneS: "090078601",
-    },
-  ]);
-
   return (
     <Routes>
       <Route path="/" element={<Login />} />
@@ -61,7 +32,7 @@ const Router = () => {
         path="/update"
         element={
           <Layout>
-            <Update listing={listing} setListing={setListing} />
+            <Update />
           </Layout>
         }
       />
