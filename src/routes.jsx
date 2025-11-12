@@ -6,13 +6,13 @@ import SignUp from "./Pages/signUp/SignUp";
 import Layout from "./components/layout/Layout";
 import Update from "./Pages/update/Update";
 
-let flagCheck = true;
+let isAuth = false;
 const Router = () => {
   return (
     <Routes>
       <Route path="/" element={<Login />} />
       <Route path="/sign-up" element={<SignUp />} />
-      {flagCheck ? (
+      {isAuth ? (
         <>
           <Route
             path="/student-list"
@@ -42,8 +42,9 @@ const Router = () => {
       ) : (
         ""
       )}
+      <Route path="*" element={<Login />} />
     </Routes>
   );
 };
-export { flagCheck };
+export { isAuth };
 export default Router;

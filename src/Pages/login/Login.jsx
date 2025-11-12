@@ -1,9 +1,10 @@
 import { NavLink, useNavigate } from "react-router";
 import Button from "../../components/shared/button/Button";
 import { useState } from "react";
-// import { flagCheck } from "../../routes";
+import { isAuth } from "../../routes";
 
 const Login = () => {
+  let flag = isAuth;
   const navigate = useNavigate();
   const getItem = () => {
     let val = [];
@@ -47,12 +48,16 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("Auth flag", dataArr);
+    // flag = false;
+    // console.log("Auth false", flag);
 
     if (validation()) {
       console.log("welcome");
       localStorage.setItem("login", JSON.stringify([...dataArr, values]));
-      // flagCheck = true;
-      navigate("/student-list");
+      {
+        isAuth ? navigate("/student-list") : navigate("/");
+      }
     } else {
       console.log("error", error);
       console.log("ingo", values);
@@ -74,14 +79,17 @@ const Login = () => {
             Login
           </h1>
           <form className="w-full" onSubmit={handleSubmit}>
-            <input
-              type="text"
-              className="border block mb-2 pl-1 mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg"
-              placeholder="Name"
-              name="name"
-              value={values.name}
-              onChange={handleChange}
-            />
+            <div className="mb-2 ">
+              <input
+                type="text"
+                className="border block pl-1 mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg"
+                placeholder="Name"
+                name="name"
+                value={values.name}
+                onChange={handleChange}
+              />
+              <p className="text-red-300 text-start">error occured</p>
+            </div>
             <input
               type="email"
               className="border block mb-8 pl-1 mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg"
