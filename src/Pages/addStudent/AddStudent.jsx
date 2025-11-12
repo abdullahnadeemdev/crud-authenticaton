@@ -1,14 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../../components/shared/button/Button";
 import { NavLink, useNavigate } from "react-router";
 
-const AddStudent = (props) => {
-  const dataArr = props?.listing;
+const AddStudent = () => {
+  // const dataArr = props?.listing;
+  const arr = localStorage.getItem("info");
+  const dataArr = JSON.parse(arr);
   // console.log("new student", props);
   // console.log("data Arr", dataArr.length);
   const navigate = useNavigate();
   const [studentInfo, setStudentInfo] = useState({
-    roll: "",
+    id: "",
     studentName: "",
     emailS: "",
     ageS: "",
@@ -78,9 +80,10 @@ const AddStudent = (props) => {
 
     if (!validation()) {
       console.log("form submitted");
-      props.setListing([...dataArr, studentInfo]);
-      navigate("/student-list");
+      localStorage.setItem("info", JSON.stringify([...dataArr, studentInfo]));
+      // props.setListing([...dataArr, studentInfo]);
       // console.log("props", props);
+      navigate("/student-list");
     } else {
       console.log("error submitting form");
     }
@@ -92,7 +95,7 @@ const AddStudent = (props) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(num);
+    // console.log(num);
     setStudentInfo({
       ...studentInfo,
       [name]: value,
@@ -191,11 +194,9 @@ const AddStudent = (props) => {
             Bachelor
           </label>
         </div>
-        {/* <NavLink to="/student-list"> */}
         <Button form="myForm" type="submit">
           Add
         </Button>
-        {/* </NavLink> */}
       </div>
     </div>
   );

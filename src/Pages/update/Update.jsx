@@ -3,9 +3,11 @@ import Button from "../../components/shared/button/Button";
 import { NavLink, useLocation, useNavigate } from "react-router";
 
 const Update = (props) => {
-  const dataArr = props?.listing;
+  const arr = localStorage.getItem("info");
+  const dataArr = JSON.parse(arr);
   const { state } = useLocation();
   const navigate = useNavigate();
+
   //   const change = dataArr.map((item) => item.sName === state.sName);
 
   //   console.log("Array", change);

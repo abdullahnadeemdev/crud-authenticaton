@@ -18,7 +18,7 @@ const TbRow = ({ item, list }) => {
   // console.log("this is list", list);
   return (
     <>
-      <tr key={item.roll} className=" bg-chineseViolet text-white">
+      <tr key={item.id} className=" bg-chineseViolet text-white">
         <td className="px-5 text-center xxs:text-xs sm:text-sm md:text-lg xl:text-xl border-r max-w-fit">
           {item.studentName}
         </td>

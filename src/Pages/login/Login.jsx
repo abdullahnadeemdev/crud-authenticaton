@@ -39,6 +39,7 @@ const Login = () => {
 
     if (validation()) {
       console.log("welcome");
+      localStorage.setItem("login", JSON.stringify([values]));
       navigate("/student-list");
     } else {
       console.log("error", error);

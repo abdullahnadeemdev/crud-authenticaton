@@ -10,7 +10,7 @@ const Index = (props) => {
   // console.log("direct prop", props);
   return (
     <div>
-      <Listing data={props} state={modal} setState={setModal} />
+      <Listing state={modal} setState={setModal} />
     </div>
   );
 };

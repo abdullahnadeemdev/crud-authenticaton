@@ -45,7 +45,7 @@ const Router = () => {
         path="/student-list"
         element={
           <Layout>
-            <Student listing={listing} setListing={setListing} />
+            <Student />
           </Layout>
         }
       />
@@ -53,7 +53,7 @@ const Router = () => {
         path="/add"
         element={
           <Layout>
-            <AddStudent listing={listing} setListing={setListing} />
+            <AddStudent />
           </Layout>
         }
       />
