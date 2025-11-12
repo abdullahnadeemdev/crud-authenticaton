@@ -1,0 +1,44 @@
+import TbRow from "./TbRow";
+import { headArr } from "../../utils/mockUpData";
+import Delete from "./Delete";
+// import { dataArr } from "../../utils/mockUpData";
+
+const Listing = (props) => {
+  const dataArr = props?.data?.listing;
+  console.log("hello1", props);
+  // console.log("hello2", props.state);
+  // console.log("hello3", props.data.listing);
+  return (
+    <div className="mx-auto flex justify-center max-w-[1320px] relative">
+      <table className="mt-20 p-4 table-auto">
+        <thead>
+          <tr className="uppercase">
+            {console.log("data in listing", dataArr)}
+            {headArr.map((item, index) => (
+              <th
+                key={index}
+                className="px-5 py-2 text-center bg-yinBlue text-pearl xxs:text-xs sm:text-base md:text-xl xl:text-2xl  max-w-fit "
+              >
+                {item}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {dataArr.map((item, index) => (
+            <TbRow list={props} item={item} key={index} />
+          ))}
+        </tbody>
+      </table>
+      {props.state.display ? (
+        <div className="absolute top-[60%]">
+          <Delete list={props} />
+        </div>
+      ) : (
+        ""
+      )}
+    </div>
+  );
+};
+
+export default Listing;
