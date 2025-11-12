@@ -9,7 +9,7 @@ const Update = (props) => {
   //   const change = dataArr.map((item) => item.sName === state.sName);
 
   //   console.log("Array", change);
-  console.log("data Arr in update", dataArr);
+  //   console.log("data Arr in update", dataArr);
   const [studentInfo, setStudentInfo] = useState({
     id: state.id,
     studentName: state.studentName,

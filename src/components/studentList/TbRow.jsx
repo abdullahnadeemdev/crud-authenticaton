@@ -10,9 +10,6 @@ const TbRow = ({ item, list }) => {
 
   return (
     <tr key={item.roll} className=" bg-chineseViolet text-white">
-      {/* <td className="px-5 text-center xxs:text-xs sm:text-sm md:text-lg xl:text-xl border-r max-w-fit">
-        {item.roll}
-      </td> */}
       <td className="px-5 text-center xxs:text-xs sm:text-sm md:text-lg xl:text-xl border-r max-w-fit">
         {item.studentName}
       </td>
