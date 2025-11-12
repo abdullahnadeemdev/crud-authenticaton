@@ -1,14 +1,15 @@
 import TbRow from "./TbRow";
 import { headArr } from "../../utils/mockUpData";
+import Delete from "./Delete";
 // import { dataArr } from "../../utils/mockUpData";
 
 const Listing = (props) => {
   const dataArr = props?.data?.listing;
-  // console.log("hello1", props);
-  // console.log("hello2", props.data);
+  console.log("hello1", props);
+  // console.log("hello2", props.state);
   // console.log("hello3", props.data.listing);
   return (
-    <div className="mx-auto flex justify-center max-w-[1320px]">
+    <div className="mx-auto flex justify-center max-w-[1320px] relative">
       <table className="mt-20 p-4 table-auto">
         <thead>
           <tr className="uppercase">
@@ -29,6 +30,13 @@ const Listing = (props) => {
           ))}
         </tbody>
       </table>
+      {props.state.display ? (
+        <div className="absolute top-[60%]">
+          <Delete list={props} />
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };
