@@ -1,6 +1,7 @@
 import { NavLink, useNavigate } from "react-router";
 import Button from "../../components/shared/button/Button";
 import { useState } from "react";
+// import { flagCheck } from "../../routes";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -50,6 +51,7 @@ const Login = () => {
     if (validation()) {
       console.log("welcome");
       localStorage.setItem("login", JSON.stringify([...dataArr, values]));
+      // flagCheck = true;
       navigate("/student-list");
     } else {
       console.log("error", error);

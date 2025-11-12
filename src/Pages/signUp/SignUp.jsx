@@ -4,6 +4,16 @@ import { useState } from "react";
 
 const SignUp = () => {
   const navigate = useNavigate();
+  const getItem = () => {
+    let val = [];
+    const arr = localStorage.getItem("signIn");
+    if (arr) {
+      val = JSON.parse(arr);
+    }
+    return val;
+  };
+  const dataArr = getItem();
+
   const [values, setValues] = useState({
     name: "",
     email: "",
@@ -47,7 +57,9 @@ const SignUp = () => {
 
     if (validation()) {
       console.log("welcome");
-      navigate("/student-list");
+      localStorage.setItem("signIn", JSON.stringify([...dataArr, values]));
+
+      navigate("/");
     } else {
       console.log("error", error);
       console.log("ingo", values);
