@@ -4,8 +4,17 @@ import { NavLink, useNavigate } from "react-router";
 
 const AddStudent = () => {
   // const dataArr = props?.listing;
-  const arr = localStorage.getItem("info");
-  const dataArr = JSON.parse(arr);
+  const getItem = () => {
+    let val = [];
+    const arr = localStorage.getItem("info");
+    if (arr) {
+      val = JSON.parse(arr);
+      return val;
+    }
+    return val;
+  };
+
+  const dataArr = getItem();
   // console.log("new student", props);
   // console.log("data Arr", dataArr.length);
   const navigate = useNavigate();

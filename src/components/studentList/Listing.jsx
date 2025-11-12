@@ -4,8 +4,16 @@ import Delete from "./Delete";
 
 const Listing = (props) => {
   // const dataArr = props?.data?.listing;
-  const arr = localStorage.getItem("info");
-  const dataArr = JSON.parse(arr);
+  const getItems = () => {
+    let val = [];
+    const arr = localStorage.getItem("info") || "";
+    if (arr) {
+      val = JSON.parse(arr);
+      return val;
+    }
+    return val;
+  };
+  const dataArr = getItems();
 
   // console.log("hello1", arr);
   // console.log("hello2", dataArr);
@@ -27,7 +35,7 @@ const Listing = (props) => {
           </tr>
         </thead>
         <tbody>
-          {dataArr.map((item, index) => (
+          {dataArr?.map((item, index) => (
             <TbRow list={props} item={item} key={index} />
           ))}
         </tbody>

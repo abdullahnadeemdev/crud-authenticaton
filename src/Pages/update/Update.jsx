@@ -2,7 +2,7 @@ import { useState } from "react";
 import Button from "../../components/shared/button/Button";
 import { NavLink, useLocation, useNavigate } from "react-router";
 
-const Update = (props) => {
+const Update = () => {
   const arr = localStorage.getItem("info");
   const dataArr = JSON.parse(arr);
   const { state } = useLocation();
@@ -11,7 +11,7 @@ const Update = (props) => {
   //   const change = dataArr.map((item) => item.sName === state.sName);
 
   //   console.log("Array", change);
-  //   console.log("data Arr in update", dataArr);
+  console.log("data Arr in update", dataArr);
   const [studentInfo, setStudentInfo] = useState({
     id: state.id,
     studentName: state.studentName,
@@ -84,17 +84,22 @@ const Update = (props) => {
     if (!validation()) {
       console.log("changes updated", studentInfo);
 
-      props.setListing((prev) => {
-        return prev.map((item) => {
-          if (item.id === state.id) {
-            item = { ...studentInfo };
-            navigate("/student-list");
-            return item;
-          } else {
-            return item;
-          }
-        });
+      //   props.setListing((prev) => {
+      const newData = dataArr.map((item) => {
+        console.log("i am item", item);
+        if (item.id === state.id) {
+          item = { ...studentInfo };
+          console.log("i am NEW item", item);
+          return item;
+        } else {
+          return item;
+        }
       });
+      console.log("Updated", newData);
+      localStorage.setItem("info", JSON.stringify(newData));
+      navigate("/student-list");
+
+      //   });
     } else {
       console.log("error submitting form");
     }
