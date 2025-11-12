@@ -9,7 +9,6 @@ const AddStudent = () => {
     const arr = localStorage.getItem("info");
     if (arr) {
       val = JSON.parse(arr);
-      return val;
     }
     return val;
   };

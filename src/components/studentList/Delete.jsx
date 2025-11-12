@@ -10,6 +10,15 @@ const Delete = (props) => {
     });
   };
 
+  const getItem = () => {
+    let val = [];
+    const arr = localStorage.getItem("info");
+    if (arr) {
+      val = JSON.parse(arr);
+    }
+    return val;
+  };
+
   const handleDelete = (e) => {
     // console.log(
     //   "parent of delt",
@@ -18,12 +27,17 @@ const Delete = (props) => {
     // );
     // console.log("ele2", rowNum);
     const rowNum = props?.list?.state?.row;
-    const ele2 = props.list.data.listing.filter((list) => list.id !== rowNum);
+    const arr = getItem();
+    console.log("delete arrrrrrr", arr);
+    const newArr = arr.filter((list) => list.id !== rowNum);
+    console.log("delete arrrrrrr", newArr);
+    localStorage.setItem("info", JSON.stringify(newArr));
+    // const ele2 = props.list.data.listing.filter((list) => list.id !== rowNum);
+    // props.list.data.setListing([...ele2]);
     props?.list?.setState({
       display: false,
       row: "",
     });
-    props.list.data.setListing([...ele2]);
   };
 
   return (
