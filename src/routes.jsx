@@ -6,7 +6,7 @@ import SignUp from "./Pages/signUp/SignUp";
 import Layout from "./components/layout/Layout";
 import Update from "./Pages/update/Update";
 
-let isAuth = false;
+let isAuth = true;
 const Router = () => {
   return (
     <Routes>

@@ -16,6 +16,7 @@ const SignUp = () => {
 
   const [values, setValues] = useState({
     name: "",
+    isLogin: false,
     email: "",
     pw: "",
   });

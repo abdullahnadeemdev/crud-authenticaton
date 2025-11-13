@@ -86,10 +86,10 @@ const Update = () => {
 
       //   props.setListing((prev) => {
       const newData = dataArr.map((item) => {
-        console.log("i am item", item);
+        // console.log("i am item", item);
         if (item.id === state.id) {
           item = { ...studentInfo };
-          console.log("i am NEW item", item);
+          // console.log("i am NEW item", item);
           return item;
         } else {
           return item;

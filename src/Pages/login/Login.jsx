@@ -4,11 +4,11 @@ import { useState } from "react";
 import { isAuth } from "../../routes";
 
 const Login = () => {
-  let flag = isAuth;
+  // let flag = isAuth;
   const navigate = useNavigate();
   const getItem = () => {
     let val = [];
-    const arr = localStorage.getItem("login");
+    const arr = localStorage.getItem("signIn");
     if (arr) {
       val = JSON.parse(arr);
     }
@@ -17,55 +17,109 @@ const Login = () => {
 
   const dataArr = getItem();
   const [values, setValues] = useState({
-    name: "",
     email: "",
+    pw: "",
   });
   const [error, setError] = useState({
-    name: false,
-    email: false,
+    email: "",
+    pw: "",
   });
 
   const validation = () => {
-    if (!values.name) {
-      setError({
-        ...error,
-        name: true,
-      });
-    }
     if (!values.email) {
-      setError({
-        ...error,
-        email: true,
-      });
+      setError((prev) => ({
+        ...prev,
+        email: "email is empty",
+      }));
+      // return;
     }
 
-    if (!values.name || !values.email) {
+    if (!values.pw) {
+      setError((prev) => ({
+        ...prev,
+        pw: "password is empty",
+      }));
+    }
+
+    if (!values.email || !values.pw) {
       return false;
     } else {
       return true;
     }
   };
 
+  // console.log(authUser())
+
+  const authUser = dataArr.find((item) => {
+    // console.log("hiiiiiiiiii", item);
+    if (item.email === values.email) {
+      // console.log("heyyyyyyyyy", item);
+
+      return true;
+    } else {
+      return false;
+    }
+  });
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Auth flag", dataArr);
-    // flag = false;
-    // console.log("Auth false", flag);
 
     if (validation()) {
-      console.log("welcome");
-      localStorage.setItem("login", JSON.stringify([...dataArr, values]));
-      {
-        isAuth ? navigate("/student-list") : navigate("/");
+      // console.log("Auth flag", authUser);
+      // console.log("data ARRRRRRRRRR", dataArr);
+      const user = dataArr.find((item) => {
+        // console.log("itemmm", item);
+        if (item.email === values.email) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+      // console.log("iiaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", user);
+      if (user) {
+        if (user.pw === values.pw) {
+          user.isLogin = true;
+          const verify = dataArr.map((item) => {
+            if (item.email === user.email) {
+              item = user;
+              return item;
+            } else {
+              return item;
+            }
+          });
+          // console.log("item replacement test", verify);
+          localStorage.setItem("signIn", JSON.stringify(verify));
+          user.isLogin ? navigate("/student-list") : navigate("/");
+        } else {
+          setError({
+            ...error,
+            pw: "wrong user password",
+          });
+        }
+      } else {
+        setError({
+          ...error,
+          email: "wrong email",
+        });
       }
+      // if (authUser) {
+      //   // isAuth=true;
+      //   console.log("working");
+      //   isAuth ? navigate("/student-list") : navigate("/");
+      // } else {
+      //   console.log("Wrong user info");
+
+      // }
     } else {
       console.log("error", error);
       console.log("ingo", values);
     }
   };
-
   const handleChange = (e) => {
     const { name, value } = e.target;
+    setError({
+      ...error,
+      [name]: "",
+    });
     setValues({
       ...values,
       [name]: value,
@@ -79,25 +133,42 @@ const Login = () => {
             Login
           </h1>
           <form className="w-full" onSubmit={handleSubmit}>
-            <div className="mb-2 ">
+            <div className="mb-2">
               <input
-                type="text"
-                className="border block pl-1 mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg"
-                placeholder="Name"
-                name="name"
-                value={values.name}
+                type="email"
+                className={`border block pl-1  mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg ${
+                  error.email ? "border-redBorder" : "border-chineseViolet"
+                }`}
+                placeholder="Email"
+                name="email"
+                value={values.email}
                 onChange={handleChange}
               />
-              <p className="text-red-300 text-start">error occured</p>
+              {error?.email && (
+                <p className="text-redBorder text-start">
+                  {error.email}
+                  {/* {console.log("i work email", error.email)} */}
+                </p>
+              )}
             </div>
-            <input
-              type="email"
-              className="border block mb-8 pl-1 mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg"
-              placeholder="Email"
-              name="email"
-              value={values.email}
-              onChange={handleChange}
-            />
+            <div className="mb-8">
+              <input
+                type="password"
+                className={`border block pl-1  mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg ${
+                  error.pw ? "border-redBorder" : "border-chineseViolet"
+                }`}
+                placeholder="password"
+                name="pw"
+                value={values.pw}
+                onChange={handleChange}
+              />
+              {error?.pw && (
+                <p className="text-redBorder text-start ">
+                  {error.pw}
+                  {/* {console.log("i work password email", error.email)} */}
+                </p>
+              )}
+            </div>
             {/* <NavLink to="/student-list"> */}
             <Button className="w-full mb-2" type="submit">
               Sign In
