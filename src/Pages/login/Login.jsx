@@ -1,21 +1,21 @@
 import { NavLink, useNavigate } from "react-router";
 import Button from "../../components/shared/button/Button";
 import { useState } from "react";
-import { isAuth } from "../../routes";
 
-const Login = () => {
+const Login = (props) => {
   // let flag = isAuth;
+  // console.log("props in login", props.array);
   const navigate = useNavigate();
-  const getItem = () => {
-    let val = [];
-    const arr = localStorage.getItem("signIn");
-    if (arr) {
-      val = JSON.parse(arr);
-    }
-    return val;
-  };
+  // const getItem = () => {
+  //   let val = [];
+  //   const arr = localStorage.getItem("signIn");
+  //   if (arr) {
+  //     val = JSON.parse(arr);
+  //   }
+  //   return val;
+  // };
 
-  const dataArr = getItem();
+  const dataArr = props?.array;
   const [values, setValues] = useState({
     email: "",
     pw: "",
@@ -50,11 +50,10 @@ const Login = () => {
 
   // console.log(authUser())
 
-  const authUser = dataArr.find((item) => {
+  const user = dataArr.find((item) => {
     // console.log("hiiiiiiiiii", item);
     if (item.email === values.email) {
       // console.log("heyyyyyyyyy", item);
-
       return true;
     } else {
       return false;
@@ -66,19 +65,18 @@ const Login = () => {
     if (validation()) {
       // console.log("Auth flag", authUser);
       // console.log("data ARRRRRRRRRR", dataArr);
-      const user = dataArr.find((item) => {
-        // console.log("itemmm", item);
-        if (item.email === values.email) {
-          return true;
-        } else {
-          return false;
-        }
-      });
+      // const user = dataArr.find((item) => {
+      //   if (item.email === values.email) {
+      //     return true;
+      //   } else {
+      //     return false;
+      //   }
+      // });
       // console.log("iiaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", user);
       if (user) {
         if (user.pw === values.pw) {
           user.isLogin = true;
-          const verify = dataArr.map((item) => {
+          const newDataArr = dataArr.map((item) => {
             if (item.email === user.email) {
               item = user;
               return item;
@@ -86,9 +84,11 @@ const Login = () => {
               return item;
             }
           });
-          // console.log("item replacement test", verify);
-          localStorage.setItem("signIn", JSON.stringify(verify));
-          user.isLogin ? navigate("/student-list") : navigate("/");
+          // console.log("item replacement test", newDataArr);
+          localStorage.setItem("signIn", JSON.stringify(newDataArr));
+          let authVar = props?.auth;
+          authVar = true;
+          authVar ? navigate("/student-list") : navigate("/login");
         } else {
           setError({
             ...error,
@@ -104,7 +104,7 @@ const Login = () => {
       // if (authUser) {
       //   // isAuth=true;
       //   console.log("working");
-      //   isAuth ? navigate("/student-list") : navigate("/");
+      //   isAuth ? navigate("/student-list") : navigate("");
       // } else {
       //   console.log("Wrong user info");
 

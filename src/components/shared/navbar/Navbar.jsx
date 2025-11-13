@@ -24,7 +24,7 @@ const Navbar = () => {
     });
     console.log("i am new", newArr);
     localStorage.setItem("signIn", JSON.stringify(newArr));
-    navigate("/");
+    navigate("/login");
   };
   return (
     <div className="w-full mx-auto flex items-center justify-center bg-pearl z-50">

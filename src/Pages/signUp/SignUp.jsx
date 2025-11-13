@@ -2,17 +2,17 @@ import { NavLink, useNavigate } from "react-router";
 import Button from "../../components/shared/button/Button";
 import { useState } from "react";
 
-const SignUp = () => {
+const SignUp = (props) => {
   const navigate = useNavigate();
-  const getItem = () => {
-    let val = [];
-    const arr = localStorage.getItem("signIn");
-    if (arr) {
-      val = JSON.parse(arr);
-    }
-    return val;
-  };
-  const dataArr = getItem();
+  // const getItem = () => {
+  //   let val = [];
+  //   const arr = localStorage.getItem("signIn");
+  //   if (arr) {
+  //     val = JSON.parse(arr);
+  //   }
+  //   return val;
+  // };
+  const dataArr = props.array;
 
   const [values, setValues] = useState({
     name: "",
@@ -60,7 +60,7 @@ const SignUp = () => {
       console.log("welcome");
       localStorage.setItem("signIn", JSON.stringify([...dataArr, values]));
 
-      navigate("/");
+      navigate("/login");
     } else {
       console.log("error", error);
       console.log("ingo", values);
@@ -106,13 +106,13 @@ const SignUp = () => {
               value={values.pw}
               onChange={handleChange}
             />
-            {/* <NavLink to="/"> */}
+            {/* <NavLink to=""> */}
             <Button type="submit" className="w-full px-15 mb-2">
               Register
             </Button>
             {/* </NavLink> */}
           </form>
-          <NavLink to="/">
+          <NavLink to="/login">
             <Button className="w-full mb-2">Login</Button>
           </NavLink>
         </div>
