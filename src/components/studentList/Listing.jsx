@@ -12,6 +12,7 @@ const Listing = (props) => {
     }
     return val;
   };
+  // console.log("hyeyyyyyyyy", props?.arrayProp?.array);
   const dataArr = getItems();
 
   // console.log("hello1", arr);

@@ -50,28 +50,29 @@ const Login = (props) => {
 
   // console.log(authUser())
 
-  const user = dataArr.find((item) => {
-    // console.log("hiiiiiiiiii", item);
-    if (item.email === values.email) {
-      // console.log("heyyyyyyyyy", item);
-      return true;
-    } else {
-      return false;
-    }
-  });
+  // const user = dataArr.find((item) => {
+  //   // console.log("hiiiiiiiiii", item);
+  //   if (item.email === values.email) {
+  //     // console.log("heyyyyyyyyy", item);
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // });
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (validation()) {
       // console.log("Auth flag", authUser);
       // console.log("data ARRRRRRRRRR", dataArr);
-      // const user = dataArr.find((item) => {
-      //   if (item.email === values.email) {
-      //     return true;
-      //   } else {
-      //     return false;
-      //   }
-      // });
+
+      const user = dataArr.find((item) => {
+        if (item.email === values.email) {
+          return true;
+        } else {
+          return false;
+        }
+      });
       // console.log("iiaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", user);
       if (user) {
         if (user.pw === values.pw) {

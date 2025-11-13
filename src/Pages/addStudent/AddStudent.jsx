@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Button from "../../components/shared/button/Button";
-import { NavLink, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 
 const AddStudent = () => {
   // const dataArr = props?.listing;

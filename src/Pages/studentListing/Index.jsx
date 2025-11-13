@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Listing from "../../components/studentList/Listing";
 
-const Index = (props) => {
+const Index = () => {
   const [modal, setModal] = useState({
     display: false,
     row: "",
