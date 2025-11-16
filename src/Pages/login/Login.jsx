@@ -1,21 +1,22 @@
 import { NavLink, useNavigate } from "react-router";
 import Button from "../../components/shared/button/Button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Login = (props) => {
   // let flag = isAuth;
   // console.log("props in login", props.array);
   const navigate = useNavigate();
-  // const getItem = () => {
-  //   let val = [];
-  //   const arr = localStorage.getItem("signIn");
-  //   if (arr) {
-  //     val = JSON.parse(arr);
-  //   }
-  //   return val;
-  // };
+  const getItem = () => {
+    let val = [];
+    const arr = localStorage.getItem("signIn");
+    if (arr) {
+      val = JSON.parse(arr);
+    }
+    return val;
+  };
 
-  const dataArr = props?.array;
+  const dataArr = getItem();
+  // const dataArr = props?.array;
   const [values, setValues] = useState({
     email: "",
     pw: "",
@@ -89,7 +90,10 @@ const Login = (props) => {
           localStorage.setItem("signIn", JSON.stringify(newDataArr));
           let authVar = props?.auth;
           authVar = true;
-          authVar ? navigate("/student-list") : navigate("/login");
+          // setLoggedIn(true);
+          // LoginValue;
+          authVar ? navigate("/student-list") : navigate("/page-not-found");
+          window.location.reload(false);
         } else {
           setError({
             ...error,

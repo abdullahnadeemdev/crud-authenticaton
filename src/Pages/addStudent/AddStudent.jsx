@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../../components/shared/button/Button";
-import { useNavigate } from "react-router";
+import { Navigate, useNavigate } from "react-router";
 
 const AddStudent = () => {
+  // const [loggedIn, setLoggedIn] = useState(false);
   // const dataArr = props?.listing;
   const getItem = () => {
     let val = [];
@@ -12,7 +13,13 @@ const AddStudent = () => {
     }
     return val;
   };
+  // useEffect(() => {
+  //   setLoggedIn(true);
+  // }, []);
 
+  // if (loggedIn) {
+  //   return <Navigate to="/student-list" />;
+  // }
   const dataArr = getItem();
   // console.log("new student", props);
   // console.log("data Arr", dataArr.length);

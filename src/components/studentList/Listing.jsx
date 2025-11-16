@@ -3,6 +3,8 @@ import { headArr } from "../../utils/mockUpData";
 import Delete from "./Delete";
 
 const Listing = (props) => {
+  // const navigate = useNavigate();
+  // const [loggedIn, setLoggedIn] = useState(false);
   // const dataArr = props?.data?.listing;
   const getItems = () => {
     let val = [];
@@ -14,6 +16,13 @@ const Listing = (props) => {
   };
   // console.log("hyeyyyyyyyy", props?.arrayProp?.array);
   const dataArr = getItems();
+  // useEffect(() => {
+  //   setLoggedIn(true);
+  // }, []);
+
+  // if (loggedIn) {
+  //   return navigate("/student-list");
+  // }
 
   // console.log("hello1", arr);
   // console.log("hello2", dataArr);

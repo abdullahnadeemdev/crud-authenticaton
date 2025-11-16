@@ -6,6 +6,7 @@ import Login from "./Pages/login/Login";
 import SignUp from "./Pages/signUp/SignUp";
 import Layout from "./components/layout/Layout";
 import Update from "./Pages/update/Update";
+import Button from "./components/shared/button/Button";
 
 const getItem = () => {
   let val = [];
@@ -28,6 +29,7 @@ const findUser = dataArr.find((item) => {
 // console.log("aaaaaaaaaaaaaaaaaa", newArr);
 
 const isAuth = findUser || "";
+
 // console.log("router array", newArr);
 // console.log("router new array", isAuth);
 const Router = () => {
@@ -47,8 +49,6 @@ const Router = () => {
   // console.log("authenticate authenticate", authenticate());
   return (
     <Routes>
-      <Route path="/login" element={<Login auth={isAuth} array={dataArr} />} />
-      <Route path="/sign-up" element={<SignUp array={dataArr} />} />
       {isAuth ? (
         <>
           <Route
@@ -85,9 +85,24 @@ const Router = () => {
           />
         </>
       ) : (
-        ""
+        <>
+          <Route
+            path="/login"
+            element={<Login auth={isAuth} array={dataArr} />}
+          />
+          <Route path="/sign-up" element={<SignUp array={dataArr} />} />
+        </>
       )}
-      <Route path="*" element={<Login />} />
+      <Route
+        path="*"
+        element={
+          // <div className="h-screen w-screen flex flex-col items-center justify-center text-4xl text-bold text-redBorder">
+          //   {"Page Not Found"}
+          //   <Button className="mt-10"> Go Back</Button>
+          // </div>
+          <Login />
+        }
+      />
     </Routes>
   );
 };
