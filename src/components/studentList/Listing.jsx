@@ -10,11 +10,10 @@ const Listing = (props) => {
     let arr = [];
     arr = JSON.parse(localStorage.getItem("signIn"));
     const adminEmail = arr.find((ele) => ele.isLogin !== false);
-    // console.log("i am arrrrrrrrrr", arr, "i am email", adminEmail.email);
-
     return adminEmail.email;
   };
   const admin = getEmail();
+
   const getItems = () => {
     const arr = JSON.parse(localStorage.getItem("info")) || [];
     const data = arr.filter((ele) => ele.admin === admin);
