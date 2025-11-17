@@ -6,13 +6,19 @@ const Listing = (props) => {
   // const navigate = useNavigate();
   // const [loggedIn, setLoggedIn] = useState(false);
   // const dataArr = props?.data?.listing;
+  const getEmail = () => {
+    let arr = [];
+    arr = JSON.parse(localStorage.getItem("signIn"));
+    const adminEmail = arr.find((ele) => ele.isLogin !== false);
+    // console.log("i am arrrrrrrrrr", arr, "i am email", adminEmail.email);
+
+    return adminEmail.email;
+  };
+  const admin = getEmail();
   const getItems = () => {
-    let val = [];
-    const arr = localStorage.getItem("info") || "";
-    if (arr) {
-      val = JSON.parse(arr);
-    }
-    return val;
+    const arr = JSON.parse(localStorage.getItem("info")) || [];
+    const data = arr.filter((ele) => ele.admin === admin);
+    return data;
   };
   // console.log("hyeyyyyyyyy", props?.arrayProp?.array);
   const dataArr = getItems();

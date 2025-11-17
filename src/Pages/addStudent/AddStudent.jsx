@@ -1,10 +1,20 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Button from "../../components/shared/button/Button";
-import { Navigate, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 
 const AddStudent = () => {
   // const [loggedIn, setLoggedIn] = useState(false);
   // const dataArr = props?.listing;
+
+  const getEmail = () => {
+    let arr = [];
+    arr = JSON.parse(localStorage.getItem("signIn"));
+    const adminEmail = arr.find((ele) => ele.isLogin !== false);
+    // console.log("i am arrrrrrrrrr", arr, "i am email", adminEmail.email);
+
+    return adminEmail.email;
+  };
+
   const getItem = () => {
     let val = [];
     const arr = localStorage.getItem("info");
@@ -13,14 +23,9 @@ const AddStudent = () => {
     }
     return val;
   };
-  // useEffect(() => {
-  //   setLoggedIn(true);
-  // }, []);
 
-  // if (loggedIn) {
-  //   return <Navigate to="/student-list" />;
-  // }
   const dataArr = getItem();
+  const admin = getEmail();
   // console.log("new student", props);
   // console.log("data Arr", dataArr.length);
   const navigate = useNavigate();
@@ -95,7 +100,14 @@ const AddStudent = () => {
 
     if (!validation()) {
       console.log("form submitted");
-      localStorage.setItem("info", JSON.stringify([...dataArr, studentInfo]));
+      // localStorage.setItem(
+      //   "info",
+      //   JSON.stringify([...dataArr, { ...studentInfo }])
+      // );
+      localStorage.setItem(
+        "info",
+        JSON.stringify([...dataArr, { ...studentInfo, admin: admin }])
+      );
       // props.setListing([...dataArr, studentInfo]);
       // console.log("props", props);
       navigate("/student-list");

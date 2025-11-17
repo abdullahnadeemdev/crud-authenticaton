@@ -91,9 +91,10 @@ const Router = () => {
             element={<Login auth={isAuth} array={dataArr} />}
           />
           <Route path="/sign-up" element={<SignUp array={dataArr} />} />
+          <Route path="*" element={<Login />} />
         </>
       )}
-      <Route
+      {/* <Route
         path="*"
         element={
           // <div className="h-screen w-screen flex flex-col items-center justify-center text-4xl text-bold text-redBorder">
@@ -102,7 +103,7 @@ const Router = () => {
           // </div>
           <Login />
         }
-      />
+      /> */}
     </Routes>
   );
 };

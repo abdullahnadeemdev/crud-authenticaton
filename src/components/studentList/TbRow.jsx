@@ -44,6 +44,7 @@ const TbRow = ({ item, list }) => {
               studentClass: item.studentClass,
               phoneS: item.phoneS,
               emailS: item.emailS,
+              adminS: item.admin,
             }}
           >
             <Button>edit</Button>

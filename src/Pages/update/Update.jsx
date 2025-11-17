@@ -83,12 +83,13 @@ const Update = () => {
 
     if (!validation()) {
       console.log("changes updated", studentInfo);
+      console.log("changes updated", state.adminS);
 
       //   props.setListing((prev) => {
       const newData = dataArr.map((item) => {
         // console.log("i am item", item);
         if (item.id === state.id) {
-          item = { ...studentInfo };
+          item = { ...studentInfo, admin: state.adminS };
           // console.log("i am NEW item", item);
           return item;
         } else {
