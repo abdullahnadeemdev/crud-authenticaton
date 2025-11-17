@@ -13,6 +13,17 @@ const SignUp = (props) => {
   //   return val;
   // };
   const dataArr = props.array;
+  // const getEmail = () => {
+  //   let arr = [];
+  //   arr = JSON.parse(localStorage.getItem("signIn"));
+  //   const adminEmail = arr.map((item) => {
+  //     return item.email;
+  //   });
+  //   // console.log("i am arrrrrrrrrr", arr, "i am email", adminEmail.email);
+  //   return adminEmail;
+  // };
+  // const admin = getEmail();
+  // console.log("admin check", admin);
 
   const [values, setValues] = useState({
     name: "",
@@ -28,25 +39,36 @@ const SignUp = (props) => {
 
   const validation = () => {
     if (!values.name) {
-      setError({
-        ...error,
-        name: true,
-      });
-    }
-    if (!values.email) {
-      setError({
-        ...error,
-        email: true,
-      });
-    }
-    if (!values.pw) {
-      setError({
-        ...error,
-        pw: true,
-      });
+      setError((prev) => ({
+        ...prev,
+        name: "name is empty",
+      }));
     }
 
-    if (!values.name || !values.email || !values.pw) {
+    if (!values.email) {
+      setError((prev) => ({
+        ...prev,
+        email: "email is empty",
+      }));
+    }
+    // if (!error.email) {
+    //   const checkEmail = admin.find((item) => item === values.email) || "";
+    //   if (checkEmail === values.email) {
+    //     setError((prev) => ({
+    //       ...prev,
+    //       email: "email is taken",
+    //     }));
+    //   }
+    // }
+
+    if (!values.pw) {
+      setError((prev) => ({
+        ...prev,
+        pw: "password is empty",
+      }));
+    }
+
+    if (!values.email || !values.pw) {
       return false;
     } else {
       return true;
@@ -69,6 +91,10 @@ const SignUp = (props) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    setError({
+      ...error,
+      [name]: "",
+    });
     setValues({
       ...values,
       [name]: value,
@@ -82,30 +108,51 @@ const SignUp = (props) => {
             SignUp
           </h1>
           <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              className="border block mb-2 pl-1 mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg"
-              placeholder="Name"
-              name="name"
-              value={values.name}
-              onChange={handleChange}
-            />
-            <input
-              type="email"
-              className="border block mb-2 pl-1 mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg"
-              placeholder="Email"
-              name="email"
-              value={values.email}
-              onChange={handleChange}
-            />
-            <input
-              type="password"
-              className="border block mb-8 pl-1 mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg"
-              placeholder="password"
-              name="pw"
-              value={values.pw}
-              onChange={handleChange}
-            />
+            <div className="mb-2">
+              <input
+                type="text"
+                className="border block  pl-1 mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg"
+                placeholder="Name"
+                name="name"
+                value={values.name}
+                onChange={handleChange}
+              />
+              {error?.name && (
+                <p className="text-redBorder  text-start">
+                  {error.name}
+                  {/* {console.log("i work email", error.email)} */}
+                </p>
+              )}
+            </div>
+            <div className="mb-2">
+              <input
+                type="email"
+                className="border block  pl-1 mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg"
+                placeholder="Email"
+                name="email"
+                value={values.email}
+                onChange={handleChange}
+              />
+              {error?.email && (
+                <p className="text-redBorder mb-2 text-start">{error.email}</p>
+              )}
+            </div>
+            <div className="mb-8">
+              <input
+                type="password"
+                className="border block  pl-1 mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg"
+                placeholder="password"
+                name="pw"
+                value={values.pw}
+                onChange={handleChange}
+              />
+              {error?.pw && (
+                <p className="text-redBorder text-start">
+                  {error.pw}
+                  {/* {console.log("i work email", error.email)} */}
+                </p>
+              )}
+            </div>
             {/* <NavLink to=""> */}
             <Button type="submit" className="w-full px-15 mb-2">
               Register

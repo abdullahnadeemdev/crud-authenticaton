@@ -8,10 +8,22 @@ const Update = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
 
+  const getEmail = () => {
+    let arr = [];
+    arr = JSON.parse(localStorage.getItem("signIn"));
+    const adminEmail = arr.map((item) => {
+      return item.email;
+    });
+    // console.log("i am email", adminEmail);
+    return adminEmail;
+  };
+  const admin = getEmail();
+  console.log("admin check", admin);
+
   //   const change = dataArr.map((item) => item.sName === state.sName);
 
   //   console.log("Array", change);
-  console.log("data Arr in update", dataArr);
+  // console.log("data Arr in update", dataArr);
   const [studentInfo, setStudentInfo] = useState({
     id: state.id,
     studentName: state.studentName,
@@ -45,6 +57,20 @@ const Update = () => {
         emailS: true,
       });
     }
+
+    if (!error.emailS) {
+      const checkEmail = admin.filter((item) => {
+        studentInfo.emailS === item;
+      });
+      // console.log("emaillllllllllllllll", checkEmail);
+      if (checkEmail) {
+        setError((prev) => ({
+          ...prev,
+          emailS: "email is already taken",
+        }));
+      }
+    }
+
     if (!studentInfo.phoneS) {
       setError({
         ...error,
@@ -66,15 +92,15 @@ const Update = () => {
     }
 
     if (
-      !studentInfo.studentName ||
-      !studentInfo.emailS ||
-      !studentInfo.phoneS ||
-      !studentInfo.ageS ||
-      !studentInfo.studentClass
+      !error.studentName ||
+      !error.emailS ||
+      !error.phoneS ||
+      !error.ageS ||
+      !error.studentClass
     ) {
-      return true;
-    } else {
       return false;
+    } else {
+      return true;
     }
   };
 
@@ -82,15 +108,12 @@ const Update = () => {
     e.preventDefault();
 
     if (!validation()) {
-      console.log("changes updated", studentInfo);
-      console.log("changes updated", state.adminS);
+      // console.log("changes updated", studentInfo);
+      // console.log("changes updated", state.adminS);
 
-      //   props.setListing((prev) => {
       const newData = dataArr.map((item) => {
-        // console.log("i am item", item);
         if (item.id === state.id) {
           item = { ...studentInfo, admin: state.adminS };
-          // console.log("i am NEW item", item);
           return item;
         } else {
           return item;
@@ -140,6 +163,9 @@ const Update = () => {
             value={studentInfo.emailS}
             name="emailS"
           />
+          {error?.emailS && (
+            <p className="text-redBorder  text-start">{error.emailS}</p>
+          )}
           <input
             type="number"
             onChange={handleChange}
@@ -207,7 +233,7 @@ const Update = () => {
         </div>
         {/* <NavLink to="/student-list"> */}
         <Button form="myForm" type="submit">
-          Add
+          update
         </Button>
         {/* </NavLink> */}
       </div>
