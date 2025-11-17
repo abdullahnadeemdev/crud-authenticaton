@@ -148,6 +148,7 @@ const AddStudent = () => {
             placeholder="Name"
             name="studentName"
           />
+
           <input
             type="email"
             onChange={handleChange}

@@ -5,7 +5,7 @@ const TbRow = ({ item, list }) => {
   const handleClick = () => {
     list.setState({
       display: true,
-      row: item.id,
+      row: item.emailS,
     });
     // console.log(item.id);
 
@@ -52,7 +52,6 @@ const TbRow = ({ item, list }) => {
           <Button onClick={handleClick}>delete</Button>
         </td>
       </tr>
-      {/* {modal ? <Delete /> : ""} */}
     </>
   );
 };
