@@ -34,6 +34,8 @@ const SignUp = (props) => {
       email: "",
       pw: "",
     };
+    const pattern = /^[a-zA-Z0-9_.±]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/;
+    const pwSyntax = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
     if (!values.name) {
       setError((prev) => ({
         ...prev,
@@ -41,6 +43,7 @@ const SignUp = (props) => {
       }));
       errors.name = "Name is empty";
     }
+
     if (!values.email) {
       setError((prev) => ({
         ...prev,
@@ -48,6 +51,18 @@ const SignUp = (props) => {
       }));
       errors.email = "email is empty";
     }
+
+    const valueEmail = values.email;
+    const valuePassword = values.pw;
+
+    if (!valueEmail.match(pattern)) {
+      setError((prev) => ({
+        ...prev,
+        email: "invalid email",
+      }));
+      errors.email = "invalid email";
+    }
+
     const user = dataArr.some((item) => {
       if (item.email === values.email) {
         return true;
@@ -71,6 +86,14 @@ const SignUp = (props) => {
         pw: "password is empty",
       }));
       errors.pw = "password is empty";
+    }
+
+    if (!valuePassword.match(pwSyntax)) {
+      setError((prev) => ({
+        ...prev,
+        pw: "invalid password",
+      }));
+      errors.pw = "invalid password";
     }
     // console.log("error", errors);
 
