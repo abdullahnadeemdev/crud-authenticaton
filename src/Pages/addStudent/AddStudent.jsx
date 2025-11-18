@@ -43,11 +43,18 @@ const AddStudent = () => {
   ]);
 
   const validation = () => {
+    let errors = {
+      name: "",
+      email: "",
+      pw: "",
+    };
+
     if (!studentInfo.studentName) {
       setError((prev) => ({
         ...prev,
         studentName: "name is empty",
       }));
+      errors.name = "name is empty";
     }
 
     if (!studentInfo.emailS) {
@@ -55,7 +62,24 @@ const AddStudent = () => {
         ...prev,
         emailS: "email is empty",
       }));
+      errors.email = "email is empty";
     }
+
+    const user = dataArr.some((item) => {
+      if (item.emailS === studentInfo.emailS) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+    if (user) {
+      setError((prev) => ({
+        ...prev,
+        emailS: "email already taken",
+      }));
+      errors.email = "email is taken";
+    }
+
     if (!studentInfo.phoneS) {
       setError((prev) => ({
         ...prev,
@@ -81,7 +105,9 @@ const AddStudent = () => {
       !studentInfo.emailS ||
       !studentInfo.phoneS ||
       !studentInfo.ageS ||
-      !studentInfo.studentClass
+      !studentInfo.studentClass ||
+      errors.email ||
+      errors.name
     ) {
       return true;
     } else {
