@@ -21,29 +21,29 @@ const SignUp = (props) => {
     pw: "",
   });
   const [error, setError] = useState({
-    name: false,
-    email: false,
-    pw: false,
+    name: "",
+    email: "",
+    pw: "",
   });
 
   const validation = () => {
     if (!values.name) {
-      setError({
-        ...error,
-        name: true,
-      });
+      setError((prev) => ({
+        ...prev,
+        name: "Name is empty",
+      }));
     }
     if (!values.email) {
-      setError({
-        ...error,
-        email: true,
-      });
+      setError((prev) => ({
+        ...prev,
+        email: "email is empty",
+      }));
     }
     if (!values.pw) {
-      setError({
-        ...error,
-        pw: true,
-      });
+      setError((prev) => ({
+        ...prev,
+        pw: "password is empty",
+      }));
     }
 
     if (!values.name || !values.email || !values.pw) {
@@ -69,6 +69,10 @@ const SignUp = (props) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    setError({
+      ...error,
+      [name]: "",
+    });
     setValues({
       ...values,
       [name]: value,
@@ -82,30 +86,45 @@ const SignUp = (props) => {
             SignUp
           </h1>
           <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              className="border block mb-2 pl-1 mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg"
-              placeholder="Name"
-              name="name"
-              value={values.name}
-              onChange={handleChange}
-            />
-            <input
-              type="email"
-              className="border block mb-2 pl-1 mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg"
-              placeholder="Email"
-              name="email"
-              value={values.email}
-              onChange={handleChange}
-            />
-            <input
-              type="password"
-              className="border block mb-8 pl-1 mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg"
-              placeholder="password"
-              name="pw"
-              value={values.pw}
-              onChange={handleChange}
-            />
+            <div className="mb-2">
+              <input
+                type="text"
+                className="border block  pl-1 mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg"
+                placeholder="Name"
+                name="name"
+                value={values.name}
+                onChange={handleChange}
+              />
+              {error?.name && (
+                <p className="text-redBorder text-start">{error.name}</p>
+              )}
+            </div>
+            <div className="mb-2">
+              <input
+                type="email"
+                className="border block  pl-1 mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg"
+                placeholder="Email"
+                name="email"
+                value={values.email}
+                onChange={handleChange}
+              />
+              {error?.email && (
+                <p className="text-redBorder text-start">{error.email}</p>
+              )}
+            </div>
+            <div className="mb-8 ">
+              <input
+                type="password"
+                className="border block pl-1 mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg"
+                placeholder="password"
+                name="pw"
+                value={values.pw}
+                onChange={handleChange}
+              />
+              {error?.pw && (
+                <p className="text-redBorder text-start">{error.pw}</p>
+              )}
+            </div>
             {/* <NavLink to=""> */}
             <Button type="submit" className="w-full px-15 mb-2">
               Register
