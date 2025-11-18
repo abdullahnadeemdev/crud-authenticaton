@@ -3,14 +3,10 @@ import Button from "../../components/shared/button/Button";
 import { useNavigate } from "react-router";
 
 const AddStudent = () => {
-  // const [loggedIn, setLoggedIn] = useState(false);
-  // const dataArr = props?.listing;
-
   const getEmail = () => {
     let arr = [];
     arr = JSON.parse(localStorage.getItem("signIn"));
     const adminEmail = arr.find((ele) => ele.isLogin !== false);
-    // console.log("i am arrrrrrrrrr", arr, "i am email", adminEmail.email);
 
     return adminEmail.email;
   };
@@ -26,8 +22,6 @@ const AddStudent = () => {
 
   const dataArr = getItem();
   const admin = getEmail();
-  // console.log("new student", props);
-  // console.log("data Arr", dataArr.length);
   const navigate = useNavigate();
   const [studentInfo, setStudentInfo] = useState({
     id: "",
@@ -100,16 +94,10 @@ const AddStudent = () => {
 
     if (!validation()) {
       console.log("form submitted");
-      // localStorage.setItem(
-      //   "info",
-      //   JSON.stringify([...dataArr, { ...studentInfo }])
-      // );
       localStorage.setItem(
         "info",
         JSON.stringify([...dataArr, { ...studentInfo, admin: admin }])
       );
-      // props.setListing([...dataArr, studentInfo]);
-      // console.log("props", props);
       navigate("/student-list");
     } else {
       console.log("error submitting form");

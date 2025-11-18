@@ -7,7 +7,6 @@ const Index = () => {
     row: "",
   });
 
-  // console.log("direct prop", props);
   return (
     <div>
       <Listing state={modal} setState={setModal} />

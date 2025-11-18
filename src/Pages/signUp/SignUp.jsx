@@ -4,16 +4,7 @@ import { useState } from "react";
 
 const SignUp = (props) => {
   const navigate = useNavigate();
-  // const getItem = () => {
-  //   let val = [];
-  //   const arr = localStorage.getItem("signIn");
-  //   if (arr) {
-  //     val = JSON.parse(arr);
-  //   }
-  //   return val;
-  // };
   const dataArr = props.array;
-  // console.log("i am props", dataArr);
 
   const [values, setValues] = useState({
     name: "",
@@ -26,7 +17,6 @@ const SignUp = (props) => {
     email: "",
     pw: "",
   });
-  // console.log("i am error", error);
 
   const validation = () => {
     let errors = {
@@ -69,10 +59,7 @@ const SignUp = (props) => {
       } else {
         return false;
       }
-      // console.log("item.email", item.email);
-      // console.log("values.email", values.email);
     });
-    // console.log("iiaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", user);
     if (user) {
       setError((prev) => ({
         ...prev,
@@ -95,7 +82,6 @@ const SignUp = (props) => {
       }));
       errors.pw = "invalid password";
     }
-    // console.log("error", errors);
 
     if (
       errors.name ||
@@ -182,11 +168,9 @@ const SignUp = (props) => {
                 <p className="text-redBorder text-start">{error.pw}</p>
               )}
             </div>
-            {/* <NavLink to=""> */}
             <Button type="submit" className="w-full px-15 mb-2">
               Register
             </Button>
-            {/* </NavLink> */}
           </form>
           <NavLink to="/login">
             <Button className="w-full mb-2">Login</Button>

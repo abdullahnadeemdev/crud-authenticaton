@@ -3,8 +3,6 @@ import Button from "../../components/shared/button/Button";
 import { useEffect, useState } from "react";
 
 const Login = (props) => {
-  // let flag = isAuth;
-  // console.log("props in login", props.array);
   const navigate = useNavigate();
   const getItem = () => {
     let val = [];
@@ -16,7 +14,6 @@ const Login = (props) => {
   };
 
   const dataArr = getItem();
-  // const dataArr = props?.array;
   const [values, setValues] = useState({
     email: "",
     pw: "",
@@ -32,7 +29,6 @@ const Login = (props) => {
         ...prev,
         email: "email is empty",
       }));
-      // return;
     }
 
     if (!values.pw) {
@@ -49,24 +45,10 @@ const Login = (props) => {
     }
   };
 
-  // console.log(authUser())
-
-  // const user = dataArr.find((item) => {
-  //   // console.log("hiiiiiiiiii", item);
-  //   if (item.email === values.email) {
-  //     // console.log("heyyyyyyyyy", item);
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // });
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (validation()) {
-      // console.log("Auth flag", authUser);
-      // console.log("data ARRRRRRRRRR", dataArr);
-
       const user = dataArr.find((item) => {
         if (item.email === values.email) {
           return true;
@@ -74,7 +56,6 @@ const Login = (props) => {
           return false;
         }
       });
-      // console.log("iiaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", user);
       if (user) {
         if (user.pw === values.pw) {
           user.isLogin = true;
@@ -86,12 +67,9 @@ const Login = (props) => {
               return item;
             }
           });
-          // console.log("item replacement test", newDataArr);
           localStorage.setItem("signIn", JSON.stringify(newDataArr));
           let authVar = props?.auth;
           authVar = true;
-          // setLoggedIn(true);
-          // LoginValue;
           authVar ? navigate("/student-list") : navigate("/page-not-found");
           window.location.reload(false);
         } else {
@@ -106,14 +84,6 @@ const Login = (props) => {
           email: "wrong email",
         });
       }
-      // if (authUser) {
-      //   // isAuth=true;
-      //   console.log("working");
-      //   isAuth ? navigate("/student-list") : navigate("");
-      // } else {
-      //   console.log("Wrong user info");
-
-      // }
     } else {
       console.log("error", error);
       console.log("ingo", values);
@@ -150,10 +120,7 @@ const Login = (props) => {
                 onChange={handleChange}
               />
               {error?.email && (
-                <p className="text-redBorder text-start">
-                  {error.email}
-                  {/* {console.log("i work email", error.email)} */}
-                </p>
+                <p className="text-redBorder text-start">{error.email}</p>
               )}
             </div>
             <div className="mb-8">
@@ -168,17 +135,12 @@ const Login = (props) => {
                 onChange={handleChange}
               />
               {error?.pw && (
-                <p className="text-redBorder text-start ">
-                  {error.pw}
-                  {/* {console.log("i work password email", error.email)} */}
-                </p>
+                <p className="text-redBorder text-start ">{error.pw}</p>
               )}
             </div>
-            {/* <NavLink to="/student-list"> */}
             <Button className="w-full mb-2" type="submit">
               Sign In
             </Button>
-            {/* </NavLink> */}
           </form>
 
           <NavLink to="/sign-up">

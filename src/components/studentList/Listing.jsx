@@ -3,9 +3,6 @@ import { headArr } from "../../utils/mockUpData";
 import Delete from "./Delete";
 
 const Listing = (props) => {
-  // const navigate = useNavigate();
-  // const [loggedIn, setLoggedIn] = useState(false);
-  // const dataArr = props?.data?.listing;
   const getEmail = () => {
     let arr = [];
     arr = JSON.parse(localStorage.getItem("signIn"));
@@ -19,25 +16,13 @@ const Listing = (props) => {
     const data = arr.filter((ele) => ele.admin === admin);
     return data;
   };
-  // console.log("hyeyyyyyyyy", props?.arrayProp?.array);
   const dataArr = getItems();
-  // useEffect(() => {
-  //   setLoggedIn(true);
-  // }, []);
 
-  // if (loggedIn) {
-  //   return navigate("/student-list");
-  // }
-
-  // console.log("hello1", arr);
-  // console.log("hello2", dataArr);
-  // console.log("hello3", props.data.listing);
   return (
     <div className="mx-auto flex justify-center max-w-[1320px] relative">
       <table className="mt-20 p-4 table-auto">
         <thead>
           <tr className="uppercase">
-            {/* {console.log("data in listing", dataArr)} */}
             {headArr.map((item, index) => (
               <th
                 key={index}

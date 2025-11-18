@@ -8,10 +8,6 @@ const Update = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
 
-  //   const change = dataArr.map((item) => item.sName === state.sName);
-
-  //   console.log("Array", change);
-  console.log("data Arr in update", dataArr);
   const [studentInfo, setStudentInfo] = useState({
     id: state.id,
     studentName: state.studentName,
@@ -85,12 +81,9 @@ const Update = () => {
       console.log("changes updated", studentInfo);
       console.log("changes updated", state.adminS);
 
-      //   props.setListing((prev) => {
       const newData = dataArr.map((item) => {
-        // console.log("i am item", item);
         if (item.id === state.id) {
           item = { ...studentInfo, admin: state.adminS };
-          // console.log("i am NEW item", item);
           return item;
         } else {
           return item;
@@ -99,8 +92,6 @@ const Update = () => {
       console.log("Updated", newData);
       localStorage.setItem("info", JSON.stringify(newData));
       navigate("/student-list");
-
-      //   });
     } else {
       console.log("error submitting form");
     }
@@ -235,11 +226,9 @@ const Update = () => {
             Bachelor
           </label>
         </div>
-        {/* <NavLink to="/student-list"> */}
         <Button form="myForm" type="submit">
           Add
         </Button>
-        {/* </NavLink> */}
       </div>
     </div>
   );

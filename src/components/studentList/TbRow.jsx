@@ -7,15 +7,7 @@ const TbRow = ({ item, list }) => {
       display: true,
       row: item.emailS,
     });
-    // console.log(item.id);
-
-    // console.log("ele2 of tb row", list.data.listing);
-    // console.log("ele2 of tb row", item);
-    // const ele2 = list.data.listing.filter((list) => list.id !== item.id);
-    // list.data.setListing([...ele2]);
   };
-  // console.log("this is item", item);
-  // console.log("this is list", list);
   return (
     <>
       <tr key={item.id} className=" bg-chineseViolet text-white">
