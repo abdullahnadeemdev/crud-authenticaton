@@ -13,6 +13,7 @@ const SignUp = (props) => {
   //   return val;
   // };
   const dataArr = props.array;
+  // console.log("i am props", dataArr);
 
   const [values, setValues] = useState({
     name: "",
@@ -25,28 +26,62 @@ const SignUp = (props) => {
     email: "",
     pw: "",
   });
+  // console.log("i am error", error);
 
   const validation = () => {
+    let errors = {
+      name: "",
+      email: "",
+      pw: "",
+    };
     if (!values.name) {
       setError((prev) => ({
         ...prev,
         name: "Name is empty",
       }));
+      errors.name = "Name is empty";
     }
     if (!values.email) {
       setError((prev) => ({
         ...prev,
         email: "email is empty",
       }));
+      errors.email = "email is empty";
+    }
+    const user = dataArr.some((item) => {
+      if (item.email === values.email) {
+        return true;
+      } else {
+        return false;
+      }
+      // console.log("item.email", item.email);
+      // console.log("values.email", values.email);
+    });
+    // console.log("iiaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", user);
+    if (user) {
+      setError((prev) => ({
+        ...prev,
+        email: "email already taken",
+      }));
+      errors.email = "email is empty";
     }
     if (!values.pw) {
       setError((prev) => ({
         ...prev,
         pw: "password is empty",
       }));
+      errors.pw = "password is empty";
     }
+    // console.log("error", errors);
 
-    if (!values.name || !values.email || !values.pw) {
+    if (
+      errors.name ||
+      errors.email ||
+      errors.pw ||
+      !values.name ||
+      !values.email ||
+      !values.pw
+    ) {
       return false;
     } else {
       return true;
@@ -55,11 +90,10 @@ const SignUp = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    console.log("validation", validation());
     if (validation()) {
       console.log("welcome");
       localStorage.setItem("signIn", JSON.stringify([...dataArr, values]));
-
       navigate("/login");
     } else {
       console.log("error", error);
