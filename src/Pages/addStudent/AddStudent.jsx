@@ -40,46 +40,46 @@ const AddStudent = () => {
 
   const [error, setError] = useState([
     {
-      studentName: false,
-      emailS: false,
-      ageS: false,
-      studentClass: false,
-      phoneS: false,
+      studentName: "",
+      emailS: "",
+      ageS: "",
+      studentClass: "",
+      phoneS: "",
     },
   ]);
 
   const validation = () => {
     if (!studentInfo.studentName) {
-      setError({
-        ...error,
-        studentName: true,
-      });
+      setError((prev) => ({
+        ...prev,
+        studentName: "name is empty",
+      }));
     }
 
     if (!studentInfo.emailS) {
-      setError({
-        ...error,
-        emailS: true,
-      });
+      setError((prev) => ({
+        ...prev,
+        emailS: "email is empty",
+      }));
     }
     if (!studentInfo.phoneS) {
-      setError({
-        ...error,
-        phoneS: true,
-      });
+      setError((prev) => ({
+        ...prev,
+        phoneS: "phone number is empty",
+      }));
     }
     if (!studentInfo.ageS) {
-      setError({
-        ...error,
-        ageS: true,
-      });
+      setError((prev) => ({
+        ...prev,
+        ageS: "age is empty",
+      }));
     }
 
     if (!studentInfo.studentClass) {
-      setError({
-        ...error,
-        studentClass: true,
-      });
+      setError((prev) => ({
+        ...prev,
+        studentClass: "class is empty",
+      }));
     }
 
     if (
@@ -122,7 +122,10 @@ const AddStudent = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    // console.log(num);
+    setError({
+      ...error,
+      [name]: "",
+    });
     setStudentInfo({
       ...studentInfo,
       [name]: value,
@@ -140,47 +143,72 @@ const AddStudent = () => {
           onSubmit={handleSubmit}
           id="myForm"
         >
-          <input
-            type="text"
-            onChange={handleChange}
-            value={studentInfo.studentName}
-            className="border block mx-auto rounded-lg border-chineseViolet p-1 m-2"
-            placeholder="Name"
-            name="studentName"
-          />
+          <div className="w-fit mx-auto m-2">
+            <input
+              type="text"
+              onChange={handleChange}
+              value={studentInfo.studentName}
+              className="border block mx-auto rounded-lg border-chineseViolet p-1"
+              placeholder="Name"
+              name="studentName"
+            />
+            {error?.studentName && (
+              <p className="text-redBorder text-start">{error.studentName}</p>
+            )}
+          </div>
 
-          <input
-            type="email"
-            onChange={handleChange}
-            className="border block mx-auto rounded-lg border-chineseViolet p-1 m-2"
-            placeholder="Email"
-            value={studentInfo.emailS}
-            name="emailS"
-          />
-          <input
-            type="number"
-            onChange={handleChange}
-            className="border block mx-auto rounded-lg border-chineseViolet p-1 m-2"
-            placeholder="Phone"
-            value={studentInfo.phoneS}
-            name="phoneS"
-          />
-          <input
-            type="number"
-            onChange={handleChange}
-            className="border block mx-auto rounded-lg border-chineseViolet p-1 m-2"
-            placeholder="Age"
-            value={studentInfo.ageS}
-            name="ageS"
-          />
-          <input
-            type="text"
-            onChange={handleChange}
-            className="border block mx-auto rounded-lg border-chineseViolet p-1 m-2"
-            placeholder="Class"
-            value={studentInfo.studentClass}
-            name="studentClass"
-          />
+          <div className="w-fit mx-auto m-2">
+            <input
+              type="email"
+              onChange={handleChange}
+              className="border block mx-auto rounded-lg border-chineseViolet p-1"
+              placeholder="Email"
+              value={studentInfo.emailS}
+              name="emailS"
+            />
+            {error?.emailS && (
+              <p className="text-redBorder text-start">{error.emailS}</p>
+            )}
+          </div>
+          <div className="w-fit mx-auto m-2">
+            <input
+              type="number"
+              onChange={handleChange}
+              className="border block mx-auto rounded-lg border-chineseViolet p-1 "
+              placeholder="Phone"
+              value={studentInfo.phoneS}
+              name="phoneS"
+            />
+            {error?.phoneS && (
+              <p className="text-redBorder text-start">{error.phoneS}</p>
+            )}
+          </div>
+          <div className="w-fit mx-auto m-2">
+            <input
+              type="number"
+              onChange={handleChange}
+              className="border block mx-auto rounded-lg border-chineseViolet p-1 "
+              placeholder="Age"
+              value={studentInfo.ageS}
+              name="ageS"
+            />
+            {error?.ageS && (
+              <p className="text-redBorder text-start">{error.ageS}</p>
+            )}
+          </div>
+          <div className="w-fit mx-auto m-2">
+            <input
+              type="text"
+              onChange={handleChange}
+              className="border block mx-auto rounded-lg border-chineseViolet p-1 "
+              placeholder="Class"
+              value={studentInfo.studentClass}
+              name="studentClass"
+            />
+            {error?.studentClass && (
+              <p className="text-redBorder text-start">{error.studentClass}</p>
+            )}
+          </div>
         </form>
 
         <div className="">
