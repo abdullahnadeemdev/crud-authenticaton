@@ -24,7 +24,7 @@ const findUser = dataArr.find((item) => {
   }
 });
 
-const isAuth = findUser || "";
+const isAuth = findUser || false;
 
 const Router = () => {
   return (

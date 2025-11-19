@@ -5,7 +5,7 @@ const TbRow = ({ item, list }) => {
   const handleClick = () => {
     list.setState({
       display: true,
-      row: item.studentEmail,
+      row: item.id,
     });
   };
   return (
@@ -34,7 +34,7 @@ const TbRow = ({ item, list }) => {
               studentName: item.studentName,
               studentAge: item.studentAge,
               studentClass: item.studentClass,
-              studentPhone: item.studentPhone,
+              phoneS: item.studentPhone,
               studentEmail: item.studentEmail,
               adminS: item.admin,
             }}

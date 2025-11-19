@@ -20,7 +20,7 @@ const AddStudent = () => {
     return val;
   };
 
-  const dataArr = getItem();
+  const dataArr = getItem() || [];
   const admin = getEmail();
   const navigate = useNavigate();
   const [studentInfo, setStudentInfo] = useState({
@@ -143,7 +143,7 @@ const AddStudent = () => {
     setStudentInfo({
       ...studentInfo,
       [name]: value,
-      id: num(),
+      id: studentInfo.studentEmail + num(),
     });
   };
   return (

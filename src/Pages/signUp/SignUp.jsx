@@ -24,7 +24,8 @@ const SignUp = (props) => {
       email: "",
       pw: "",
     };
-    const pattern = /^[a-zA-Z0-9_.±]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/;
+    // ^[a-zA-Z0-9_.±]+@+[a-zA-Z0-9-]+.+[a-zA-Z0-9-.]+$
+    const pattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
     const pwSyntax = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
     if (!values.name) {
       setError((prev) => ({
@@ -65,7 +66,7 @@ const SignUp = (props) => {
         ...prev,
         email: "Email already taken",
       }));
-      errors.email = "Email is empty";
+      errors.email = "Email already taken";
     }
     if (!values.pw) {
       setError((prev) => ({
@@ -78,10 +79,9 @@ const SignUp = (props) => {
     if (!valuePassword.match(pwSyntax)) {
       setError((prev) => ({
         ...prev,
-        pw: "Password should have atleast 8 characters with 1 capital & 1 small letter",
+        pw: "Weak password",
       }));
-      errors.pw =
-        "Password should have atleast 8 characters with 1 capital & 1 small letter";
+      errors.pw = "Weak password";
     }
 
     if (
@@ -174,7 +174,7 @@ const SignUp = (props) => {
             </Button>
           </form>
           <NavLink to="/login">
-            <Button className="w-full mb-2">Login</Button>
+            <Button className="w-full mb-2">Log In</Button>
           </NavLink>
         </div>
       </div>

@@ -139,12 +139,12 @@ const Login = (props) => {
               )}
             </div>
             <Button className="w-full mb-2" type="submit">
-              Login In
+              Log In
             </Button>
           </form>
 
           <NavLink to="/sign-up">
-            <Button className="w-full mb-2">Create New Account</Button>
+            <Button className="w-full mb-2">Sign In </Button>
           </NavLink>
         </div>
       </div>

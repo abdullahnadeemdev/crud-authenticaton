@@ -1,10 +1,10 @@
 import { useState } from "react";
 import Button from "../../components/shared/button/Button";
-import { NavLink, useLocation, useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 
 const Update = () => {
-  const arr = localStorage.getItem("info");
-  const dataArr = JSON.parse(arr);
+  const dataArr = JSON.parse(localStorage.getItem("info"));
+  // const dataArr = JSON.parse(arr);
   const { state } = useLocation();
   const navigate = useNavigate();
 
@@ -153,9 +153,9 @@ const Update = () => {
               className="border block mx-auto rounded-lg border-chineseViolet p-1 "
               placeholder="Phone"
               value={studentInfo.studentPhone}
-              name="studentPhone"
+              name="phoneS"
             />
-            {error?.studentPhone && (
+            {error?.phoneS && (
               <p className="text-redBorder text-start">{error.studentPhone}</p>
             )}
           </div>

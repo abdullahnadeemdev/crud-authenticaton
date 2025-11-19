@@ -32,7 +32,7 @@ export const headArr = [
 //       studentEmail: "abdullah@123.com",
 //       studentAge: "22",
 //       studentClass: "6-A",
-//       studentPhone: "090078601",
+//       phoneS: "090078601",
 //     },
 //     {
 //       id: 2,
@@ -40,7 +40,7 @@ export const headArr = [
 //       studentEmail: "Taha@123.com",
 //       studentAge: "22",
 //       studentClass: "6-A",
-//       studentPhone: "090078601",
+//       phoneS: "090078601",
 //     },
 //     {
 //       id: 3,
@@ -48,7 +48,7 @@ export const headArr = [
 //       studentEmail: "Umar@123.com",
 //       studentAge: "22",
 //       studentClass: "6-A",
-//       studentPhone: "090078601",
+//       phoneS: "090078601",
 //     },
 //   ]);
 //  listing={listing} setListing={setListing}

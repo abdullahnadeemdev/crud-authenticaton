@@ -20,8 +20,9 @@ const Delete = (props) => {
 
   const handleDelete = () => {
     const rowNum = props?.list?.state?.row;
+    console.log("rowNum", rowNum);
     const arr = getItem();
-    const newArr = arr.filter((list) => list.studentEmail !== rowNum);
+    const newArr = arr.filter((list) => list.id !== rowNum);
     localStorage.setItem("info", JSON.stringify(newArr));
     props?.list?.setState({
       display: false,
