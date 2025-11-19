@@ -1,6 +1,4 @@
-import React from "react";
-
-const Edit = ({ className, ...props }) => {
+export const Edit = ({ className, ...props }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19,5 +17,3 @@ const Edit = ({ className, ...props }) => {
     </svg>
   );
 };
-
-export default Edit;

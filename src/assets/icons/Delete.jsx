@@ -1,6 +1,4 @@
-import React from "react";
-
-const Delete = ({ className, ...props }) => {
+export const Delete = ({ className, ...props }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21,5 +19,3 @@ const Delete = ({ className, ...props }) => {
     </svg>
   );
 };
-
-export default Delete;
