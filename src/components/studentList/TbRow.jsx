@@ -5,7 +5,7 @@ const TbRow = ({ item, list }) => {
   const handleClick = () => {
     list.setState({
       display: true,
-      row: item.emailS,
+      row: item.studentEmail,
     });
   };
   return (
@@ -15,16 +15,16 @@ const TbRow = ({ item, list }) => {
           {item.studentName}
         </td>
         <td className="px-5 text-center xxs:text-xs sm:text-sm md:text-lg xl:text-xl border-r max-w-fit">
-          {item.emailS}
+          {item.studentEmail}
         </td>
         <td className="px-5 text-center xxs:text-xs sm:text-sm md:text-lg xl:text-xl border-r max-w-fit">
-          {item.ageS}
+          {item.studentAge}
         </td>
         <td className="px-5 text-center xxs:text-xs sm:text-sm md:text-lg xl:text-xl border-r max-w-fit">
           {item.studentClass}
         </td>
         <td className="px-5 text-center xxs:text-xs sm:text-sm md:text-lg xl:text-xl border-r max-w-fit">
-          {item.phoneS}
+          {item.studentPhone}
         </td>
         <td>
           <NavLink
@@ -32,16 +32,16 @@ const TbRow = ({ item, list }) => {
             state={{
               id: item.id,
               studentName: item.studentName,
-              ageS: item.ageS,
+              studentAge: item.studentAge,
               studentClass: item.studentClass,
-              phoneS: item.phoneS,
-              emailS: item.emailS,
+              studentPhone: item.studentPhone,
+              studentEmail: item.studentEmail,
               adminS: item.admin,
             }}
           >
-            <Button>edit</Button>
+            <Button>Edit</Button>
           </NavLink>
-          <Button onClick={handleClick}>delete</Button>
+          <Button onClick={handleClick}>Delete</Button>
         </td>
       </tr>
     </>

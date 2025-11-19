@@ -11,19 +11,19 @@ const Update = () => {
   const [studentInfo, setStudentInfo] = useState({
     id: state.id,
     studentName: state.studentName,
-    emailS: state.emailS,
-    ageS: state.ageS,
+    studentEmail: state.studentEmail,
+    studentAge: state.studentAge,
     studentClass: state.studentClass,
-    phoneS: state.phoneS,
+    studentPhone: state.studentPhone,
   });
 
   const [error, setError] = useState([
     {
       studentName: false,
-      emailS: false,
-      ageS: false,
+      studentEmail: false,
+      studentAge: false,
       studentClass: false,
-      phoneS: false,
+      studentPhone: false,
     },
   ]);
 
@@ -31,41 +31,41 @@ const Update = () => {
     if (!studentInfo.studentName) {
       setError((prev) => ({
         ...prev,
-        studentName: "name is empty",
+        studentName: "Name is empty",
       }));
     }
 
-    if (!studentInfo.emailS) {
+    if (!studentInfo.studentEmail) {
       setError((prev) => ({
         ...prev,
-        emailS: "email is empty",
+        studentEmail: "Email is empty",
       }));
     }
-    if (!studentInfo.phoneS) {
+    if (!studentInfo.studentPhone) {
       setError((prev) => ({
         ...prev,
-        phoneS: "phone number is empty",
+        studentPhone: "Phone number is empty",
       }));
     }
-    if (!studentInfo.ageS) {
+    if (!studentInfo.studentAge) {
       setError((prev) => ({
         ...prev,
-        ageS: "age is empty",
+        studentAge: "Age is empty",
       }));
     }
 
     if (!studentInfo.studentClass) {
       setError((prev) => ({
         ...prev,
-        studentClass: "class is empty",
+        studentClass: "Class is empty",
       }));
     }
 
     if (
       !studentInfo.studentName ||
-      !studentInfo.emailS ||
-      !studentInfo.phoneS ||
-      !studentInfo.ageS ||
+      !studentInfo.studentEmail ||
+      !studentInfo.studentPhone ||
+      !studentInfo.studentAge ||
       !studentInfo.studentClass
     ) {
       return true;
@@ -111,7 +111,7 @@ const Update = () => {
   return (
     <div className="mx-auto p-2 sm:p-6 md:p-10 mt-10 border-2 border-chineseViolet rounded-lg w-fit max-w-[600px]">
       <div className="flex flex-col justify-center items-center">
-        <h1 className="mb-8 xl:mb-10 text-chineseViolet font-semibold text-xl sm:text-2xl xl:text-4xl">
+        <h1 className="mb-8 xl:mb-10 text-chineseViolet font-semibold text-2xl xl:text-4xl">
           Update Student
         </h1>
         <form
@@ -139,11 +139,11 @@ const Update = () => {
               onChange={handleChange}
               className="border block mx-auto rounded-lg border-chineseViolet p-1"
               placeholder="Email"
-              value={studentInfo.emailS}
-              name="emailS"
+              value={studentInfo.studentEmail}
+              name="studentEmail"
             />
-            {error?.emailS && (
-              <p className="text-redBorder text-start">{error.emailS}</p>
+            {error?.studentEmail && (
+              <p className="text-redBorder text-start">{error.studentEmail}</p>
             )}
           </div>
           <div className="w-fit mx-auto m-2">
@@ -152,11 +152,11 @@ const Update = () => {
               onChange={handleChange}
               className="border block mx-auto rounded-lg border-chineseViolet p-1 "
               placeholder="Phone"
-              value={studentInfo.phoneS}
-              name="phoneS"
+              value={studentInfo.studentPhone}
+              name="studentPhone"
             />
-            {error?.phoneS && (
-              <p className="text-redBorder text-start">{error.phoneS}</p>
+            {error?.studentPhone && (
+              <p className="text-redBorder text-start">{error.studentPhone}</p>
             )}
           </div>
           <div className="w-fit mx-auto m-2">
@@ -165,11 +165,11 @@ const Update = () => {
               onChange={handleChange}
               className="border block mx-auto rounded-lg border-chineseViolet p-1 "
               placeholder="Age"
-              value={studentInfo.ageS}
-              name="ageS"
+              value={studentInfo.studentAge}
+              name="studentAge"
             />
-            {error?.ageS && (
-              <p className="text-redBorder text-start">{error.ageS}</p>
+            {error?.studentAge && (
+              <p className="text-redBorder text-start">{error.studentAge}</p>
             )}
           </div>
           <div className="w-fit mx-auto m-2">

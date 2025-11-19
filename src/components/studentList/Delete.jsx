@@ -21,7 +21,7 @@ const Delete = (props) => {
   const handleDelete = () => {
     const rowNum = props?.list?.state?.row;
     const arr = getItem();
-    const newArr = arr.filter((list) => list.emailS !== rowNum);
+    const newArr = arr.filter((list) => list.studentEmail !== rowNum);
     localStorage.setItem("info", JSON.stringify(newArr));
     props?.list?.setState({
       display: false,

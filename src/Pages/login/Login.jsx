@@ -27,14 +27,14 @@ const Login = (props) => {
     if (!values.email) {
       setError((prev) => ({
         ...prev,
-        email: "email is empty",
+        email: "Email is empty",
       }));
     }
 
     if (!values.pw) {
       setError((prev) => ({
         ...prev,
-        pw: "password is empty",
+        pw: "Password is empty",
       }));
     }
 
@@ -75,13 +75,13 @@ const Login = (props) => {
         } else {
           setError({
             ...error,
-            pw: "wrong user password",
+            pw: "Wrong user password",
           });
         }
       } else {
         setError({
           ...error,
-          email: "wrong email",
+          email: "Wrong email",
         });
       }
     } else {
@@ -104,7 +104,7 @@ const Login = (props) => {
     <div className="w-full flex items-center h-screen">
       <div className=" sm:max-w-[500px] m-4 border border-chineseViolet p-4 xs:p-6 sm:p-10 md:p-16 mx-auto">
         <div className="text-center w-full p-2 ">
-          <h1 className="mb-8 xl:mb-10 text-chineseViolet font-semibold text-xl sm:text-2xl xl:text-4xl">
+          <h1 className="mb-8 xl:mb-10 text-chineseViolet font-semibold text-2xl xl:text-4xl">
             Login
           </h1>
           <form className="w-full" onSubmit={handleSubmit}>
@@ -129,7 +129,7 @@ const Login = (props) => {
                 className={`border block pl-1  mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg ${
                   error.pw ? "border-redBorder" : "border-chineseViolet"
                 }`}
-                placeholder="password"
+                placeholder="Password"
                 name="pw"
                 value={values.pw}
                 onChange={handleChange}
@@ -139,7 +139,7 @@ const Login = (props) => {
               )}
             </div>
             <Button className="w-full mb-2" type="submit">
-              Sign In
+              Login In
             </Button>
           </form>
 

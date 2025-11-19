@@ -13,6 +13,7 @@ const Listing = (props) => {
 
   const getItems = () => {
     const arr = JSON.parse(localStorage.getItem("info")) || [];
+    console.log("i am array ", arr);
     const data = arr.filter((ele) => ele.admin === admin);
     return data;
   };
@@ -22,7 +23,7 @@ const Listing = (props) => {
     <div className="mx-auto flex justify-center max-w-[1320px] relative">
       <table className="mt-20 p-4 table-auto">
         <thead>
-          <tr className="uppercase">
+          <tr>
             {headArr.map((item, index) => (
               <th
                 key={index}

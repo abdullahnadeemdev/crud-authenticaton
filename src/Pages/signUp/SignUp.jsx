@@ -37,9 +37,9 @@ const SignUp = (props) => {
     if (!values.email) {
       setError((prev) => ({
         ...prev,
-        email: "email is empty",
+        email: "Email is empty",
       }));
-      errors.email = "email is empty";
+      errors.email = "Email is empty";
     }
 
     const valueEmail = values.email;
@@ -48,9 +48,9 @@ const SignUp = (props) => {
     if (!valueEmail.match(pattern)) {
       setError((prev) => ({
         ...prev,
-        email: "invalid email",
+        email: "Invalid email",
       }));
-      errors.email = "invalid email";
+      errors.email = "Invalid email";
     }
 
     const user = dataArr.some((item) => {
@@ -63,24 +63,25 @@ const SignUp = (props) => {
     if (user) {
       setError((prev) => ({
         ...prev,
-        email: "email already taken",
+        email: "Email already taken",
       }));
-      errors.email = "email is empty";
+      errors.email = "Email is empty";
     }
     if (!values.pw) {
       setError((prev) => ({
         ...prev,
-        pw: "password is empty",
+        pw: "Password is empty",
       }));
-      errors.pw = "password is empty";
+      errors.pw = "Password is empty";
     }
 
     if (!valuePassword.match(pwSyntax)) {
       setError((prev) => ({
         ...prev,
-        pw: "invalid password",
+        pw: "Password should have atleast 8 characters with 1 capital & 1 small letter",
       }));
-      errors.pw = "invalid password";
+      errors.pw =
+        "Password should have atleast 8 characters with 1 capital & 1 small letter";
     }
 
     if (
@@ -159,7 +160,7 @@ const SignUp = (props) => {
               <input
                 type="password"
                 className="border block pl-1 mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg"
-                placeholder="password"
+                placeholder="Password"
                 name="pw"
                 value={values.pw}
                 onChange={handleChange}
