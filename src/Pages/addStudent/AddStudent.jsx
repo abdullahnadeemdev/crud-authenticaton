@@ -30,6 +30,8 @@ const AddStudent = () => {
     studentAge: "",
     studentClass: "",
     studentPhone: "",
+    studentGender: "",
+    studentEducation: "",
   });
 
   const [error, setError] = useState([
@@ -39,6 +41,8 @@ const AddStudent = () => {
       studentAge: "",
       studentClass: "",
       studentPhone: "",
+      studentGender: "",
+      studentEducation: "",
     },
   ]);
 
@@ -46,7 +50,6 @@ const AddStudent = () => {
     let errors = {
       name: "",
       email: "",
-      pw: "",
     };
 
     if (!studentInfo.studentName) {
@@ -99,6 +102,18 @@ const AddStudent = () => {
         studentClass: "Class is empty",
       }));
     }
+    if (!studentInfo.studentGender) {
+      setError((prev) => ({
+        ...prev,
+        studentGender: "Select a gender",
+      }));
+    }
+    if (!studentInfo.studentEducation) {
+      setError((prev) => ({
+        ...prev,
+        studentEducation: "Select an education",
+      }));
+    }
 
     if (
       !studentInfo.studentName ||
@@ -106,6 +121,8 @@ const AddStudent = () => {
       !studentInfo.studentPhone ||
       !studentInfo.studentAge ||
       !studentInfo.studentClass ||
+      !studentInfo.studentGender ||
+      !studentInfo.studentEducation ||
       errors.email ||
       errors.name
     ) {
@@ -126,7 +143,7 @@ const AddStudent = () => {
       );
       navigate("/student-list");
     } else {
-      console.log("error submitting form");
+      console.log("error submitting form", studentInfo);
     }
   };
 
@@ -136,6 +153,8 @@ const AddStudent = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    console.log("name", name);
+    console.log("value", value);
     setError({
       ...error,
       [name]: "",
@@ -147,7 +166,7 @@ const AddStudent = () => {
     });
   };
   return (
-    <div className="mx-auto p-2 sm:p-6 md:p-10 mt-10 border-2 border-chineseViolet rounded-lg w-fit max-w-[600px]">
+    <div className="mx-auto p-2 sm:p-6 md:p-10 mt-10 border-2 border-chineseViolet rounded-lg w-full h-fit max-w-fit">
       <div className="flex flex-col justify-center items-center">
         <h1 className="mb-8 xl:mb-10 text-chineseViolet font-semibold text-2xl xl:text-4xl">
           Add Student
@@ -223,48 +242,120 @@ const AddStudent = () => {
               <p className="text-redBorder text-start">{error.studentClass}</p>
             )}
           </div>
+
+          <div className="mx-auto w-fit max-w-40 sm:max-w-[180px] xl:max-w-[200px]">
+            <h3 className="text-chineseViolet py-0.5 md:py-2 font-semibold xxs:text-xs sm:text-sm md:text-lg xl:text-xl">
+              Gender
+            </h3>
+            <input
+              type="radio"
+              name="studentGender"
+              id="genderM"
+              value="male"
+              checked={studentInfo.studentGender === "male"}
+              onChange={handleChange}
+            />
+            <label
+              htmlFor="genderM"
+              className=" py-1 pl-2 font-semibold xxs:text-xs sm:text-sm md:text-base xl:text-lg"
+            >
+              Male
+            </label>
+            <input
+              type="radio"
+              name="studentGender"
+              id="genderF"
+              value="female"
+              className="ml-13"
+              onChange={handleChange}
+              checked={studentInfo.studentGender === "female"}
+            />
+            <label
+              htmlFor="genderF"
+              className=" py-1 pl-2 font-semibold xxs:text-xs sm:text-sm md:text-base xl:text-lg"
+            >
+              Female
+            </label>
+
+            <input
+              type="radio"
+              name="studentGender"
+              id="genderO"
+              value="other"
+              className="mt-3"
+              checked={studentInfo.studentGender === "other"}
+              onChange={handleChange}
+            />
+            <label
+              htmlFor="genderO"
+              className=" py-1 pl-2  font-semibold xxs:text-xs sm:text-sm md:text-base xl:text-lg"
+            >
+              Other
+            </label>
+            {error?.studentGender && (
+              <p className="text-redBorder text-start">{error.studentGender}</p>
+            )}
+          </div>
+
+          <div className="mx-auto mt-3 mb-4 md:mb-8 overflow-wrap w-fit max-w-40 sm:max-w-[180px] xl:max-w-[200px]">
+            <h3 className=" text-chineseViolet py-0.5 md:py-2 font-semibold xxs:text-xs sm:text-sm md:text-lg xl:text-xl">
+              Education
+            </h3>
+            <input
+              type="radio"
+              id="school"
+              checked={studentInfo.studentEducation === "school"}
+              value="school"
+              name="studentEducation"
+              onChange={handleChange}
+            />
+            <label
+              htmlFor="school"
+              className=" py-1 pl-2 font-semibold xxs:text-xs sm:text-sm md:text-base xl:text-lg"
+            >
+              School
+            </label>
+
+            <input
+              type="radio"
+              className="ml-10"
+              id="college"
+              name="studentEducation"
+              checked={studentInfo.studentEducation === "college"}
+              value="college"
+              onChange={handleChange}
+            />
+            <label
+              htmlFor="college"
+              className=" py-1 pl-2 font-semibold xxs:text-xs sm:text-sm md:text-base xl:text-lg"
+            >
+              College
+            </label>
+
+            <input
+              type="radio"
+              value="bachelor"
+              id="bachelor"
+              className="mt-3"
+              name="studentEducation"
+              checked={studentInfo.studentEducation === "bachelor"}
+              onChange={handleChange}
+            />
+            <label
+              htmlFor="bachelor"
+              className=" py-1 pl-2 font-semibold xxs:text-xs sm:text-sm md:text-base xl:text-lg"
+            >
+              Bachelor
+            </label>
+            {error?.studentEducation && (
+              <p className="text-redBorder text-start">
+                {error.studentEducation}
+              </p>
+            )}
+          </div>
         </form>
 
-        <div className="">
-          <h3 className="text-chineseViolet py-0.5 md:py-2 font-semibold xxs:text-xs sm:text-sm md:text-lg xl:text-xl">
-            Gender
-          </h3>
-          <input type="radio" name="genderM" className="" />
-          <label
-            htmlFor="genderM"
-            className=" py-1 pl-2 font-semibold xxs:text-xs sm:text-sm md:text-base xl:text-lg"
-          >
-            Male
-          </label>
-          <input type="radio" name="genderF" className="ml-13" />
-          <label
-            htmlFor="genderF"
-            className=" py-1 pl-2 font-semibold xxs:text-xs sm:text-sm md:text-base xl:text-lg"
-          >
-            Female
-          </label>
-        </div>
-
-        <div className="sm:ml-4 mt-4 mb-4 md:mb-8 overflow-wrap">
-          <h3 className=" text-chineseViolet py-0.5 md:py-2 font-semibold xxs:text-xs sm:text-sm md:text-lg xl:text-xl">
-            Education
-          </h3>
-          <input type="checkbox" name="school" />
-          <label
-            htmlFor="school"
-            className=" py-1 pl-2 font-semibold xxs:text-xs sm:text-sm md:text-base xl:text-lg"
-          >
-            School
-          </label>
-          <input type="checkbox" name="bachelor" className="ml-10" />
-          <label
-            htmlFor="bachelor"
-            className=" py-1 pl-2 font-semibold xxs:text-xs sm:text-sm md:text-base xl:text-lg"
-          >
-            Bachelor
-          </label>
-        </div>
-        <Button form="myForm" type="submit">
+        <Button form="myForm" type="submit" className="mx-auto">
           Add
         </Button>
       </div>

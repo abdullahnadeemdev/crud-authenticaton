@@ -34,9 +34,11 @@ const TbRow = ({ item, list }) => {
               studentName: item.studentName,
               studentAge: item.studentAge,
               studentClass: item.studentClass,
-              phoneS: item.studentPhone,
+              studentPhone: item.studentPhone,
               studentEmail: item.studentEmail,
-              adminS: item.admin,
+              studentGender: item.studentGender,
+              studentEducation: item.studentEducation,
+              admin: item.admin,
             }}
           >
             <Button>Edit</Button>

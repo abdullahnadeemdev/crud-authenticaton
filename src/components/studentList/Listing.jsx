@@ -13,7 +13,7 @@ const Listing = (props) => {
 
   const getItems = () => {
     const arr = JSON.parse(localStorage.getItem("info")) || [];
-    console.log("i am array ", arr);
+    // console.log("i am array ", arr);
     const data = arr.filter((ele) => ele.admin === admin);
     return data;
   };

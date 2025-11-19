@@ -15,24 +15,34 @@ const Update = () => {
     studentAge: state.studentAge,
     studentClass: state.studentClass,
     studentPhone: state.studentPhone,
+    studentGender: state.studentGender,
+    studentEducation: state.studentEducation,
   });
 
   const [error, setError] = useState([
     {
-      studentName: false,
-      studentEmail: false,
-      studentAge: false,
-      studentClass: false,
-      studentPhone: false,
+      studentName: "",
+      studentEmail: "",
+      studentAge: "",
+      studentClass: "",
+      studentPhone: "",
+      studentGender: "",
+      studentEducation: "",
     },
   ]);
 
   const validation = () => {
+    let errors = {
+      name: "",
+      email: "",
+    };
+
     if (!studentInfo.studentName) {
       setError((prev) => ({
         ...prev,
         studentName: "Name is empty",
       }));
+      errors.name = "Name is empty";
     }
 
     if (!studentInfo.studentEmail) {
@@ -40,7 +50,22 @@ const Update = () => {
         ...prev,
         studentEmail: "Email is empty",
       }));
+      errors.email = "Email is empty";
     }
+
+    const user = dataArr.filter(
+      (item) => item.studentEmail === studentInfo.studentEmail
+    );
+    console.log("i am user", user);
+    console.log("i am user.length", user.length);
+    if (user.length > 1) {
+      setError((prev) => ({
+        ...prev,
+        studentEmail: "Email already taken",
+      }));
+      errors.email = "Email is taken";
+    }
+
     if (!studentInfo.studentPhone) {
       setError((prev) => ({
         ...prev,
@@ -60,13 +85,29 @@ const Update = () => {
         studentClass: "Class is empty",
       }));
     }
+    if (!studentInfo.studentGender) {
+      setError((prev) => ({
+        ...prev,
+        studentGender: "Select a gender",
+      }));
+    }
+    if (!studentInfo.studentEducation) {
+      setError((prev) => ({
+        ...prev,
+        studentEducation: "Select an education",
+      }));
+    }
 
     if (
       !studentInfo.studentName ||
       !studentInfo.studentEmail ||
       !studentInfo.studentPhone ||
       !studentInfo.studentAge ||
-      !studentInfo.studentClass
+      !studentInfo.studentClass ||
+      !studentInfo.studentGender ||
+      !studentInfo.studentEducation ||
+      errors.email ||
+      errors.name
     ) {
       return true;
     } else {
@@ -79,11 +120,11 @@ const Update = () => {
 
     if (!validation()) {
       console.log("changes updated", studentInfo);
-      console.log("changes updated", state.adminS);
+      console.log("changes updated", state.admin);
 
       const newData = dataArr.map((item) => {
         if (item.id === state.id) {
-          item = { ...studentInfo, admin: state.adminS };
+          item = { ...studentInfo, admin: state.admin };
           return item;
         } else {
           return item;
@@ -153,9 +194,9 @@ const Update = () => {
               className="border block mx-auto rounded-lg border-chineseViolet p-1 "
               placeholder="Phone"
               value={studentInfo.studentPhone}
-              name="phoneS"
+              name="studentPhone"
             />
-            {error?.phoneS && (
+            {error?.studentPhone && (
               <p className="text-redBorder text-start">{error.studentPhone}</p>
             )}
           </div>
@@ -185,47 +226,119 @@ const Update = () => {
               <p className="text-redBorder text-start">{error.studentClass}</p>
             )}
           </div>
+
+          <div className="mx-auto w-fit max-w-40 sm:max-w-[180px] xl:max-w-[200px]">
+            <h3 className="text-chineseViolet py-0.5 md:py-2 font-semibold xxs:text-xs sm:text-sm md:text-lg xl:text-xl">
+              Gender
+            </h3>
+            <input
+              type="radio"
+              name="studentGender"
+              id="genderM"
+              value="male"
+              checked={studentInfo.studentGender === "male"}
+              onChange={handleChange}
+            />
+            <label
+              htmlFor="genderM"
+              className=" py-1 pl-2 font-semibold xxs:text-xs sm:text-sm md:text-base xl:text-lg"
+            >
+              Male
+            </label>
+            <input
+              type="radio"
+              name="studentGender"
+              id="genderF"
+              value="female"
+              className="ml-13"
+              onChange={handleChange}
+              checked={studentInfo.studentGender === "female"}
+            />
+            <label
+              htmlFor="genderF"
+              className=" py-1 pl-2 font-semibold xxs:text-xs sm:text-sm md:text-base xl:text-lg"
+            >
+              Female
+            </label>
+
+            <input
+              type="radio"
+              name="studentGender"
+              id="genderO"
+              value="other"
+              className="mt-3"
+              checked={studentInfo.studentGender === "other"}
+              onChange={handleChange}
+            />
+            <label
+              htmlFor="genderO"
+              className=" py-1 pl-2  font-semibold xxs:text-xs sm:text-sm md:text-base xl:text-lg"
+            >
+              Other
+            </label>
+            {error?.studentGender && (
+              <p className="text-redBorder text-start">{error.studentGender}</p>
+            )}
+          </div>
+
+          <div className="mx-auto mt-3 mb-4 md:mb-8 overflow-wrap w-fit max-w-40 sm:max-w-[180px] xl:max-w-[200px]">
+            <h3 className=" text-chineseViolet py-0.5 md:py-2 font-semibold xxs:text-xs sm:text-sm md:text-lg xl:text-xl">
+              Education
+            </h3>
+            <input
+              type="radio"
+              id="school"
+              checked={studentInfo.studentEducation === "school"}
+              value="school"
+              name="studentEducation"
+              onChange={handleChange}
+            />
+            <label
+              htmlFor="school"
+              className=" py-1 pl-2 font-semibold xxs:text-xs sm:text-sm md:text-base xl:text-lg"
+            >
+              School
+            </label>
+
+            <input
+              type="radio"
+              className="ml-10"
+              id="college"
+              name="studentEducation"
+              checked={studentInfo.studentEducation === "college"}
+              value="college"
+              onChange={handleChange}
+            />
+            <label
+              htmlFor="college"
+              className=" py-1 pl-2 font-semibold xxs:text-xs sm:text-sm md:text-base xl:text-lg"
+            >
+              College
+            </label>
+
+            <input
+              type="radio"
+              value="bachelor"
+              id="bachelor"
+              className="mt-3"
+              name="studentEducation"
+              checked={studentInfo.studentEducation === "bachelor"}
+              onChange={handleChange}
+            />
+            <label
+              htmlFor="bachelor"
+              className=" py-1 pl-2 font-semibold xxs:text-xs sm:text-sm md:text-base xl:text-lg"
+            >
+              Bachelor
+            </label>
+            {error?.studentEducation && (
+              <p className="text-redBorder text-start">
+                {error.studentEducation}
+              </p>
+            )}
+          </div>
         </form>
 
-        <div className="">
-          <h3 className="text-chineseViolet py-0.5 md:py-2 font-semibold xxs:text-xs sm:text-sm md:text-lg xl:text-xl">
-            Gender
-          </h3>
-          <input type="radio" name="genderM" className="" />
-          <label
-            htmlFor="genderM"
-            className=" py-1 pl-2 font-semibold xxs:text-xs sm:text-sm md:text-base xl:text-lg"
-          >
-            Male
-          </label>
-          <input type="radio" name="genderF" className="ml-13" />
-          <label
-            htmlFor="genderF"
-            className=" py-1 pl-2 font-semibold xxs:text-xs sm:text-sm md:text-base xl:text-lg"
-          >
-            Female
-          </label>
-        </div>
-
-        <div className="sm:ml-4 mt-4 mb-4 md:mb-8 overflow-wrap">
-          <h3 className=" text-chineseViolet py-0.5 md:py-2 font-semibold xxs:text-xs sm:text-sm md:text-lg xl:text-xl">
-            Education
-          </h3>
-          <input type="checkbox" name="school" />
-          <label
-            htmlFor="school"
-            className=" py-1 pl-2 font-semibold xxs:text-xs sm:text-sm md:text-base xl:text-lg"
-          >
-            School
-          </label>
-          <input type="checkbox" name="bachelor" className="ml-10" />
-          <label
-            htmlFor="bachelor"
-            className=" py-1 pl-2 font-semibold xxs:text-xs sm:text-sm md:text-base xl:text-lg"
-          >
-            Bachelor
-          </label>
-        </div>
         <Button form="myForm" type="submit">
           Add
         </Button>
