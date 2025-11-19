@@ -340,7 +340,7 @@ const Update = () => {
         </form>
 
         <Button form="myForm" type="submit">
-          Add
+          Update
         </Button>
       </div>
     </div>
