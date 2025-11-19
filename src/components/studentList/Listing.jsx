@@ -41,7 +41,7 @@ const Listing = (props) => {
         </tbody>
       </table>
       {props.state.display ? (
-        <div className="absolute top-[60%]">
+        <div className="absolute -top-[35%]">
           <Delete list={props} />
         </div>
       ) : (
