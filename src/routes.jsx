@@ -5,6 +5,7 @@ import Login from "./Pages/login/Login";
 import SignUp from "./Pages/signUp/SignUp";
 import Layout from "./components/layout/Layout";
 import Update from "./Pages/update/Update";
+import UserProfile from "./Pages/userProfile/UserProfile";
 
 const getItem = () => {
   let val = [];
@@ -52,6 +53,14 @@ const Router = () => {
             element={
               <Layout>
                 <Update />
+              </Layout>
+            }
+          />
+          <Route
+            path="/userProfile"
+            element={
+              <Layout>
+                <UserProfile />
               </Layout>
             }
           />

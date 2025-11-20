@@ -42,9 +42,16 @@ const Navbar = () => {
           <NavLink to="/add">
             <Button>Add Student</Button>
           </NavLink>
-          <Button className="ml-2" onClick={handleLogout}>
-            Logout
-          </Button>
+
+          {location.pathname === "/userProfile" ? (
+            <Button className="ml-2" onClick={handleLogout}>
+              Logout
+            </Button>
+          ) : (
+            <NavLink to="/userProfile">
+              <Button className="ml-2">User Profile</Button>
+            </NavLink>
+          )}
         </div>
       </div>
     </div>

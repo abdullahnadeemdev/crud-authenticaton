@@ -1,4 +1,5 @@
 import { NavLink } from "react-router";
+import { Delete, Edit } from "../../assets/icons";
 import Button from "../shared/button/Button";
 
 const TbRow = ({ item, list }) => {
@@ -41,9 +42,19 @@ const TbRow = ({ item, list }) => {
               admin: item.admin,
             }}
           >
-            <Button>Edit</Button>
+            <Button>
+              <span className="flex gap-1 items-center">
+                <Edit />
+                <p>Edit</p>
+              </span>
+            </Button>
           </NavLink>
-          <Button onClick={handleClick}>Delete</Button>
+          <Button onClick={handleClick}>
+            <span className="flex gap-1 items-center">
+              <Delete />
+              <p>Delete</p>
+            </span>
+          </Button>
         </td>
       </tr>
     </>
