@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Button from "../../components/shared/button/Button";
+import { NavLink } from "react-router";
 
 const UserProfile = () => {
   const fetchData = () => {
@@ -97,14 +98,20 @@ const UserProfile = () => {
               disabled={!isEdit}
             />
           </div>
+          <div className="flex justify-between">
+            {isEdit ? (
+              <Button onClick={handleSubmit} type="submit">
+                Update
+              </Button>
+            ) : (
+              <Button onClick={handleEdit}>Edit</Button>
+            )}
+            <NavLink to="/student-list">
+              <Button className="ml-2">Home</Button>
+            </NavLink>
+          </div>
         </form>
-        {isEdit ? (
-          <Button onClick={handleSubmit} form="userForm" type="submit">
-            Update
-          </Button>
-        ) : (
-          <Button onClick={handleEdit}>Edit</Button>
-        )}
+
         {/* <Button className="ml-2">Logout</Button> */}
       </div>
     </div>
