@@ -16,15 +16,20 @@ const getItem = () => {
 };
 
 const dataArr = getItem();
-const findUser = dataArr.find((item) => {
-  if (item.isLogin === true) {
-    return true;
-  } else {
-    false;
-  }
-});
+// const findUser = dataArr.find((item) => {
+//   if (item.isLogin === true) {
+//     return true;
+//   } else {
+//     false;
+//   }
+// });
 
-const isAuth = findUser || "";
+const findUser = () => {
+  const arr = JSON.parse(sessionStorage.getItem("login"));
+  return arr;
+};
+
+const isAuth = findUser() || [];
 
 const Router = () => {
   return (

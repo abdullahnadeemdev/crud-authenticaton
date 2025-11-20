@@ -56,18 +56,20 @@ const Login = (props) => {
           return false;
         }
       });
+      // console.log("useruseruseruser", user);
       if (user) {
         if (user.pw === values.pw) {
-          user.isLogin = true;
-          const newDataArr = dataArr.map((item) => {
-            if (item.email === user.email) {
-              item = user;
-              return item;
-            } else {
-              return item;
-            }
-          });
-          localStorage.setItem("signIn", JSON.stringify(newDataArr));
+          sessionStorage.setItem("login", JSON.stringify(user));
+          // user.isLogin = true;
+          // const newDataArr = dataArr.map((item) => {
+          //   if (item.email === user.email) {
+          //     item = user;
+          //     return item;
+          //   } else {
+          //     return item;
+          //   }
+          // });
+          // localStorage.setItem("signIn", JSON.stringify(newDataArr));
           let authVar = props?.auth;
           authVar = true;
           authVar ? navigate("/student-list") : navigate("/page-not-found");

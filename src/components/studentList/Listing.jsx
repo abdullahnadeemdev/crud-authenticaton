@@ -5,11 +5,14 @@ import Delete from "./Delete";
 const Listing = (props) => {
   const getEmail = () => {
     let arr = [];
-    arr = JSON.parse(localStorage.getItem("signIn"));
-    const adminEmail = arr.find((ele) => ele.isLogin !== false);
+    // arr = JSON.parse(localStorage.getItem("signIn"));
+    arr = JSON.parse(sessionStorage.getItem("login"));
+    // const adminEmail = arr.find((ele) => ele.isLogin !== false);
+    const adminEmail = arr[0];
     return adminEmail.email;
   };
   const admin = getEmail();
+  console.log(admin);
 
   const getItems = () => {
     const arr = JSON.parse(localStorage.getItem("info")) || [];

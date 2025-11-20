@@ -12,18 +12,19 @@ const Navbar = () => {
   };
   const navigate = useNavigate();
 
-  const dataArr = getItem();
+  // const dataArr = getItem();
   const handleLogout = () => {
-    const newArr = dataArr.map((item) => {
-      if (item.isLogin === true) {
-        item.isLogin = false;
-        return item;
-      } else {
-        return item;
-      }
-    });
-    console.log("i am new", newArr);
-    localStorage.setItem("signIn", JSON.stringify(newArr));
+    // const newArr = dataArr.map((item) => {
+    //   if (item.isLogin === true) {
+    //     item.isLogin = false;
+    //     return item;
+    //   } else {
+    //     return item;
+    //   }
+    // });
+    // console.log("i am new", newArr);
+    // localStorage.setItem("signIn", JSON.stringify(newArr));
+    sessionStorage.removeItem("login");
     navigate("/login");
     window.location.reload(false);
   };
