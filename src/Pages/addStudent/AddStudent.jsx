@@ -147,14 +147,66 @@ const AddStudent = () => {
     }
   };
 
-  const num = () => {
-    return dataArr.length === 0 ? 1 : dataArr.length + 1;
+  // const num = () => {
+  //   return dataArr.length === 0 ? 1 : dataArr.length + 1;
+  // };
+
+  const id = () => {
+    const alphabet = [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G",
+      "H",
+      "I",
+      "J",
+      "K",
+      "L",
+      "M",
+      "N",
+      "O",
+      "P",
+      "Q",
+      "R",
+      "S",
+      "T",
+      "U",
+      "V",
+      "W",
+      "X",
+      "Y",
+      "Z",
+    ];
+
+    let id = "";
+    let check = false;
+    for (let i = 0; id.length < 8; i++) {
+      let element = Math.floor(Math.random() * 10);
+      if (!check) {
+        if (element % 2 !== 0) {
+          for (let i = 0; i < 3; i++) {
+            element = alphabet[Math.floor(Math.random() * 10)];
+            id += element;
+            if (i === 2) {
+              check = true;
+            }
+          }
+        }
+      } else {
+        id = id + String(+element);
+      }
+    }
+    console.log("iiiiddddd", id);
+    return id;
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log("name", name);
-    console.log("value", value);
+    // console.log("name", name);
+    // console.log("value", value);
     setError({
       ...error,
       [name]: "",
@@ -162,7 +214,7 @@ const AddStudent = () => {
     setStudentInfo({
       ...studentInfo,
       [name]: value,
-      id: studentInfo.studentEmail + num(),
+      id: id(),
     });
   };
   return (

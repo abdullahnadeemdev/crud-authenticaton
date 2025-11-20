@@ -53,17 +53,25 @@ const Update = () => {
       errors.email = "Email is empty";
     }
 
-    const user = dataArr.filter(
-      (item) => item.studentEmail === studentInfo.studentEmail
-    );
-    console.log("i am user", user);
-    console.log("i am user.length", user.length);
-    if (user.length > 1) {
-      setError((prev) => ({
-        ...prev,
-        studentEmail: "Email already taken",
-      }));
-      errors.email = "Email is taken";
+    const user =
+      dataArr.find((item) => item.studentEmail === studentInfo.studentEmail) ||
+      "";
+    // console.log(
+    //   "i am studentEmail",
+    //   user.studentEmail,
+    //   "    i am studentInfo id: ",
+    //   studentInfo.studentEmail
+    // );
+    // console.log("user", user);
+    // console.log("i am user", user.id, "    i am student id: ", studentInfo.id);
+    if (user) {
+      if (user.id !== studentInfo.id) {
+        setError((prev) => ({
+          ...prev,
+          studentEmail: "Email already taken",
+        }));
+        errors.email = "Email is taken";
+      }
     }
 
     if (!studentInfo.studentPhone) {
@@ -140,6 +148,7 @@ const Update = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    console.log("error", error);
     setError({
       ...error,
       [name]: "",
