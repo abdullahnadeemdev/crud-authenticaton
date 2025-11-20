@@ -36,6 +36,8 @@ const Update = () => {
       name: "",
       email: "",
     };
+    const pattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+    const valueEmail = studentInfo.studentEmail;
 
     if (!studentInfo.studentName) {
       setError((prev) => ({
@@ -53,6 +55,13 @@ const Update = () => {
       errors.email = "Email is empty";
     }
 
+    if (!valueEmail.match(pattern)) {
+      setError((prev) => ({
+        ...prev,
+        studentEmail: "Invalid email",
+      }));
+      errors.email = "Invalid email";
+    }
     const user =
       dataArr.find((item) => item.studentEmail === studentInfo.studentEmail) ||
       "";

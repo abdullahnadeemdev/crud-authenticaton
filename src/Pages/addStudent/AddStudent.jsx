@@ -51,6 +51,8 @@ const AddStudent = () => {
       name: "",
       email: "",
     };
+    const pattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+    const valueEmail = studentInfo.studentEmail;
 
     if (!studentInfo.studentName) {
       setError((prev) => ({
@@ -66,6 +68,14 @@ const AddStudent = () => {
         studentEmail: "Email is empty",
       }));
       errors.email = "Email is empty";
+    }
+
+    if (!valueEmail.match(pattern)) {
+      setError((prev) => ({
+        ...prev,
+        studentEmail: "Invalid email",
+      }));
+      errors.email = "Invalid email";
     }
 
     const user = dataArr.some((item) => {
