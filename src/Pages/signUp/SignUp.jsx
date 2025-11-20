@@ -11,11 +11,13 @@ const SignUp = (props) => {
     isLogin: false,
     email: "",
     pw: "",
+    petName: "",
   });
   const [error, setError] = useState({
     name: "",
     email: "",
     pw: "",
+    petName: "",
   });
 
   const validation = () => {
@@ -23,6 +25,7 @@ const SignUp = (props) => {
       name: "",
       email: "",
       pw: "",
+      petName: "",
     };
     // ^[a-zA-Z0-9_.±]+@+[a-zA-Z0-9-]+.+[a-zA-Z0-9-.]+$
     const pattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
@@ -83,13 +86,22 @@ const SignUp = (props) => {
       }));
       errors.pw = "Weak password";
     }
+    if (!values.petName) {
+      setError((prev) => ({
+        ...prev,
+        petName: "PetName is empty",
+      }));
+      errors.petName = "PetName is empty";
+    }
 
     if (
       errors.name ||
       errors.email ||
       errors.pw ||
+      errors.petName ||
       !values.name ||
       !values.email ||
+      !values.petName ||
       !values.pw
     ) {
       return false;
@@ -156,7 +168,7 @@ const SignUp = (props) => {
                 <p className="text-redBorder text-start">{error.email}</p>
               )}
             </div>
-            <div className="mb-8 ">
+            <div className="mb-2">
               <input
                 type="password"
                 className="border block pl-1 mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg"
@@ -167,6 +179,19 @@ const SignUp = (props) => {
               />
               {error?.pw && (
                 <p className="text-redBorder text-start">{error.pw}</p>
+              )}
+            </div>
+            <div className="mb-8 ">
+              <input
+                type="text"
+                className="border block pl-1 mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg"
+                placeholder="Name of pet"
+                name="petName"
+                value={values.petName}
+                onChange={handleChange}
+              />
+              {error?.petName && (
+                <p className="text-redBorder text-start">{error.petName}</p>
               )}
             </div>
             <Button type="submit" className="w-full px-15 mb-2">

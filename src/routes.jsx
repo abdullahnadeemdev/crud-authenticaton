@@ -6,6 +6,7 @@ import SignUp from "./Pages/signUp/SignUp";
 import Layout from "./components/layout/Layout";
 import Update from "./Pages/update/Update";
 import UserProfile from "./Pages/userProfile/UserProfile";
+import ForgotP from "./Pages/forgotP/ForgotP";
 
 const getItem = () => {
   let val = [];
@@ -73,6 +74,7 @@ const Router = () => {
             element={<Login auth={isAuth} array={dataArr} />}
           />
           <Route path="/sign-up" element={<SignUp array={dataArr} />} />
+          <Route path="/forgot-password" element={<ForgotP />} />
           <Route path="*" element={<Navigate to="/login" replace />} />
         </>
       )}

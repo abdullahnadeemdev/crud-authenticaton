@@ -123,7 +123,7 @@ const Login = (props) => {
                 <p className="text-redBorder text-start">{error.email}</p>
               )}
             </div>
-            <div className="mb-8">
+            <div className="mb-1">
               <input
                 type="password"
                 className={`border block pl-1  mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg ${
@@ -138,13 +138,20 @@ const Login = (props) => {
                 <p className="text-redBorder text-start ">{error.pw}</p>
               )}
             </div>
-            <Button className="w-full mb-2" type="submit">
+
+            <a
+              href="/forgot-password"
+              className="hover:underline hover:text-blue-500"
+            >
+              <p className="text-start text-sm">Forgotten your password?</p>
+            </a>
+            <Button className="w-full mb-2 mt-8" type="submit">
               Log In
             </Button>
           </form>
 
           <NavLink to="/sign-up">
-            <Button className="w-full mb-2">Sign In </Button>
+            <Button className="w-full mb-2">Sign Up</Button>
           </NavLink>
         </div>
       </div>
