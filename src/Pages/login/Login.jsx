@@ -5,12 +5,9 @@ import { useEffect, useState } from "react";
 const Login = (props) => {
   const navigate = useNavigate();
   const getItem = () => {
-    let val = [];
-    const arr = localStorage.getItem("signIn");
-    if (arr) {
-      val = JSON.parse(arr);
-    }
-    return val;
+    const arr = JSON.parse(localStorage.getItem("signIn"));
+
+    return arr;
   };
 
   const dataArr = getItem();
@@ -59,18 +56,19 @@ const Login = (props) => {
       if (user) {
         if (user.pw === values.pw) {
           user.isLogin = true;
-          const newDataArr = dataArr.map((item) => {
-            if (item.email === user.email) {
-              item = user;
-              return item;
-            } else {
-              return item;
-            }
-          });
-          localStorage.setItem("signIn", JSON.stringify(newDataArr));
+          localStorage.setItem("logIn", JSON.stringify(user));
+          // const newDataArr = dataArr.map((item) => {
+          //   if (item.email === user.email) {
+          //     item = user;
+          //     return item;
+          //   } else {
+          //     return item;
+          //   }
+          // });
+          // localStorage.setItem("signIn", JSON.stringify(newDataArr));
           let authVar = props?.auth;
           authVar = true;
-          authVar ? navigate("/student-list") : navigate("/page-not-found");
+          props?.auth ? navigate("/student-list") : navigate("/pageNotFound");
           window.location.reload(false);
         } else {
           setError({

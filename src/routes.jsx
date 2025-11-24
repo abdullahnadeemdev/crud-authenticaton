@@ -10,23 +10,22 @@ import ForgotP from "./Pages/forgotP/ForgotP";
 
 const getItem = () => {
   let val = [];
-  const arr = localStorage.getItem("signIn");
-  if (arr) {
-    val = JSON.parse(arr);
-  }
-  return val;
+  const arr = JSON.parse(localStorage.getItem("logIn"));
+
+  return arr;
 };
+console.log("getItem()", getItem());
 
-const dataArr = getItem();
-const findUser = dataArr.find((item) => {
-  if (item.isLogin === true) {
-    return true;
-  } else {
-    false;
-  }
-});
-
-const isAuth = findUser || false;
+const dataArr = getItem() || null;
+// const findUser = dataArr.find((item) => {
+//   if (item.isLogin === true) {
+//     return true;
+//   } else {
+//     false;
+//   }
+// });
+console.log(dataArr);
+const isAuth = dataArr;
 
 const Router = () => {
   return (

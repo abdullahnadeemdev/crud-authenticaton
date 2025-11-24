@@ -4,11 +4,8 @@ import { useNavigate } from "react-router";
 
 const AddStudent = () => {
   const getEmail = () => {
-    let arr = [];
-    arr = JSON.parse(localStorage.getItem("signIn"));
-    const adminEmail = arr.find((ele) => ele.isLogin !== false);
-
-    return adminEmail.email;
+    const arr = JSON.parse(localStorage.getItem("logIn")) || {};
+    return arr.email;
   };
 
   const getItem = () => {

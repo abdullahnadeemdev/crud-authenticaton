@@ -2,28 +2,29 @@ import { NavLink, useNavigate } from "react-router";
 import { Logo } from "../../../assets/icons/index";
 import Button from "../button/Button";
 const Navbar = () => {
-  const getItem = () => {
-    let val = [];
-    const arr = localStorage.getItem("signIn");
-    if (arr) {
-      val = JSON.parse(arr);
-    }
-    return val;
-  };
+  // const getItem = () => {
+  //   let val = [];
+  //   const arr = localStorage.getItem("signIn");
+  //   if (arr) {
+  //     val = JSON.parse(arr);
+  //   }
+  //   return val;
+  // };
+  // const dataArr = getItem();
   const navigate = useNavigate();
 
-  const dataArr = getItem();
   const handleLogout = () => {
-    const newArr = dataArr.map((item) => {
-      if (item.isLogin === true) {
-        item.isLogin = false;
-        return item;
-      } else {
-        return item;
-      }
-    });
-    console.log("i am new", newArr);
-    localStorage.setItem("signIn", JSON.stringify(newArr));
+    // const newArr = dataArr.map((item) => {
+    //   if (item.isLogin === true) {
+    //     item.isLogin = false;
+    //     return item;
+    //   } else {
+    //     return item;
+    //   }
+    // });
+    // console.log("i am new", newArr);
+    // localStorage.setItem("signIn", JSON.stringify(newArr));
+    localStorage.removeItem("logIn");
     navigate("/login");
     window.location.reload(false);
   };

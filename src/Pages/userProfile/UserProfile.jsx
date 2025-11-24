@@ -4,21 +4,29 @@ import { NavLink } from "react-router";
 
 const UserProfile = () => {
   const fetchData = () => {
-    let arr = JSON.parse(localStorage.getItem("signIn"));
-    return arr || [];
+    let arr = JSON.parse(localStorage.getItem("logIn"));
+    return arr || {};
   };
+
+  const getItem = () => {
+    const arr = JSON.parse(localStorage.getItem("signIn"));
+
+    return arr;
+  };
+
+  const dataArr = getItem() || [];
 
   //   console.log("urllllll", location.pathname);
 
-  const dataArr = fetchData();
+  const userObj = fetchData();
 
-  const getUser = dataArr?.find((item) => item.isLogin);
+  // const getUser = userObj?.find((item) => item.isLogin);
 
   const [values, setValues] = useState({
-    name: getUser?.name,
-    email: getUser?.email,
-    pw: getUser?.pw,
-    isLogin: getUser?.isLogin,
+    name: userObj?.name,
+    email: userObj?.email,
+    pw: userObj?.pw,
+    isLogin: userObj?.isLogin,
   });
 
   const [isEdit, setIsEdit] = useState(false);
@@ -29,6 +37,7 @@ const UserProfile = () => {
       pw: "",
     },
   ]);
+  const user = dataArr.find((item) => item.email === values.email) || "";
 
   const validation = () => {
     let errors = {
@@ -66,22 +75,13 @@ const UserProfile = () => {
       errors.email = "Invalid email";
     }
 
-    // const user = dataArr.find((item) => item.email === values.email) || "";
-    // console.log(
-    //   "i am user",
-    //   user.id,
-    //   "    i am userProfile id: ",
-    //   values.id,
-    //   "dataArrdataArrdataArr",
-    //   dataArr
-    // );
-    // if (user.id !== values.id) {
-    //   setError((prev) => ({
-    //     ...prev,
-    //     studentEmail: "Email already taken",
-    //   }));
-    //   errors.email = "Email is taken";
-    // }
+    if (user.id !== values.id) {
+      setError((prev) => ({
+        ...prev,
+        studentEmail: "Email already taken",
+      }));
+      errors.email = "Email is taken";
+    }
 
     if (!values.pw) {
       setError((prev) => ({
@@ -132,13 +132,17 @@ const UserProfile = () => {
     e.preventDefault();
     if (validation()) {
       const newData = dataArr.map((item) => {
-        if (item.isLogin) {
+        if (item.email === user.email) {
           return (item = values);
         } else {
           return item;
         }
       });
+      // console.log("user", user);
+      // console.log("newData", newData);
+      // console.log("dataArr", dataArr);
       localStorage.setItem("signIn", JSON.stringify(newData));
+      localStorage.setItem("logIn", JSON.stringify(values));
       setIsEdit(!isEdit);
     } else {
       console.log("error submitting form", values);

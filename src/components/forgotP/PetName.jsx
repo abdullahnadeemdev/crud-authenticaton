@@ -174,7 +174,9 @@ const PetName = (prop) => {
                 type="text"
                 className={`border block pl-1  mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg
                      ${
-                       error.email ? "border-redBorder" : "border-chineseViolet"
+                       error.petName
+                         ? "border-redBorder"
+                         : "border-chineseViolet"
                      }
                     `}
                 placeholder="Pet name"
@@ -188,13 +190,13 @@ const PetName = (prop) => {
             </div>
             {password ? (
               <>
-                <label className="text-start">Enter new Password</label>
+                <p className="text-start">Enter new Password</p>
                 <input
                   type="text"
                   className={`border block pl-1  mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg
                      ${error.pw ? "border-redBorder" : "border-chineseViolet"}
                     `}
-                  placeholder="password"
+                  placeholder="Password"
                   name="pw"
                   value={values.pw}
                   onChange={handleChange}

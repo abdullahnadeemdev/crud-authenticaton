@@ -4,7 +4,13 @@ import { useState } from "react";
 
 const SignUp = (props) => {
   const navigate = useNavigate();
-  const dataArr = props.array;
+  const getItem = () => {
+    const arr = JSON.parse(localStorage.getItem("signIn")) || [];
+
+    return arr;
+  };
+
+  const dataArr = getItem();
 
   const [values, setValues] = useState({
     name: "",

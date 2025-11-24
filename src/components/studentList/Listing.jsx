@@ -3,13 +3,13 @@ import { headArr } from "../../utils/mockUpData";
 import Delete from "./Delete";
 
 const Listing = (props) => {
-  const getEmail = () => {
-    let arr = [];
-    arr = JSON.parse(localStorage.getItem("signIn"));
-    const adminEmail = arr.find((ele) => ele.isLogin !== false);
-    return adminEmail.email;
-  };
-  const admin = getEmail();
+  // const getEmail = () => {
+
+  //   const adminEmail = objUser.email || null;
+  //   return adminEmail;
+  // };
+  const objUser = JSON.parse(localStorage.getItem("logIn"));
+  const admin = objUser?.email || "";
 
   const getItems = () => {
     const arr = JSON.parse(localStorage.getItem("info")) || [];
