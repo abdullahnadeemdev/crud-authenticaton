@@ -16,14 +16,7 @@ const getItem = () => {
 };
 
 const dataArr = getItem() || null;
-// const findUser = dataArr.find((item) => {
-//   if (item.isLogin === true) {
-//     return true;
-//   } else {
-//     false;
-//   }
-// });
-// console.log(dataArr);
+
 const isAuth = dataArr;
 
 const Router = () => {
@@ -78,18 +71,13 @@ const Router = () => {
             )
           }
         />
-        {/* <Route path="*" element={<PageNotFound auth={isAuth} />} /> */}
-
-        {/* ) : ( */}
 
         <Route
           path="/login"
           element={
             isAuth ? (
-              // navigate(location.pathname)
               <PageNotFound auth={isAuth} />
             ) : (
-              // ""
               <Login auth={isAuth} array={dataArr} />
             )
           }
@@ -102,7 +90,6 @@ const Router = () => {
         />
         <Route path="/forgot-password" element={isAuth ? "" : <ForgotP />} />
       </>
-      {/* )} */}
       <Route path="*" element={<PageNotFound auth={isAuth} />} />
     </Routes>
   );
