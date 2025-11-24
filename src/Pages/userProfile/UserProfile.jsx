@@ -172,7 +172,7 @@ const UserProfile = () => {
               value={values.name}
               onChange={handleChange}
               id="name"
-              className={`border block mx-auto rounded-lg border-chineseViolet p-1 ${
+              className={`border indent-2 block mx-auto rounded-lg border-chineseViolet p-1 ${
                 isEdit ? "" : "opacity-60"
               }`}
               disabled={!isEdit}
@@ -190,7 +190,7 @@ const UserProfile = () => {
               value={values.email}
               onChange={handleChange}
               id="email"
-              className={`border block mx-auto rounded-lg border-chineseViolet p-1 ${
+              className={`border indent-2 block mx-auto rounded-lg border-chineseViolet p-1 ${
                 isEdit ? "" : "opacity-60"
               }`}
               disabled={!isEdit}
@@ -207,7 +207,7 @@ const UserProfile = () => {
               onChange={handleChange}
               name="pw"
               id="password"
-              className={`border block mx-auto rounded-lg border-chineseViolet p-1 ${
+              className={`border indent-2 block mx-auto rounded-lg border-chineseViolet p-1 ${
                 isEdit ? "" : "opacity-60"
               }`}
               disabled={!isEdit}

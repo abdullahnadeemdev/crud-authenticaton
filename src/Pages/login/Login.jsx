@@ -109,7 +109,7 @@ const Login = (props) => {
             <div className="mb-2">
               <input
                 type="email"
-                className={`border block pl-1  mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg ${
+                className={`border block pl-1 indent-2 mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg ${
                   error.email ? "border-redBorder" : "border-chineseViolet"
                 }`}
                 placeholder="Email"
@@ -124,7 +124,7 @@ const Login = (props) => {
             <div className="mb-1">
               <input
                 type="password"
-                className={`border block pl-1  mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg ${
+                className={`border block pl-1 indent-2 mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg ${
                   error.pw ? "border-redBorder" : "border-chineseViolet"
                 }`}
                 placeholder="Password"

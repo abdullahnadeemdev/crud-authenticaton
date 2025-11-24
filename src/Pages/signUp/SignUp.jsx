@@ -151,7 +151,7 @@ const SignUp = (props) => {
             <div className="mb-2">
               <input
                 type="text"
-                className="border block  pl-1 mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg"
+                className="border block indent-2 pl-1 mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg"
                 placeholder="Name"
                 name="name"
                 value={values.name}
@@ -164,7 +164,7 @@ const SignUp = (props) => {
             <div className="mb-2">
               <input
                 type="email"
-                className="border block  pl-1 mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg"
+                className="border block indent-2 pl-1 mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg"
                 placeholder="Email"
                 name="email"
                 value={values.email}
@@ -177,7 +177,7 @@ const SignUp = (props) => {
             <div className="mb-2">
               <input
                 type="password"
-                className="border block pl-1 mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg"
+                className="border block pl-1 indent-2 mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg"
                 placeholder="Password"
                 name="pw"
                 value={values.pw}
@@ -190,7 +190,7 @@ const SignUp = (props) => {
             <div className="mb-8 ">
               <input
                 type="text"
-                className="border block pl-1 mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg"
+                className="border block pl-1 indent-2 mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg"
                 placeholder="Name of pet"
                 name="petName"
                 value={values.petName}

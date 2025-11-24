@@ -172,7 +172,7 @@ const PetName = (prop) => {
             <div className="mb-2">
               <input
                 type="text"
-                className={`border block pl-1  mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg
+                className={`border indent-2 block pl-1  mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg
                      ${
                        error.petName
                          ? "border-redBorder"
@@ -193,7 +193,7 @@ const PetName = (prop) => {
                 <p className="text-start">Enter new Password</p>
                 <input
                   type="text"
-                  className={`border block pl-1  mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg
+                  className={`border block pl-1 indent-2 mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg
                      ${error.pw ? "border-redBorder" : "border-chineseViolet"}
                     `}
                   placeholder="Password"

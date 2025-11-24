@@ -183,7 +183,7 @@ const Update = () => {
               type="text"
               onChange={handleChange}
               value={studentInfo.studentName}
-              className="border block mx-auto rounded-lg border-chineseViolet p-1"
+              className="border indent-2 block mx-auto rounded-lg border-chineseViolet p-1"
               placeholder="Name"
               name="studentName"
             />
@@ -196,7 +196,7 @@ const Update = () => {
             <input
               type="email"
               onChange={handleChange}
-              className="border block mx-auto rounded-lg border-chineseViolet p-1"
+              className="border block indent-2 mx-auto rounded-lg border-chineseViolet p-1"
               placeholder="Email"
               value={studentInfo.studentEmail}
               name="studentEmail"
@@ -209,7 +209,7 @@ const Update = () => {
             <input
               type="number"
               onChange={handleChange}
-              className="border block mx-auto rounded-lg border-chineseViolet p-1 "
+              className="border block indent-2 mx-auto rounded-lg border-chineseViolet p-1 "
               placeholder="Phone"
               value={studentInfo.studentPhone}
               name="studentPhone"
@@ -222,7 +222,7 @@ const Update = () => {
             <input
               type="number"
               onChange={handleChange}
-              className="border block mx-auto rounded-lg border-chineseViolet p-1 "
+              className="border indent-2 block mx-auto rounded-lg border-chineseViolet p-1 "
               placeholder="Age"
               value={studentInfo.studentAge}
               name="studentAge"
@@ -235,7 +235,7 @@ const Update = () => {
             <input
               type="text"
               onChange={handleChange}
-              className="border block mx-auto rounded-lg border-chineseViolet p-1 "
+              className="border indent-2 block mx-auto rounded-lg border-chineseViolet p-1 "
               placeholder="Class"
               value={studentInfo.studentClass}
               name="studentClass"
