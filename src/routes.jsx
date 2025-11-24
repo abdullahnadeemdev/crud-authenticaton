@@ -1,6 +1,6 @@
 import Student from "./Pages/studentListing/Index";
 import AddStudent from "./Pages/addStudent/AddStudent";
-import { Route, Routes, useLocation, useNavigate } from "react-router";
+import { Route, Routes } from "react-router";
 import Login from "./Pages/login/Login";
 import SignUp from "./Pages/signUp/SignUp";
 import Layout from "./components/layout/Layout";
@@ -14,7 +14,6 @@ const getItem = () => {
 
   return arr;
 };
-console.log("getItem()", getItem());
 
 const dataArr = getItem() || null;
 // const findUser = dataArr.find((item) => {
@@ -24,17 +23,12 @@ const dataArr = getItem() || null;
 //     false;
 //   }
 // });
-console.log(dataArr);
+// console.log(dataArr);
 const isAuth = dataArr;
 
 const Router = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
-  console.log("location,location", location.pathname);
-
   return (
     <Routes>
-      {/* {isAuth ? ( */}
       <>
         <Route
           path="/student-list"
