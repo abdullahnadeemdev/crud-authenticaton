@@ -1,6 +1,6 @@
 import Student from "./Pages/studentListing/Index";
 import AddStudent from "./Pages/addStudent/AddStudent";
-import { Route, Routes } from "react-router";
+import { Navigate, Route, Routes, useNavigate } from "react-router";
 import Login from "./Pages/login/Login";
 import SignUp from "./Pages/signUp/SignUp";
 import Layout from "./components/layout/Layout";
@@ -31,7 +31,7 @@ const Router = () => {
                 <Student />
               </Layout>
             ) : (
-              <Login auth={isAuth} array={dataArr} />
+              <Navigate to="/login" replace />
             )
           }
         />
@@ -43,7 +43,8 @@ const Router = () => {
                 <AddStudent />
               </Layout>
             ) : (
-              <Login auth={isAuth} array={dataArr} />
+              // <Login auth={isAuth} array={dataArr} />
+              <Navigate to="/login" replace />
             )
           }
         />
@@ -55,7 +56,7 @@ const Router = () => {
                 <Update />
               </Layout>
             ) : (
-              <Login auth={isAuth} array={dataArr} />
+              <Navigate to="/login" replace />
             )
           }
         />
@@ -78,15 +79,15 @@ const Router = () => {
             isAuth ? (
               <PageNotFound auth={isAuth} />
             ) : (
+              // ""
+              // ""
               <Login auth={isAuth} array={dataArr} />
             )
           }
         />
         <Route
           path="/sign-up"
-          element={
-            isAuth ? <PageNotFound auth={isAuth} /> : <SignUp array={dataArr} />
-          }
+          element={isAuth ? "" : <SignUp array={dataArr} />}
         />
         <Route path="/forgot-password" element={isAuth ? "" : <ForgotP />} />
       </>
