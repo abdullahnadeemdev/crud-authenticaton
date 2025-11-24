@@ -5,8 +5,7 @@ import { useEffect, useState } from "react";
 const Login = (props) => {
   const navigate = useNavigate();
   const getItem = () => {
-    const arr = JSON.parse(localStorage.getItem("signIn"));
-
+    const arr = JSON.parse(localStorage.getItem("signIn")) || [];
     return arr;
   };
 

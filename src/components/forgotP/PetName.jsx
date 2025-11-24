@@ -31,7 +31,7 @@ const PetName = (prop) => {
     if (!values.petName) {
       setError((prev) => ({
         ...prev,
-        petName: "petName is empty",
+        petName: "Pet name is empty",
       }));
     }
 
@@ -134,7 +134,7 @@ const PetName = (prop) => {
       }
 
       const newData = dataArr.map((item) => {
-        if (item.petName === values.petName) {
+        if (item?.petName?.toLowerCase() === values?.petName?.toLowerCase()) {
           item = user;
           return item;
         } else {
@@ -166,7 +166,7 @@ const PetName = (prop) => {
       <div className=" sm:max-w-[500px] m-4 border border-chineseViolet p-4 xs:p-6 sm:p-10 md:p-16 mx-auto">
         <div className="text-center w-full p-2 ">
           <h1 className="mb-8 xl:mb-10 text-chineseViolet font-semibold text-2xl xl:text-4xl">
-            Enter pet name
+            Enter Pet Name
           </h1>
           <form className="w-full" onSubmit={handleSubmit}>
             <div className="mb-2">
