@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Button from "../shared/button/Button";
+import { Navigate, useNavigate } from "react-router";
 
 const PetName = (prop) => {
   //   console.log("email", prop?.next?.data);
@@ -8,6 +9,7 @@ const PetName = (prop) => {
     petName: "",
     pw: "",
   });
+  const navigate = useNavigate();
 
   const [error, setError] = useState({
     petName: "",
@@ -26,8 +28,6 @@ const PetName = (prop) => {
   const dataArr = getItem();
 
   const validation = () => {
-    const pwSyntax = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
-
     if (!values.petName) {
       setError((prev) => ({
         ...prev,
@@ -41,14 +41,46 @@ const PetName = (prop) => {
       return true;
     }
   };
+  const validationPw = () => {
+    let errors = {
+      pw: "",
+    };
+    const pwSyntax = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+
+    if (!values.pw) {
+      setError((prev) => ({
+        ...prev,
+        pw: "Password is empty",
+      }));
+      errors.pw = "Password is empty";
+    }
+
+    if (!errors.pw) {
+      if (!values.pw.match(pwSyntax)) {
+        setError((prev) => ({
+          ...prev,
+          pw: "Weak password",
+        }));
+        errors.pw = "Weak password";
+      }
+    }
+
+    if (!values.pw || errors.pw) {
+      return false;
+    } else {
+      return true;
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validation()) {
-      const checkPetName = prop?.next?.data.find(
-        (ele) => ele.petName === values.petName
-      );
-      if (checkPetName) {
+      const checkPetName = prop?.next?.data?.petName;
+      // const isTrue = checkPetName.find((ele) => ele.petName === values.petName);
+
+      // console.log("checkPetName", prop?.next?.data.petName);
+      // console.log("isTrue", isTrue);
+      if (checkPetName === values.petName) {
         console.log("I am clicked", checkPetName);
         setPassword(true);
 
@@ -57,15 +89,65 @@ const PetName = (prop) => {
         console.log("I am notttt  clicked");
         setError((prev) => ({
           ...prev,
-          petName: "No email found",
+          petName: "No pet found",
         }));
       }
     }
   };
 
   const handleSubmit2 = () => {
-    if (validation()) {
-      const checkPetName = dataArr.map((item) => {});
+    if (validationPw()) {
+      // const newData = dataArr.map((item) => {
+      //   if (item.petName === values.petName) {
+      //     if (item.pw === values.pw) {
+      //       let errors = { pw: "" };
+      //       setError({
+      //         ...error,
+      //         pw: "type different password",
+      //       });
+      //       errors.pw = "type different password";
+      //       console.log("set errors", error);
+
+      //       return;
+      //     } else {
+      //       console.log("set errors", error);
+      //       item.pw = values.pw;
+      //       console.log("item.pw", item.pw);
+      //       console.log("values.pw", values.pw);
+      //       return item;
+      //     }
+      //   } else {
+      //     return item;
+      //   }
+      // });
+
+      const user = dataArr.find((item) => item.petName === values.petName);
+      if (user.pw === values.pw) {
+        setError((prev) => ({
+          ...prev,
+          pw: "same as old password",
+        }));
+        return;
+      } else {
+        user.pw = values.pw;
+        // const newData=dataArr.
+      }
+
+      const newData = dataArr.map((item) => {
+        if (item.petName === values.petName) {
+          item = user;
+          return item;
+        } else {
+          return item;
+        }
+      });
+
+      console.log("user newData", newData);
+      localStorage.setItem("signIn", JSON.stringify(newData));
+      navigate("/login");
+      // console.group('item',item)
+
+      // console.log("dataArr", dataArr);
     }
   };
   const handleChange = (e) => {
@@ -106,7 +188,7 @@ const PetName = (prop) => {
             </div>
             {password ? (
               <>
-                <label>Enter new Password</label>
+                <label className="text-start">Enter new Password</label>
                 <input
                   type="text"
                   className={`border block pl-1  mx-auto rounded-lg border-chineseViolet w-full h-10 text-lg
