@@ -1,6 +1,6 @@
 import Student from "./Pages/studentListing/Index";
 import AddStudent from "./Pages/addStudent/AddStudent";
-import { Navigate, Route, Routes } from "react-router";
+import { Route, Routes, useLocation, useNavigate } from "react-router";
 import Login from "./Pages/login/Login";
 import SignUp from "./Pages/signUp/SignUp";
 import Layout from "./components/layout/Layout";
@@ -10,7 +10,6 @@ import ForgotP from "./Pages/forgotP/ForgotP";
 import PageNotFound from "./Pages/pageNotFound/PageNotFound";
 
 const getItem = () => {
-  let val = [];
   const arr = JSON.parse(localStorage.getItem("logIn"));
 
   return arr;
@@ -29,6 +28,10 @@ console.log(dataArr);
 const isAuth = dataArr;
 
 const Router = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  console.log("location,location", location.pathname);
+
   return (
     <Routes>
       {/* {isAuth ? ( */}
@@ -41,7 +44,7 @@ const Router = () => {
                 <Student />
               </Layout>
             ) : (
-              ""
+              <Login auth={isAuth} array={dataArr} />
             )
           }
         />
@@ -53,7 +56,7 @@ const Router = () => {
                 <AddStudent />
               </Layout>
             ) : (
-              ""
+              <Login auth={isAuth} array={dataArr} />
             )
           }
         />
@@ -65,7 +68,7 @@ const Router = () => {
                 <Update />
               </Layout>
             ) : (
-              ""
+              <Login auth={isAuth} array={dataArr} />
             )
           }
         />
@@ -77,7 +80,7 @@ const Router = () => {
                 <UserProfile />
               </Layout>
             ) : (
-              ""
+              <Login auth={isAuth} array={dataArr} />
             )
           }
         />
@@ -87,11 +90,21 @@ const Router = () => {
 
         <Route
           path="/login"
-          element={isAuth ? "" : <Login auth={isAuth} array={dataArr} />}
+          element={
+            isAuth ? (
+              // navigate(location.pathname)
+              <PageNotFound auth={isAuth} />
+            ) : (
+              // ""
+              <Login auth={isAuth} array={dataArr} />
+            )
+          }
         />
         <Route
           path="/sign-up"
-          element={isAuth ? "" : <SignUp array={dataArr} />}
+          element={
+            isAuth ? <PageNotFound auth={isAuth} /> : <SignUp array={dataArr} />
+          }
         />
         <Route path="/forgot-password" element={isAuth ? "" : <ForgotP />} />
       </>
