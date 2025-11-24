@@ -141,7 +141,7 @@ const Login = (props) => {
               href="/forgot-password"
               className="hover:underline hover:text-blue-500"
             >
-              <p className="text-start text-sm">Forgotten your password?</p>
+              <p className="text-start text-sm">Forgot password?</p>
             </a>
             <Button className="w-full mb-2 mt-8" type="submit">
               Log In
