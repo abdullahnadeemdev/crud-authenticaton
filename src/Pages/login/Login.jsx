@@ -67,7 +67,7 @@ const Login = (props) => {
           // localStorage.setItem("signIn", JSON.stringify(newDataArr));
           let authVar = props?.auth;
           authVar = true;
-          props?.auth ? navigate("/student-list") : navigate("/pageNotFound");
+          authVar ? navigate("/student-list") : "";
           window.location.reload(false);
         } else {
           setError({

@@ -7,6 +7,7 @@ import Layout from "./components/layout/Layout";
 import Update from "./Pages/update/Update";
 import UserProfile from "./Pages/userProfile/UserProfile";
 import ForgotP from "./Pages/forgotP/ForgotP";
+import PageNotFound from "./Pages/pageNotFound/PageNotFound";
 
 const getItem = () => {
   let val = [];
@@ -30,62 +31,72 @@ const isAuth = dataArr;
 const Router = () => {
   return (
     <Routes>
-      {isAuth ? (
-        <>
-          <Route
-            path="/student-list"
-            element={
+      {/* {isAuth ? ( */}
+      <>
+        <Route
+          path="/student-list"
+          element={
+            isAuth ? (
               <Layout>
                 <Student />
               </Layout>
-            }
-          />
-          <Route
-            path="/add"
-            element={
+            ) : (
+              ""
+            )
+          }
+        />
+        <Route
+          path="/add"
+          element={
+            isAuth ? (
               <Layout>
                 <AddStudent />
               </Layout>
-            }
-          />
-          <Route
-            path="/update"
-            element={
+            ) : (
+              ""
+            )
+          }
+        />
+        <Route
+          path="/update"
+          element={
+            isAuth ? (
               <Layout>
                 <Update />
               </Layout>
-            }
-          />
-          <Route
-            path="/userProfile"
-            element={
+            ) : (
+              ""
+            )
+          }
+        />
+        <Route
+          path="/userProfile"
+          element={
+            isAuth ? (
               <Layout>
                 <UserProfile />
               </Layout>
-            }
-          />
-          <Route path="*" element={<Navigate to="/student-list" replace />} />
-        </>
-      ) : (
-        <>
-          <Route
-            path="/login"
-            element={<Login auth={isAuth} array={dataArr} />}
-          />
-          <Route path="/sign-up" element={<SignUp array={dataArr} />} />
-          <Route path="/forgot-password" element={<ForgotP />} />
-          <Route path="*" element={<Navigate to="/login" replace />} />
-        </>
-      )}
-      {/* <Route
-        path="*"
-        element={
-          // <div className="h-screen w-screen flex flex-col items-center justify-center text-4xl text-bold text-redBorder">
-          //   {"Page Not Found"}
-          //   <Button className="mt-10"> Go Back</Button>
-          // </div>
-        }
-      /> */}
+            ) : (
+              ""
+            )
+          }
+        />
+        {/* <Route path="*" element={<PageNotFound auth={isAuth} />} /> */}
+
+        {/* ) : ( */}
+
+        <Route
+          path="/login"
+          element={isAuth ? "" : <Login auth={isAuth} array={dataArr} />}
+        />
+        <Route
+          path="/sign-up"
+          element={isAuth ? "" : <SignUp array={dataArr} />}
+        />
+        <Route path="/forgot-password" element={isAuth ? "" : <ForgotP />} />
+      </>
+      {/* )} */}
+      <Route path="*" element={<PageNotFound auth={isAuth} />} />
     </Routes>
   );
 };
