@@ -20,6 +20,7 @@ const dataArr = getItem() || null;
 const isAuth = dataArr;
 
 const Router = () => {
+  const navigate = useNavigate();
   return (
     <Routes>
       <>
@@ -31,7 +32,7 @@ const Router = () => {
                 <Student />
               </Layout>
             ) : (
-              <Login auth={isAuth} array={dataArr} />
+              <Navigate to="/login" />
             )
           }
         />
@@ -44,7 +45,7 @@ const Router = () => {
               </Layout>
             ) : (
               // <Login auth={isAuth} array={dataArr} />
-              <Login auth={isAuth} array={dataArr} />
+              <Navigate to="/login" />
             )
           }
         />
@@ -56,7 +57,7 @@ const Router = () => {
                 <Update />
               </Layout>
             ) : (
-              <Login auth={isAuth} array={dataArr} />
+              <Navigate to="/login" />
             )
           }
         />
@@ -68,7 +69,7 @@ const Router = () => {
                 <UserProfile />
               </Layout>
             ) : (
-              <Login auth={isAuth} array={dataArr} />
+              <Navigate to="/login" />
             )
           }
         />

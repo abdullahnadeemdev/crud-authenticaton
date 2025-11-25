@@ -25,8 +25,8 @@ const Navbar = () => {
     // console.log("i am new", newArr);
     // localStorage.setItem("signIn", JSON.stringify(newArr));
     localStorage.removeItem("logIn");
-    // navigate('/login')
-    <Navigate replace="/login" />;
+    // navigate("/login");
+    <Navigate to="/login" replace="true" />;
     window.location.reload(false);
   };
   return (
