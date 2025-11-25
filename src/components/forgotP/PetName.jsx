@@ -3,7 +3,6 @@ import Button from "../shared/button/Button";
 import { Navigate, useNavigate } from "react-router";
 
 const PetName = (prop) => {
-  //   console.log("email", prop?.next?.data);
   const [password, setPassword] = useState(false);
   const [values, setValues] = useState({
     petName: "",
@@ -97,31 +96,7 @@ const PetName = (prop) => {
 
   const handleSubmit2 = () => {
     if (validationPw()) {
-      // const newData = dataArr.map((item) => {
-      //   if (item.petName === values.petName) {
-      //     if (item.pw === values.pw) {
-      //       let errors = { pw: "" };
-      //       setError({
-      //         ...error,
-      //         pw: "type different password",
-      //       });
-      //       errors.pw = "type different password";
-      //       console.log("set errors", error);
-
-      //       return;
-      //     } else {
-      //       console.log("set errors", error);
-      //       item.pw = values.pw;
-      //       console.log("item.pw", item.pw);
-      //       console.log("values.pw", values.pw);
-      //       return item;
-      //     }
-      //   } else {
-      //     return item;
-      //   }
-      // });
-
-      const user = dataArr.find((item) => item.petName === values.petName);
+      const user = dataArr.find((item) => item?.petName === values?.petName);
       if (user.pw === values.pw) {
         setError((prev) => ({
           ...prev,
@@ -130,7 +105,6 @@ const PetName = (prop) => {
         return;
       } else {
         user.pw = values.pw;
-        // const newData=dataArr.
       }
 
       const newData = dataArr.map((item) => {
@@ -142,12 +116,8 @@ const PetName = (prop) => {
         }
       });
 
-      console.log("user newData", newData);
       localStorage.setItem("signIn", JSON.stringify(newData));
       navigate("/login");
-      // console.group('item',item)
-
-      // console.log("dataArr", dataArr);
     }
   };
   const handleChange = (e) => {
