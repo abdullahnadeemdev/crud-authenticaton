@@ -3,17 +3,17 @@ import Button from "../../components/shared/button/Button";
 
 const PageNotFound = (props) => {
   const navigate = useNavigate();
-  console.log("props", props.auth);
+  // console.log("props", props.auth);
   const handleClick = () => {
-    console.log("props click", props.auth);
+    // console.log("props click", props.auth);
     if (props?.auth !== null) {
       <>
-        {console.log("i student-list")}
+        {/* {console.log("i student-list")} */}
         {navigate("/student-list", { replace: true })}
       </>;
     } else {
       <>
-        {console.log("i login-list")}
+        {/* {console.log("i login-list")} */}
         {navigate("/login", { replace: true })}
       </>;
     }

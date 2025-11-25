@@ -1,6 +1,7 @@
-import { Navigate, NavLink, useNavigate } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import { Logo } from "../../../assets/icons/index";
 import Button from "../button/Button";
+import { useAuth } from "../../../context/authContext";
 const Navbar = () => {
   // const getItem = () => {
   //   let val = [];
@@ -11,23 +12,11 @@ const Navbar = () => {
   //   return val;
   // };
   // const dataArr = getItem();
-  const navigate = useNavigate();
 
+  const isAuth = useAuth();
   const handleLogout = () => {
-    // const newArr = dataArr.map((item) => {
-    //   if (item.isLogin === true) {
-    //     item.isLogin = false;
-    //     return item;
-    //   } else {
-    //     return item;
-    //   }
-    // });
-    // console.log("i am new", newArr);
-    // localStorage.setItem("signIn", JSON.stringify(newArr));
+    isAuth.setAuth(false);
     localStorage.removeItem("logIn");
-    // navigate("/login");
-    <Navigate to="/login" replace="true" />;
-    window.location.reload(false);
   };
   return (
     <div className="w-full mx-auto flex items-center justify-center bg-pearl z-50">

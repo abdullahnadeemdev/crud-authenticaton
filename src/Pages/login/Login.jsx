@@ -1,9 +1,11 @@
-import { Navigate, NavLink, useNavigate } from "react-router";
+import { NavLink } from "react-router";
 import Button from "../../components/shared/button/Button";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useAuth } from "../../context/authContext";
 
-const Login = (props) => {
-  const navigate = useNavigate();
+const Login = () => {
+  const isAuth = useAuth();
+
   const getItem = () => {
     const arr = JSON.parse(localStorage.getItem("signIn")) || [];
     return arr;
@@ -56,6 +58,8 @@ const Login = (props) => {
         if (user.pw === values.pw) {
           user.isLogin = true;
           localStorage.setItem("logIn", JSON.stringify(user));
+          isAuth?.setAuth(true);
+
           // const newDataArr = dataArr.map((item) => {
           //   if (item.email === user.email) {
           //     item = user;
@@ -65,12 +69,6 @@ const Login = (props) => {
           //   }
           // });
           // localStorage.setItem("signIn", JSON.stringify(newDataArr));
-          let authVar = props?.auth;
-          authVar = true;
-          authVar ? navigate("/student-list") : "";
-          // authVar ? <Navigate to="/student-list" /> : "";
-
-          window.location.reload(false);
         } else {
           setError({
             ...error,
