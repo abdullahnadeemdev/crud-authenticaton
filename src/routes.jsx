@@ -31,7 +31,7 @@ const Router = () => {
                 <Student />
               </Layout>
             ) : (
-              <Navigate to="/login" replace />
+              <Login auth={isAuth} array={dataArr} />
             )
           }
         />
@@ -44,7 +44,7 @@ const Router = () => {
               </Layout>
             ) : (
               // <Login auth={isAuth} array={dataArr} />
-              <Navigate to="/login" replace />
+              <Login auth={isAuth} array={dataArr} />
             )
           }
         />
@@ -56,7 +56,7 @@ const Router = () => {
                 <Update />
               </Layout>
             ) : (
-              <Navigate to="/login" replace />
+              <Login auth={isAuth} array={dataArr} />
             )
           }
         />
@@ -77,17 +77,21 @@ const Router = () => {
           path="/login"
           element={
             isAuth ? (
-              <PageNotFound auth={isAuth} />
+              <Navigate to="/pageNotFound" />
             ) : (
-              // ""
-              // ""
               <Login auth={isAuth} array={dataArr} />
             )
           }
         />
         <Route
           path="/sign-up"
-          element={isAuth ? "" : <SignUp array={dataArr} />}
+          element={
+            isAuth ? (
+              <Navigate to="/pageNotFound" />
+            ) : (
+              <SignUp array={dataArr} />
+            )
+          }
         />
         <Route path="/forgot-password" element={isAuth ? "" : <ForgotP />} />
       </>

@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from "react-router";
+import { Navigate, NavLink, useNavigate } from "react-router";
 import { Logo } from "../../../assets/icons/index";
 import Button from "../button/Button";
 const Navbar = () => {
@@ -25,7 +25,8 @@ const Navbar = () => {
     // console.log("i am new", newArr);
     // localStorage.setItem("signIn", JSON.stringify(newArr));
     localStorage.removeItem("logIn");
-    navigate("/login");
+    // navigate('/login')
+    <Navigate replace="/login" />;
     window.location.reload(false);
   };
   return (

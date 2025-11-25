@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from "react-router";
+import { Navigate, NavLink, useNavigate } from "react-router";
 import Button from "../../components/shared/button/Button";
 import { useEffect, useState } from "react";
 
@@ -68,6 +68,8 @@ const Login = (props) => {
           let authVar = props?.auth;
           authVar = true;
           authVar ? navigate("/student-list") : "";
+          // authVar ? <Navigate to="/student-list" /> : "";
+
           window.location.reload(false);
         } else {
           setError({
