@@ -30,7 +30,6 @@ const Router = () => {
             </Layout>
           ) : (
             <Navigate to="/login" />
-            // <Login auth={isAuth?.auth} array={dataArr} />
           )
         }
       />
@@ -42,7 +41,6 @@ const Router = () => {
               <AddStudent />
             </Layout>
           ) : (
-            // <Login auth={isAuth?.auth} array={dataArr} />
             <Navigate to="/login" />
           )
         }
@@ -56,8 +54,6 @@ const Router = () => {
             </Layout>
           ) : (
             <Navigate to="/login" />
-
-            // <Login auth={isAuth?.auth} array={dataArr} />
           )
         }
       />
@@ -70,7 +66,6 @@ const Router = () => {
             </Layout>
           ) : (
             <Navigate to="/login" />
-            // <Login auth={isAuth?.auth} array={dataArr} />
           )
         }
       />
@@ -83,7 +78,6 @@ const Router = () => {
           ) : (
             <Login array={dataArr} />
           )
-          // <Login array={dataArr} />
         }
       />
       <Route

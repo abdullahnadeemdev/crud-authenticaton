@@ -21,6 +21,10 @@ const Login = () => {
     pw: "",
   });
 
+  // const loginState = () => {
+  //   return (props.data = true);
+  // };
+
   const validation = () => {
     if (!values.email) {
       setError((prev) => ({
@@ -58,6 +62,7 @@ const Login = () => {
         if (user.pw === values.pw) {
           user.isLogin = true;
           localStorage.setItem("logIn", JSON.stringify(user));
+          // loginState()
           isAuth?.setAuth(true);
 
           // const newDataArr = dataArr.map((item) => {
