@@ -1,8 +1,8 @@
 import { NavLink, useNavigate } from "react-router";
 import { Logo } from "../../../assets/icons/index";
 import Button from "../button/Button";
-import { useAuth } from "../../../context/authContext";
-const Navbar = () => {
+// import { useAuth } from "../../../context/authContext";
+const Navbar = (props) => {
   // const getItem = () => {
   //   let val = [];
   //   const arr = localStorage.getItem("signIn");
@@ -13,9 +13,15 @@ const Navbar = () => {
   // };
   // const dataArr = getItem();
 
-  const isAuth = useAuth();
+  // const isAuth = useAuth();
+  const loginStat = () => props.userLogOut(false);
+  // console.log("Nabar props", props);
   const handleLogout = () => {
-    isAuth.setAuth(false);
+    console.log("i am clicked");
+    // isAuth.setAuth(false);
+    console.log("i am loginStat Before", loginStat());
+    loginStat();
+    console.log("i am loginStat after", loginStat());
     localStorage.removeItem("logIn");
   };
   return (

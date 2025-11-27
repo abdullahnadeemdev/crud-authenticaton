@@ -1,14 +1,14 @@
 import Student from "./Pages/studentListing/Index";
 import AddStudent from "./Pages/addStudent/AddStudent";
 import { Navigate, Route, Routes } from "react-router";
-import Login from "./Pages/login/Login";
+import Login from "./container/LoginContainer";
 import SignUp from "./Pages/signUp/SignUp";
 import Layout from "./components/layout/Layout";
 import Update from "./Pages/update/Update";
 import UserProfile from "./Pages/userProfile/UserProfile";
 import ForgotP from "./Pages/forgotP/ForgotP";
 import PageNotFound from "./Pages/pageNotFound/PageNotFound";
-import { useAuth } from "./context/authContext";
+// import { useAuth } from "./context/authContext";
 
 const getItem = () => {
   const arr = JSON.parse(localStorage.getItem("logIn"));
@@ -17,14 +17,16 @@ const getItem = () => {
 
 const dataArr = getItem() || null;
 
-const Router = () => {
-  const isAuth = useAuth();
+const Router = (props) => {
+  const isAuth = props?.data;
+  console.log("props route", isAuth);
+  // const isAuth1 = useAuth();
   return (
     <Routes>
       <Route
         path="/student-list"
         element={
-          isAuth?.auth ? (
+          isAuth ? (
             <Layout>
               <Student />
             </Layout>
@@ -36,7 +38,7 @@ const Router = () => {
       <Route
         path="/add"
         element={
-          isAuth?.auth ? (
+          isAuth ? (
             <Layout>
               <AddStudent />
             </Layout>
@@ -48,7 +50,7 @@ const Router = () => {
       <Route
         path="/update"
         element={
-          isAuth?.auth ? (
+          isAuth ? (
             <Layout>
               <Update />
             </Layout>
@@ -60,7 +62,8 @@ const Router = () => {
       <Route
         path="/userProfile"
         element={
-          isAuth?.auth ? (
+          // isAuth?.auth ? (
+          isAuth ? (
             <Layout>
               <UserProfile />
             </Layout>
@@ -72,30 +75,17 @@ const Router = () => {
 
       <Route
         path="/login"
-        element={
-          isAuth?.auth ? (
-            <Navigate to="/student-list" />
-          ) : (
-            <Login array={dataArr} />
-          )
-        }
+        element={isAuth ? <Navigate to="/student-list" /> : <Login />}
       />
       <Route
         path="/sign-up"
         element={
-          isAuth?.auth ? (
-            <Navigate to="/pageNotFound" />
-          ) : (
-            <SignUp array={dataArr} />
-          )
+          isAuth ? <Navigate to="/pageNotFound" /> : <SignUp array={dataArr} />
         }
       />
-      <Route
-        path="/forgot-password"
-        element={isAuth?.auth ? "" : <ForgotP />}
-      />
+      <Route path="/forgot-password" element={isAuth ? "" : <ForgotP />} />
 
-      <Route path="*" element={<PageNotFound auth={isAuth?.auth} />} />
+      <Route path="*" element={<PageNotFound auth={isAuth} />} />
     </Routes>
   );
 };

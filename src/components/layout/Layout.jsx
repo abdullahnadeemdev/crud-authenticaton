@@ -1,4 +1,6 @@
-import Navbar from "../shared/navbar/Navbar";
+// import Navbar from "../shared/navbar/Nav bar";
+import Navbar from "../../container/NavbarContainer";
+// import Cake from './'
 
 const Layout = ({ children }) => {
   return (

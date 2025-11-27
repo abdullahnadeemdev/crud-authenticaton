@@ -1,10 +1,13 @@
 import { NavLink } from "react-router";
+// import Button from "../../components/shared/bb";
 import Button from "../../components/shared/button/Button";
 import { useState } from "react";
-import { useAuth } from "../../context/authContext";
+// import { useAuth } from "../../context/authContext";
 
-const Login = () => {
-  const isAuth = useAuth();
+const Login = (props) => {
+  // const isAuth = useAuth();
+  // console.log("Login props", props);
+  // console.log("Login loginState props", props?.data);
 
   const getItem = () => {
     const arr = JSON.parse(localStorage.getItem("signIn")) || [];
@@ -21,9 +24,7 @@ const Login = () => {
     pw: "",
   });
 
-  // const loginState = () => {
-  //   return (props.data = true);
-  // };
+  const loginStat = () => props.userLogin(true);
 
   const validation = () => {
     if (!values.email) {
@@ -62,8 +63,8 @@ const Login = () => {
         if (user.pw === values.pw) {
           user.isLogin = true;
           localStorage.setItem("logIn", JSON.stringify(user));
-          // loginState()
-          isAuth?.setAuth(true);
+          loginStat();
+          // isAuth?.setAuth(true);
 
           // const newDataArr = dataArr.map((item) => {
           //   if (item.email === user.email) {

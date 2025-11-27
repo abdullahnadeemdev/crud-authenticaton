@@ -7,6 +7,9 @@ export const headArr = [
   "Action",
 ];
 
+export const is_Login = "loginT";
+export const is_LogOut = "loginF";
+
 // export const dataArr = [
 //   ["1", "Abdullah", "22", "6-A", " 090078601"],
 //   ["12", "Abdullah", "22", "6-A", " 090078601"],

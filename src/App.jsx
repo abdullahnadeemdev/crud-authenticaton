@@ -1,5 +1,6 @@
-import { AuthProvide } from "./context/authContext";
-import Router from "./routes";
+// import { AuthProvide } from "./context/authContext";
+// import Router from "./routes";
+import Router from "./container/RouteContainer";
 
 function App() {
   return (
