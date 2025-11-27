@@ -1,8 +1,16 @@
 import { is_Login } from "../../../utils/mockUpData";
 import { is_LogOut } from "../../../utils/mockUpData";
 
+const getItem = () => {
+  const arr = JSON.parse(localStorage.getItem("logIn")) || false;
+  return arr;
+};
+
+const logCheck = getItem();
+// console.log("logCheck", logCheck);
+
 const initialState = {
-  login: false,
+  login: logCheck,
 };
 
 const isLogin = (state = initialState.login, action) => {

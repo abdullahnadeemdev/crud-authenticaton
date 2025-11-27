@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from "react-router";
+import { NavLink, useLocation, useNavigate } from "react-router";
 import { Logo } from "../../../assets/icons/index";
 import Button from "../button/Button";
 // import { useAuth } from "../../../context/authContext";
@@ -14,16 +14,18 @@ const Navbar = (props) => {
   // const dataArr = getItem();
 
   // const isAuth = useAuth();
+
   const loginStat = () => props.userLogOut(false);
-  // console.log("Nabar props", props);
+
   const handleLogout = () => {
-    console.log("i am clicked");
-    // isAuth.setAuth(false);
-    console.log("i am loginStat Before", loginStat());
     loginStat();
-    console.log("i am loginStat after", loginStat());
     localStorage.removeItem("logIn");
+    console.log("i am loginStat after", loginStat());
   };
+
+  let location = useLocation();
+  console.log("location", location.pathname);
+
   return (
     <div className="w-full mx-auto flex items-center justify-center bg-pearl z-50">
       <div className="p-0 md:p-4 h-20 flex items-center  justify-around w-full">
