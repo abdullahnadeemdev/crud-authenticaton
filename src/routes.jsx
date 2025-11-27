@@ -86,6 +86,7 @@ const Router = (props) => {
       <Route path="/forgot-password" element={isAuth ? "" : <ForgotP />} />
 
       <Route path="*" element={<PageNotFound auth={isAuth} />} />
+      <Route path="/" element={<Login />} />
     </Routes>
   );
 };
