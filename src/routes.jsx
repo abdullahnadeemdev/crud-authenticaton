@@ -83,7 +83,10 @@ const Router = (props) => {
           isAuth ? <Navigate to="/pageNotFound" /> : <SignUp array={dataArr} />
         }
       />
-      <Route path="/forgot-password" element={isAuth ? "" : <ForgotP />} />
+      <Route
+        path="/forgot-password"
+        element={isAuth ? <Navigate to="/pageNotFound" /> : <ForgotP />}
+      />
 
       <Route path="*" element={<PageNotFound auth={isAuth} />} />
       <Route
