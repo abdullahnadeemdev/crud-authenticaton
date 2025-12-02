@@ -31,7 +31,7 @@ const Router = (props) => {
               <Student />
             </Layout>
           ) : (
-            <Navigate to="/login" />
+            <Navigate to="/" />
           )
         }
       />
@@ -43,7 +43,7 @@ const Router = (props) => {
               <AddStudent />
             </Layout>
           ) : (
-            <Navigate to="/login" />
+            <Navigate to="/" />
           )
         }
       />
@@ -55,7 +55,7 @@ const Router = (props) => {
               <Update />
             </Layout>
           ) : (
-            <Navigate to="/login" />
+            <Navigate to="/" />
           )
         }
       />
@@ -68,7 +68,7 @@ const Router = (props) => {
               <UserProfile />
             </Layout>
           ) : (
-            <Navigate to="/login" />
+            <Navigate to="/" />
           )
         }
       />
