@@ -84,7 +84,7 @@ const Router = (props) => {
         element={isAuth ? <Navigate to="/student-list" /> : <ForgotP />}
       />
 
-      <Route path="*" element={<PageNotFound auth={isAuth} />} />
+      <Route path="*" element={<Navigate to="/forgot-password" />} />
       <Route
         path="/"
         element={isAuth ? <Navigate to="/student-list" /> : <Login />}
