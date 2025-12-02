@@ -31,7 +31,7 @@ const Router = (props) => {
               <Student />
             </Layout>
           ) : (
-            <Navigate to="/" />
+            <Navigate to="*" />
           )
         }
       />
@@ -43,7 +43,7 @@ const Router = (props) => {
               <AddStudent />
             </Layout>
           ) : (
-            <Navigate to="/" />
+            <Navigate to="*" />
           )
         }
       />
@@ -55,7 +55,7 @@ const Router = (props) => {
               <Update />
             </Layout>
           ) : (
-            <Navigate to="/" />
+            <Navigate to="*" />
           )
         }
       />
@@ -68,7 +68,7 @@ const Router = (props) => {
               <UserProfile />
             </Layout>
           ) : (
-            <Navigate to="/" />
+            <Navigate to="*" />
           )
         }
       />
@@ -84,11 +84,11 @@ const Router = (props) => {
         element={isAuth ? <Navigate to="/student-list" /> : <ForgotP />}
       />
 
-      <Route path="*" element={<PageNotFound auth={isAuth} />} />
       <Route
         path="/"
         element={isAuth ? <Navigate to="/student-list" /> : <Login />}
       />
+      <Route path="*" element={<PageNotFound auth={isAuth} />} />
     </Routes>
   );
 };
