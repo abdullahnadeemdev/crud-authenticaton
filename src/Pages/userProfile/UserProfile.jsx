@@ -27,6 +27,7 @@ const UserProfile = () => {
     email: userObj?.email,
     pw: userObj?.pw,
     isLogin: userObj?.isLogin,
+    petName: userObj?.petName,
   });
 
   const [isEdit, setIsEdit] = useState(false);
