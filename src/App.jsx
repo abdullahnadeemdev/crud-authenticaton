@@ -7,6 +7,7 @@ function App() {
     <>
       {/* <div className="bg-black h-screen w-screen"> */}
       <Router />
+
       {/* </div> */}
     </>
   );
