@@ -1,4 +1,4 @@
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 // import Button from "../../components/shared/bb";
 import Button from "../../components/shared/button/Button";
 import { useState } from "react";
@@ -142,12 +142,13 @@ const Login = (props) => {
               )}
             </div>
 
-            <a
-              href="/forgot-password"
-              className="hover:underline hover:text-blue-500"
+            <NavLink
+              to="/forgot-password"
+              className="text-start text-sm hover:underline hover:text-blue-500 block"
             >
-              <p className="text-start text-sm">Forgot password?</p>
-            </a>
+              Forgot password?
+            </NavLink>
+
             <Button className="w-full mb-2 mt-8" type="submit">
               Log In
             </Button>
