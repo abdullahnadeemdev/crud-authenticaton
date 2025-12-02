@@ -122,7 +122,7 @@ const SignUp = (props) => {
     if (validation()) {
       console.log("welcome");
       localStorage.setItem("signIn", JSON.stringify([...dataArr, values]));
-      navigate("/");
+      navigate("/", { replace: true });
     } else {
       console.log("error", error);
       console.log("ingo", values);
@@ -204,7 +204,7 @@ const SignUp = (props) => {
               Register
             </Button>
           </form>
-          <NavLink to="/login">
+          <NavLink to="/">
             <Button className="w-full mb-2">Log In</Button>
           </NavLink>
         </div>
