@@ -117,7 +117,7 @@ const PetName = (prop) => {
       });
 
       localStorage.setItem("signIn", JSON.stringify(newData));
-      navigate("/login");
+      navigate("/");
     }
   };
   const handleChange = (e) => {
