@@ -122,7 +122,7 @@ const SignUp = (props) => {
     if (validation()) {
       console.log("welcome");
       localStorage.setItem("signIn", JSON.stringify([...dataArr, values]));
-      navigate("/login");
+      navigate("/");
     } else {
       console.log("error", error);
       console.log("ingo", values);
