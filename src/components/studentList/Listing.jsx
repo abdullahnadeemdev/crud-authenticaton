@@ -13,8 +13,8 @@ const Listing = (props) => {
 
   const getItems = () => {
     const arr = JSON.parse(localStorage.getItem("info"));
-    const data = arr.filter((ele) => ele.admin === admin);
-    return data;
+    const data = arr?.filter((ele) => ele.admin === admin);
+    return data || [];
   };
   const dataArr = getItems();
   // console.log("dataArrdataArrdataArr", dataArr);
