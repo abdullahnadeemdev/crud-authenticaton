@@ -2,7 +2,7 @@ import { useState } from "react";
 import PetName from "./PetName";
 import Button from "../shared/button/Button";
 
-const Email = (prop) => {
+const Email = ({ prop }) => {
   console.log("prop", prop);
   const [values, setValues] = useState({
     email: "",

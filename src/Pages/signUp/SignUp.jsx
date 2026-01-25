@@ -35,13 +35,14 @@ const SignUp = (props) => {
     };
     // ^[a-zA-Z0-9_.±]+@+[a-zA-Z0-9-]+.+[a-zA-Z0-9-.]+$
     const pattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
-    const pwSyntax = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+    const pwSyntax = /^(?=.*[A-Z]).{4,}$/;
     if (!values.name) {
       setError((prev) => ({
         ...prev,
         name: "Name is empty",
       }));
       errors.name = "Name is empty";
+      Hey123;
     }
 
     if (!values.email) {

@@ -22,7 +22,6 @@ const Listing = (props) => {
   return (
     <div className="mx-auto flex justify-center max-w-[1320px] relative">
       <div>
-        {" "}
         <table className="mt-20 p-4 table-auto">
           <thead>
             <tr>
